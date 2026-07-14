@@ -718,7 +718,7 @@ async function renderAdminAgents(el) {
           </div>
           <div class="adm-agent-actions">
             <button class="btn btn-outline" style="font-size:.75rem;padding:5px 10px" onclick="toggleAgentStatus('${doc.id}',${a.active===false})">${a.active===false?'Activate':'Deactivate'}</button>
-            <button class="btn" style="font-size:.75rem;padding:5px 10px;background:#fef2f2;color:#ef4444;border:1px solid #fecaca" onclick="deleteAgent('${doc.id}','${(a.name||'').replace(/'/g,'\\'')}')">Delete</button>
+            <button class="btn" style="font-size:.75rem;padding:5px 10px;background:#fef2f2;color:#ef4444;border:1px solid #fecaca" onclick="deleteAgent('${doc.id}','${(a.name||'').replace(/'/g,'\\x27')}')">Delete</button>
           </div>
         </div>`;
       }).join('');
