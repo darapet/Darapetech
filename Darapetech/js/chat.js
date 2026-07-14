@@ -5,8 +5,29 @@
 (function () {
   'use strict';
 
-  const storage = firebase.storage();
   const TS = () => firebase.firestore.FieldValue.serverTimestamp();
+
+  // ---- Cloudinary upload (no Firebase Storage needed) ----
+  let _cloudinaryCfg = null;
+  async function getCloudinaryCfg() {
+    if (_cloudinaryCfg) return _cloudinaryCfg;
+    const doc = await db.collection('settings').doc('cloudinary').get();
+    if (!doc.exists) throw new Error('Cloudinary not configured yet. Ask your admin to set it up in the Admin → Settings panel.');
+    _cloudinaryCfg = doc.data();
+    return _cloudinaryCfg;
+  }
+  async function uploadToCloudinary(file) {
+    const { cloudName, uploadPreset } = await getCloudinaryCfg();
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('upload_preset', uploadPreset);
+    fd.append('folder', 'chat');
+    // resource_type=auto handles images, PDFs, docs, zip etc.
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!data.secure_url) throw new Error(data.error?.message || 'Upload failed');
+    return data.secure_url;
+  }
 
   const SERVICES_SKILLS = {
     'Web & App Development': ['Website Development','WordPress','Shopify','Mobile App Development','React.js','Vue.js','Node.js','PHP','MySQL','PostgreSQL','REST API','GraphQL','UI/UX Design','Figma','HTML/CSS','JavaScript','TypeScript','Git','Docker','AWS'],
@@ -268,9 +289,7 @@
     // Upload attachments first
     for (const att of pendingAttachments) {
       try {
-        const ref = storage.ref(`chat/${currentConvId}/${Date.now()}_${att.file.name}`);
-        await ref.put(att.file);
-        const url = await ref.getDownloadURL();
+        const url = await uploadToCloudinary(att.file);
         await db.collection('agent_messages').add({
           ...base,
           type: att.type,
@@ -278,7 +297,7 @@
           fileName: att.file.name,
           content: ''
         });
-      } catch(e) { console.error('Upload error:', e); }
+      } catch(e) { console.error('Upload error:', e.message); }
     }
 
     // Send text / URL

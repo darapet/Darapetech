@@ -5,8 +5,28 @@
 (function () {
   'use strict';
 
-  const storage = firebase.storage();
   const TS = () => firebase.firestore.FieldValue.serverTimestamp();
+
+  // ---- Cloudinary upload (replaces Firebase Storage) ----
+  let _cloudinaryCfg = null;
+  async function getCloudinaryCfg() {
+    if (_cloudinaryCfg) return _cloudinaryCfg;
+    const doc = await db.collection('settings').doc('cloudinary').get();
+    if (!doc.exists) throw new Error('Cloudinary not configured. Go to Admin → Settings to set your cloud name and upload preset.');
+    _cloudinaryCfg = doc.data();
+    return _cloudinaryCfg;
+  }
+  async function uploadToCloudinary(file, folder) {
+    const { cloudName, uploadPreset } = await getCloudinaryCfg();
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('upload_preset', uploadPreset);
+    fd.append('folder', folder || 'chat');
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!data.secure_url) throw new Error(data.error?.message || 'Upload failed');
+    return data.secure_url;
+  }
 
   const SERVICES_SKILLS = {
     'Web & App Development': ['Website Development','WordPress','Shopify','Mobile App Development','React.js','Vue.js','Node.js','PHP','MySQL','PostgreSQL','REST API','GraphQL','UI/UX Design','Figma','HTML/CSS','JavaScript','TypeScript','Git','Docker','AWS'],
@@ -207,11 +227,9 @@
 
     for (const att of pendingFiles) {
       try {
-        const ref = storage.ref(`chat/${selectedConvId}/${Date.now()}_${att.file.name}`);
-        await ref.put(att.file);
-        const url = await ref.getDownloadURL();
+        const url = await uploadToCloudinary(att.file, 'chat');
         await db.collection('agent_messages').add({ ...base, type: att.type, fileUrl: url, fileName: att.file.name, content: '' });
-      } catch(e) { console.error('Upload error:', e); }
+      } catch(e) { console.error('Upload error:', e.message); }
     }
 
     if (text) {
@@ -358,9 +376,7 @@
     progress.style.display = ''; progress.textContent = 'Uploading…';
     btn.disabled = true;
     try {
-      const ref = storage.ref(`agent-photos/${agentData.docId}/${Date.now()}_${file.name}`);
-      await ref.put(file);
-      const url = await ref.getDownloadURL();
+      const url = await uploadToCloudinary(file, 'agent-photos');
       await db.collection('agents').doc(agentData.docId).update({ photoUrl: url });
       agentData.photoUrl = url;
       const photoWrap = document.getElementById('settingsPhotoWrap');

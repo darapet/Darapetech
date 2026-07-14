@@ -139,37 +139,7 @@ service cloud.firestore {
 
 ---
 
-## Firebase Storage Rules
-
-Paste in **Firebase Console → Storage → Rules**
-
-```
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-
-    // Agent profile photos — public read, only agent owner or admin can write
-    match /agent-photos/{agentId}/{allPaths=**} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-
-    // Chat file uploads — only conversation participants
-    match /chat/{convId}/{allPaths=**} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null
-        && request.resource.size < 20 * 1024 * 1024; // 20 MB limit
-    }
-
-    // Portfolio images (admin only)
-    match /portfolio/{allPaths=**} {
-      allow read: if true;
-      allow write: if request.auth != null
-        && request.auth.token.email == 'daramolapeter98@gmail.com';
-    }
-  }
-}
-```
+> **Note:** Firebase Storage is NOT used. All file/image uploads (chat attachments and agent profile photos) go directly to **Cloudinary** via unsigned upload preset. No Storage rules needed.
 
 ---
 
