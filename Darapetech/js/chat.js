@@ -75,11 +75,17 @@
   // ---- LOAD AGENTS ----
   async function loadAgents() {
     try {
-      const snap = await db.collection('agents').where('active','==',true).get();
+      const snap = await Promise.race([
+        db.collection('agents').where('active','==',true).get(),
+        new Promise((_,reject)=>setTimeout(()=>reject(new Error('timeout')),8000))
+      ]);
       allAgents = snap.docs.map(d => ({ id: d.id, ...d.data() }));
       renderAgentCards(allAgents);
     } catch(e) {
-      document.getElementById('agentsList').innerHTML = '<div style="padding:24px;text-align:center;color:#94a3b8;font-size:.85rem">Could not load agents. Please try again.</div>';
+      const msg = e.message === 'timeout'
+        ? 'Connection timed out. Please check your internet and refresh.'
+        : 'Could not load agents. Please refresh and try again.';
+      document.getElementById('agentsList').innerHTML = `<div style="padding:24px;text-align:center;color:#94a3b8;font-size:.85rem">${msg}</div>`;
     }
   }
 
