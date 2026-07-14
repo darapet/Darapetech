@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Darapet Technology</title>
+  <meta name="description" content="Start your project with Darapet Technology. Get a free consultation within 24 hours." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="../assets/images/logo.png" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/background.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+  <style>
+    /* =========================================
+       CONTACT PAGE — PREMIUM OVERRIDES
+       ========================================= */
+
+    /* ── Hero ── */
+    .contact-hero {
+      position: relative;
+      padding: calc(var(--strip-height) + var(--nav-height) + 64px) 0 72px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .contact-hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 40%, rgba(255,107,53,.13) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 80% 60%, rgba(162,89,255,.12) 0%, transparent 60%);
+    }
+    .contact-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%);
+    }
+    .contact-hero .container { position: relative; z-index: 2; }
+    .contact-hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,107,53,.1); border: 1px solid rgba(255,107,53,.25);
+      border-radius: 100px; padding: 6px 18px;
+      font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent-1);
+      margin-bottom: 24px;
+    }
+    .contact-hero h1 { margin-bottom: 16px; }
+    .contact-hero p {
+      max-width: 520px; margin: 0 auto 32px;
+      font-size: 1.05rem; color: var(--text-secondary);
+    }
+    .hero-trust-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; flex-wrap: wrap;
+    }
+    .hero-trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: .82rem; color: var(--text-muted); font-weight: 500;
+    }
+    .hero-trust-item i { color: var(--accent-1); font-size: .9rem; }
+
+    /* ── Main split layout ── */
+    .contact-main {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 0;
+      min-height: 780px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 32px 80px rgba(0,0,0,.5);
+    }
+
+    /* ── Left info panel ── */
+    .contact-panel {
+      position: relative;
+      background: linear-gradient(160deg, rgba(255,107,53,.15) 0%, rgba(162,89,255,.18) 50%, rgba(7,9,15,.9) 100%);
+      border-right: 1px solid rgba(255,255,255,.07);
+      padding: 48px 40px;
+      display: flex; flex-direction: column; gap: 0;
+      overflow: hidden;
+    }
+    .contact-panel::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+    .panel-orb {
+      position: absolute;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(255,107,53,.22) 0%, transparent 70%);
+      top: -80px; right: -80px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .panel-orb-2 {
+      position: absolute;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(162,89,255,.18) 0%, transparent 70%);
+      bottom: 40px; left: -60px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .panel-content { position: relative; z-index: 2; flex: 1; }
+    .panel-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .panel-badge .dot { width: 6px; height: 6px; background: #25d366; border-radius: 50%; flex-shrink: 0; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+    .panel-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; line-height: 1.3; }
+    .panel-sub { font-size: .9rem; color: var(--text-secondary); margin-bottom: 36px; line-height: 1.7; }
+
+    /* Contact items */
+    .panel-contacts { display: flex; flex-direction: column; gap: 4px; margin-bottom: 36px; }
+    .panel-contact-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px;
+      transition: var(--transition);
+      text-decoration: none; color: inherit;
+    }
+    .panel-contact-item:hover {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,107,53,.3);
+      transform: translateX(4px);
+    }
+    .panel-contact-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem; flex-shrink: 0;
+    }
+    .panel-contact-icon.orange { background: rgba(255,107,53,.15); color: var(--accent-1); }
+    .panel-contact-icon.green  { background: rgba(37,211,102,.15); color: #25d366; }
+    .panel-contact-icon.blue   { background: rgba(56,189,248,.15); color: #38bdf8; }
+    .panel-contact-icon.purple { background: rgba(162,89,255,.15); color: var(--accent-2); }
+    .panel-contact-text { flex: 1; min-width: 0; }
+    .panel-contact-text .label { font-size: .72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+    .panel-contact-text .value { font-size: .9rem; font-weight: 500; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .panel-contact-arrow { color: var(--text-muted); font-size: .85rem; flex-shrink: 0; }
+
+    /* Divider */
+    .panel-divider { height: 1px; background: rgba(255,255,255,.06); margin: 28px 0; }
+
+    /* Social row */
+    .panel-social-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-bottom: 12px; }
+    .panel-socials { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+    .panel-social-btn {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary); font-size: .9rem;
+      transition: var(--transition); text-decoration: none;
+    }
+    .panel-social-btn:hover { background: rgba(255,107,53,.15); border-color: rgba(255,107,53,.3); color: var(--accent-1); transform: translateY(-2px); }
+
+    /* Stats row at bottom of panel */
+    .panel-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-top: auto; padding-top: 24px;
+    }
+    .panel-stat {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px; padding: 14px 16px; text-align: center;
+    }
+    .panel-stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text-primary); display: block; margin-bottom: 3px; }
+    .panel-stat-num span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .panel-stat-label { font-size: .7rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+
+    /* ── Right: Form area ── */
+    .contact-form-area {
+      background: rgba(255,255,255,.02);
+      padding: 48px 44px;
+      display: flex; flex-direction: column; gap: 0;
+    }
+
+    /* Step bar */
+    .form-step-bar {
+      display: flex; align-items: center; gap: 0;
+      margin-bottom: 36px;
+    }
+    .form-step {
+      display: flex; align-items: center; gap: 8px;
+      flex: 1;
+    }
+    .form-step-circle {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .72rem; font-weight: 700;
+      border: 2px solid var(--border);
+      color: var(--text-muted);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .form-step.active .form-step-circle,
+    .form-step.done .form-step-circle {
+      background: var(--accent-gradient);
+      border-color: transparent; color: #fff;
+    }
+    .form-step-label { font-size: .72rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+    .form-step.active .form-step-label { color: var(--accent-1); }
+    .form-step.done .form-step-label { color: var(--text-secondary); }
+    .form-step-line { flex: 1; height: 2px; background: var(--border); margin: 0 6px; }
+    .form-step-line.done { background: var(--accent-gradient); }
+
+    /* Heading */
+    .form-heading { margin-bottom: 28px; }
+    .form-heading h2 { font-size: 1.45rem; font-weight: 700; margin-bottom: 6px; }
+    .form-heading p { font-size: .88rem; color: var(--text-muted); }
+
+    /* Service chips */
+    .service-chips-label { font-size: .78rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 12px; display: block; }
+    .service-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border-radius: 100px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.03);
+      color: var(--text-secondary); font-size: .82rem; font-weight: 500;
+      cursor: pointer; transition: var(--transition); user-select: none;
+    }
+    .chip i { font-size: .85rem; }
+    .chip:hover { border-color: rgba(255,107,53,.4); color: var(--text-primary); background: rgba(255,107,53,.07); }
+    .chip.selected {
+      background: rgba(255,107,53,.14);
+      border-color: rgba(255,107,53,.5);
+      color: var(--accent-1); font-weight: 600;
+    }
+    .chip.selected i { color: var(--accent-1); }
+
+    /* Floating-label inputs */
+    .fl-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .fl-group .fl-input,
+    .fl-group .fl-select,
+    .fl-group .fl-textarea {
+      width: 100%;
+      padding: 20px 16px 8px;
+      background: rgba(255,255,255,.04);
+      border: 1.5px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: .95rem;
+      transition: var(--transition);
+      outline: none;
+      appearance: none;
+    }
+    .fl-group .fl-select { cursor: pointer; }
+    .fl-group .fl-textarea { resize: vertical; min-height: 120px; padding-top: 24px; }
+    .fl-group .fl-input:focus,
+    .fl-group .fl-select:focus,
+    .fl-group .fl-textarea:focus {
+      border-color: rgba(255,107,53,.6);
+      background: rgba(255,107,53,.04);
+      box-shadow: 0 0 0 3px rgba(255,107,53,.1);
+    }
+    .fl-label {
+      position: absolute;
+      left: 16px; top: 14px;
+      font-size: .82rem; font-weight: 500;
+      color: var(--text-muted);
+      pointer-events: none;
+      transition: all .2s ease;
+    }
+    .fl-group .fl-input:focus ~ .fl-label,
+    .fl-group .fl-input:not(:placeholder-shown) ~ .fl-label,
+    .fl-group .fl-textarea:focus ~ .fl-label,
+    .fl-group .fl-textarea:not(:placeholder-shown) ~ .fl-label {
+      top: 6px; font-size: .68rem; color: var(--accent-1); font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    }
+    .fl-select-label {
+      position: absolute; left: 16px; top: 6px;
+      font-size: .68rem; font-weight: 600; color: var(--accent-1);
+      letter-spacing: .04em; text-transform: uppercase;
+      pointer-events: none;
+    }
+    .fl-group .fl-input::placeholder,
+    .fl-group .fl-textarea::placeholder { color: transparent; }
+    select option { background: #131929; color: #e2e8f0; }
+    optgroup { font-style: normal; font-weight: 700; }
+
+    /* Input row */
+    .fl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* Budget row */
+    .budget-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .budget-pill {
+      padding: 8px 16px;
+      border-radius: 100px; border: 1.5px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.03);
+      color: var(--text-secondary); font-size: .82rem; font-weight: 500;
+      cursor: pointer; transition: var(--transition); user-select: none;
+    }
+    .budget-pill:hover { border-color: rgba(162,89,255,.4); color: var(--text-primary); }
+    .budget-pill.selected {
+      background: rgba(162,89,255,.14); border-color: rgba(162,89,255,.5);
+      color: var(--accent-2); font-weight: 600;
+    }
+
+    /* Submit */
+    .form-submit-row {
+      display: flex; align-items: center; gap: 16px; margin-top: 8px;
+    }
+    .btn-submit-premium {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 32px;
+      background: var(--accent-gradient);
+      border: none; border-radius: 12px;
+      color: #fff; font-size: 1rem; font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all .3s ease;
+      position: relative; overflow: hidden;
+    }
+    .btn-submit-premium::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,.0);
+      transition: background .2s ease;
+    }
+    .btn-submit-premium:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,107,53,.4); }
+    .btn-submit-premium:hover::after { background: rgba(255,255,255,.08); }
+    .btn-submit-premium:active { transform: translateY(0); }
+    .btn-submit-premium i { font-size: 1.1rem; }
+    .btn-submit-premium.sending { opacity: .8; pointer-events: none; }
+    .submit-note { font-size: .75rem; color: var(--text-muted); text-align: center; margin-top: 12px; }
+    .submit-note i { color: var(--accent-1); }
+
+    /* Whatsapp alt CTA */
+    .whatsapp-cta {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 20px;
+      background: rgba(37,211,102,.08);
+      border: 1.5px solid rgba(37,211,102,.2);
+      border-radius: 12px;
+      color: #25d366; font-size: .85rem; font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition); white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .whatsapp-cta:hover { background: rgba(37,211,102,.15); transform: translateY(-2px); }
+    .whatsapp-cta i { font-size: 1.1rem; }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 60px 20px; gap: 16px;
+      min-height: 400px;
+    }
+    .form-success.visible { display: flex; }
+    .success-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(37,211,102,.2), rgba(37,211,102,.1));
+      border: 2px solid rgba(37,211,102,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: #25d366;
+      animation: success-pop .5s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes success-pop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+    .form-success h3 { font-size: 1.5rem; }
+    .form-success p { max-width: 340px; color: var(--text-muted); }
+
+    /* ── FAQ – premium accordion ── */
+    .faq-premium { max-width: 820px; margin: 0 auto; }
+    .faq-premium-item {
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,.02);
+      overflow: hidden;
+      transition: border-color .25s ease, background .25s ease;
+    }
+    .faq-premium-item.open {
+      border-color: rgba(255,107,53,.25);
+      background: rgba(255,107,53,.03);
+    }
+    .faq-premium-q {
+      display: flex; align-items: center; gap: 14px;
+      padding: 20px 24px; cursor: pointer;
+      user-select: none; width: 100%; text-align: left;
+      background: none; border: none; font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+    }
+    .faq-premium-q:hover .faq-q-text { color: var(--text-primary); }
+    .faq-num {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: rgba(255,107,53,.1); border: 1px solid rgba(255,107,53,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .72rem; font-weight: 800; color: var(--accent-1); flex-shrink: 0;
+    }
+    .faq-q-text { flex: 1; font-size: .95rem; font-weight: 600; color: var(--text-secondary); text-align: left; }
+    .faq-premium-item.open .faq-q-text { color: var(--text-primary); }
+    .faq-toggle {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: .85rem;
+      transition: transform .3s ease, background .2s ease; flex-shrink: 0;
+    }
+    .faq-premium-item.open .faq-toggle {
+      transform: rotate(45deg);
+      background: rgba(255,107,53,.15); border-color: rgba(255,107,53,.3); color: var(--accent-1);
+    }
+    .faq-premium-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease, padding .3s ease;
+    }
+    .faq-premium-item.open .faq-premium-a { max-height: 200px; }
+    .faq-premium-a-inner {
+      padding: 0 24px 20px 70px;
+      font-size: .9rem; color: var(--text-muted); line-height: 1.8;
+    }
+
+    /* ── 3-Channel quick bar ── */
+    .quick-bar {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-top: 64px;
+    }
+    .quick-card {
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+      padding: 28px 24px;
+      background: rgba(255,255,255,.02);
+      text-align: center;
+      transition: var(--transition);
+      text-decoration: none;
+      display: block;
+    }
+    .quick-card:hover { transform: translateY(-4px); border-color: rgba(255,107,53,.25); background: rgba(255,107,53,.04); }
+    .quick-card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin: 0 auto 16px;
+    }
+    .quick-card-icon.orange { background: rgba(255,107,53,.12); color: var(--accent-1); }
+    .quick-card-icon.green  { background: rgba(37,211,102,.12); color: #25d366; }
+    .quick-card-icon.purple { background: rgba(162,89,255,.12); color: var(--accent-2); }
+    .quick-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+    .quick-card p { font-size: .8rem; color: var(--text-muted); margin: 0; }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .contact-main { grid-template-columns: 1fr; }
+      .contact-panel { padding: 36px 28px; }
+      .panel-stats { grid-template-columns: repeat(4, 1fr); }
+      .contact-form-area { padding: 36px 28px; }
+    }
+    @media (max-width: 680px) {
+      .fl-row { grid-template-columns: 1fr; }
+      .panel-stats { grid-template-columns: 1fr 1fr; }
+      .quick-bar { grid-template-columns: 1fr; }
+      .form-submit-row { flex-direction: column; }
+      .whatsapp-cta { width: 100%; justify-content: center; }
+      .contact-form-area { padding: 28px 20px; }
+      .contact-panel { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left"><img src="../assets/images/logo.png" alt="DT" class="site-logo-img"></div>
+      <div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div>
+      <div class="strip-right"><span class="strip-badge">Available for Projects</span></div>
+    </div>
+  </div>
+
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-dropdown"><a href="services.html">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu"><div class="mega-grid">
+            <div class="mega-col"><h4><i class="ph-fill ph-code"></i> Web &amp; App Dev</h4><a href="services/web-app-development.html">WordPress</a><a href="services/web-app-development.html">Shopify</a><a href="services/web-app-development.html">Custom Apps</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4><a href="services/video-editing.html">YouTube</a><a href="services/video-editing.html">Short-Form</a><a href="services/video-editing.html">Motion Graphics</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-palette"></i> Design</h4><a href="services/graphics-design.html">Logo &amp; Branding</a><a href="services/graphics-design.html">UI/UX</a><a href="services/graphics-design.html">Social Graphics</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-chart-line-up"></i> Marketing</h4><a href="services/digital-marketing.html">SEO</a><a href="services/digital-marketing.html">Paid Ads</a><a href="services/email-marketing.html">Email Marketing</a></div>
+          </div></div>
+        </li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav">
+      <a href="../index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="testimonials.html">Testimonials</a><a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ══ HERO ══ -->
+  <section class="contact-hero">
+    <div class="contact-hero-bg"></div>
+    <div class="contact-hero-grid"></div>
+    <div class="container">
+      <div class="contact-hero-eyebrow">
+        <i class="ph-fill ph-lightning"></i> Let's Build Together
+      </div>
+      <h1 class="reveal">Start Your <span class="accent-gradient">Next Project</span></h1>
+      <p class="reveal">Tell us what you're building. We respond within 24 hours — usually much faster — with a clear plan and honest quote.</p>
+      <div class="hero-trust-row reveal">
+        <span class="hero-trust-item"><i class="ph-fill ph-check-circle"></i> Free consultation</span>
+        <span class="hero-trust-item"><i class="ph-fill ph-clock"></i> 24hr response</span>
+        <span class="hero-trust-item"><i class="ph-fill ph-shield-check"></i> No commitment</span>
+        <span class="hero-trust-item"><i class="ph-fill ph-globe"></i> Worldwide clients</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MAIN CONTACT SPLIT ══ -->
+  <section style="padding: 0 0 96px;">
+    <div class="container">
+      <div class="contact-main reveal">
+
+        <!-- ── LEFT PANEL ── -->
+        <div class="contact-panel">
+          <div class="panel-orb"></div>
+          <div class="panel-orb-2"></div>
+          <div class="panel-content">
+            <div class="panel-badge">
+              <span class="dot"></span> Online &amp; accepting projects
+            </div>
+            <h2 class="panel-title">We'd love to hear<br>about your idea.</h2>
+            <p class="panel-sub">Reach us through any channel below, or fill in the form and we'll be in touch shortly.</p>
+
+            <div class="panel-contacts">
+              <a href="mailto:darapettechnology@gmail.com" class="panel-contact-item">
+                <div class="panel-contact-icon orange"><i class="ph-fill ph-envelope"></i></div>
+                <div class="panel-contact-text">
+                  <div class="label">Email us</div>
+                  <div class="value">darapettechnology@gmail.com</div>
+                </div>
+                <i class="ph-fill ph-arrow-right panel-contact-arrow"></i>
+              </a>
+              <a href="https://wa.me/2349134873694" target="_blank" class="panel-contact-item">
+                <div class="panel-contact-icon green"><i class="fab fa-whatsapp"></i></div>
+                <div class="panel-contact-text">
+                  <div class="label">WhatsApp</div>
+                  <div class="value">+234 913 487 3694</div>
+                </div>
+                <i class="ph-fill ph-arrow-right panel-contact-arrow"></i>
+              </a>
+              <a href="tel:+2349134873694" class="panel-contact-item">
+                <div class="panel-contact-icon blue"><i class="ph-fill ph-phone"></i></div>
+                <div class="panel-contact-text">
+                  <div class="label">Direct call</div>
+                  <div class="value">+234 913 487 3694</div>
+                </div>
+                <i class="ph-fill ph-arrow-right panel-contact-arrow"></i>
+              </a>
+              <div class="panel-contact-item" style="pointer-events:none">
+                <div class="panel-contact-icon purple"><i class="ph-fill ph-map-pin"></i></div>
+                <div class="panel-contact-text">
+                  <div class="label">Base</div>
+                  <div class="value">Nigeria 🇳🇬 &amp; USA 🇺🇸 — Worldwide</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-divider"></div>
+
+            <p class="panel-social-label">Follow &amp; connect</p>
+            <div class="panel-socials">
+              <a href="#" class="panel-social-btn" id="ps-fb" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="panel-social-btn" id="ps-ig" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="panel-social-btn" id="ps-tw" target="_blank" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+              <a href="#" class="panel-social-btn" id="ps-tt" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="#" class="panel-social-btn" id="ps-li" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="panel-social-btn" id="ps-fv" target="_blank" title="Fiverr"><i class="ph-fill ph-stack"></i></a>
+              <a href="#" class="panel-social-btn" id="ps-uw" target="_blank" title="Upwork"><i class="ph-fill ph-briefcase"></i></a>
+            </div>
+
+          </div><!-- /panel-content -->
+
+          <!-- Stats pinned to bottom -->
+          <div class="panel-stats">
+            <div class="panel-stat">
+              <span class="panel-stat-num"><span>200+</span></span>
+              <span class="panel-stat-label">Projects done</span>
+            </div>
+            <div class="panel-stat">
+              <span class="panel-stat-num"><span>98%</span></span>
+              <span class="panel-stat-label">Happy clients</span>
+            </div>
+            <div class="panel-stat">
+              <span class="panel-stat-num"><span>5</span></span>
+              <span class="panel-stat-label">Service areas</span>
+            </div>
+            <div class="panel-stat">
+              <span class="panel-stat-num"><span>&lt;24h</span></span>
+              <span class="panel-stat-label">Response</span>
+            </div>
+          </div>
+        </div><!-- /contact-panel -->
+
+        <!-- ── RIGHT: FORM ── -->
+        <div class="contact-form-area">
+
+          <!-- Step bar -->
+          <div class="form-step-bar">
+            <div class="form-step active" id="step-1-indicator">
+              <div class="form-step-circle">1</div>
+              <span class="form-step-label">Your info</span>
+            </div>
+            <div class="form-step-line" id="line-1"></div>
+            <div class="form-step" id="step-2-indicator">
+              <div class="form-step-circle">2</div>
+              <span class="form-step-label">Project details</span>
+            </div>
+            <div class="form-step-line" id="line-2"></div>
+            <div class="form-step" id="step-3-indicator">
+              <div class="form-step-circle">3</div>
+              <span class="form-step-label">Send brief</span>
+            </div>
+          </div>
+
+          <!-- ── STEP 1 ── -->
+          <div id="form-step-1">
+            <div class="form-heading">
+              <h2>Your <span class="accent-gradient">Details</span></h2>
+              <p>We'll use this to get back to you with a personalised response.</p>
+            </div>
+
+            <div class="fl-row">
+              <div class="fl-group">
+                <input class="fl-input" type="text" id="fname" placeholder=" " autocomplete="given-name" />
+                <label class="fl-label" for="fname">First name *</label>
+              </div>
+              <div class="fl-group">
+                <input class="fl-input" type="text" id="lname" placeholder=" " autocomplete="family-name" />
+                <label class="fl-label" for="lname">Last name *</label>
+              </div>
+            </div>
+
+            <div class="fl-group">
+              <input class="fl-input" type="email" id="email" placeholder=" " autocomplete="email" />
+              <label class="fl-label" for="email">Email address *</label>
+            </div>
+
+            <div class="fl-group">
+              <input class="fl-input" type="tel" id="phone" placeholder=" " autocomplete="tel" />
+              <label class="fl-label" for="phone">Phone / WhatsApp (optional)</label>
+            </div>
+
+            <div class="fl-group">
+              <input class="fl-input" type="text" id="company" placeholder=" " />
+              <label class="fl-label" for="company">Company / Brand name (optional)</label>
+            </div>
+
+            <button class="btn-submit-premium" onclick="goStep(2)" style="margin-top:4px">
+              Continue <i class="ph-fill ph-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- ── STEP 2 ── -->
+          <div id="form-step-2" style="display:none">
+            <div class="form-heading">
+              <h2>Your <span class="accent-gradient">Project</span></h2>
+              <p>Pick what you need — select as many as apply.</p>
+            </div>
+
+            <span class="service-chips-label">Service(s) needed</span>
+            <div class="service-chips">
+              <div class="chip" data-val="Web Development" onclick="toggleChip(this)"><i class="ph-fill ph-code"></i> Web Dev</div>
+              <div class="chip" data-val="Mobile App" onclick="toggleChip(this)"><i class="ph-fill ph-device-mobile"></i> Mobile App</div>
+              <div class="chip" data-val="Shopify Store" onclick="toggleChip(this)"><i class="ph-fill ph-storefront"></i> Shopify</div>
+              <div class="chip" data-val="WordPress Site" onclick="toggleChip(this)"><i class="fab fa-wordpress"></i> WordPress</div>
+              <div class="chip" data-val="Video Editing" onclick="toggleChip(this)"><i class="ph-fill ph-video-camera"></i> Video Editing</div>
+              <div class="chip" data-val="Motion Graphics" onclick="toggleChip(this)"><i class="ph-fill ph-film-strip"></i> Motion Graphics</div>
+              <div class="chip" data-val="Logo & Branding" onclick="toggleChip(this)"><i class="ph-fill ph-diamond"></i> Logo &amp; Brand</div>
+              <div class="chip" data-val="UI/UX Design" onclick="toggleChip(this)"><i class="ph-fill ph-palette"></i> UI/UX Design</div>
+              <div class="chip" data-val="Social Graphics" onclick="toggleChip(this)"><i class="ph-fill ph-images"></i> Social Graphics</div>
+              <div class="chip" data-val="SEO" onclick="toggleChip(this)"><i class="ph-fill ph-magnifying-glass"></i> SEO</div>
+              <div class="chip" data-val="Paid Ads" onclick="toggleChip(this)"><i class="ph-fill ph-megaphone"></i> Paid Ads</div>
+              <div class="chip" data-val="Email Marketing" onclick="toggleChip(this)"><i class="ph-fill ph-envelope-open"></i> Email Marketing</div>
+              <div class="chip" data-val="Other" onclick="toggleChip(this)"><i class="ph-fill ph-question"></i> Other</div>
+            </div>
+
+            <span class="service-chips-label" style="margin-top:4px">Approximate budget</span>
+            <div class="budget-pills">
+              <div class="budget-pill" onclick="selectBudget(this)">Under $300</div>
+              <div class="budget-pill" onclick="selectBudget(this)">$300 – $800</div>
+              <div class="budget-pill" onclick="selectBudget(this)">$800 – $2,000</div>
+              <div class="budget-pill" onclick="selectBudget(this)">$2,000 – $5,000</div>
+              <div class="budget-pill" onclick="selectBudget(this)">$5,000+</div>
+              <div class="budget-pill" onclick="selectBudget(this)">Let's discuss</div>
+            </div>
+
+            <div class="fl-row" style="margin-bottom:4px">
+              <button class="btn-submit-premium" onclick="goStep(1)" style="background:rgba(255,255,255,.07);color:var(--text-secondary);box-shadow:none">
+                <i class="ph-fill ph-arrow-left"></i> Back
+              </button>
+              <button class="btn-submit-premium" onclick="goStep(3)">
+                Continue <i class="ph-fill ph-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- ── STEP 3 ── -->
+          <div id="form-step-3" style="display:none">
+            <div class="form-heading">
+              <h2>Your <span class="accent-gradient">Brief</span></h2>
+              <p>Tell us what you're building — the more detail, the better our response.</p>
+            </div>
+
+            <div class="fl-group">
+              <textarea class="fl-textarea" id="message" placeholder=" " style="min-height:160px"></textarea>
+              <label class="fl-label" for="message" style="top:14px">Describe your project, goals &amp; timeline *</label>
+            </div>
+
+            <div class="fl-group" style="margin-bottom:4px">
+              <div class="fl-select-label">How did you find us?</div>
+              <select class="fl-select" id="source" style="padding-top:28px">
+                <option value="">— Select —</option>
+                <option>Google Search</option>
+                <option>Fiverr</option>
+                <option>Upwork</option>
+                <option>Instagram / TikTok</option>
+                <option>LinkedIn</option>
+                <option>Referral from a friend</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-submit-row" style="margin-top:20px">
+              <a href="https://wa.me/2349134873694" target="_blank" class="whatsapp-cta" title="Chat instantly on WhatsApp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <button class="btn-submit-premium" id="submitBtn" onclick="submitForm()">
+                Send Brief <i class="ph-fill ph-paper-plane-tilt"></i>
+              </button>
+            </div>
+            <p class="submit-note"><i class="ph-fill ph-lock-simple"></i> Your information is private and never shared with third parties.</p>
+
+            <div style="margin-top:8px; text-align:right">
+              <button onclick="goStep(2)" style="font-size:.8rem;color:var(--text-muted);background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;">
+                <i class="ph-fill ph-arrow-left"></i> Back
+              </button>
+            </div>
+          </div>
+
+          <!-- ── SUCCESS ── -->
+          <div class="form-success" id="form-success">
+            <div class="success-icon"><i class="ph-fill ph-check"></i></div>
+            <h3>Brief sent! 🎉</h3>
+            <p>Thank you! We've received your project brief and will be in touch within 24 hours — usually much sooner.</p>
+            <a href="https://wa.me/2349134873694" target="_blank" class="whatsapp-cta" style="margin-top:8px">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp for instant reply
+            </a>
+          </div>
+
+        </div><!-- /contact-form-area -->
+      </div><!-- /contact-main -->
+
+      <!-- ── 3 QUICK CHANNELS ── -->
+      <div class="quick-bar reveal">
+        <a href="mailto:darapettechnology@gmail.com" class="quick-card">
+          <div class="quick-card-icon orange"><i class="ph-fill ph-envelope"></i></div>
+          <h4>Send an Email</h4>
+          <p>darapettechnology@gmail.com</p>
+        </a>
+        <a href="https://wa.me/2349134873694" target="_blank" class="quick-card">
+          <div class="quick-card-icon green"><i class="fab fa-whatsapp"></i></div>
+          <h4>WhatsApp Chat</h4>
+          <p>Instant reply during business hours</p>
+        </a>
+        <a href="tel:+2349134873694" class="quick-card">
+          <div class="quick-card-icon purple"><i class="ph-fill ph-phone"></i></div>
+          <h4>Direct Call</h4>
+          <p>+234 913 487 3694</p>
+        </a>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+  <!-- ══ PREMIUM FAQ ══ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">FAQ</span>
+        <h2>Frequently Asked <span class="accent-gradient">Questions</span></h2>
+        <p>Everything you might want to know before reaching out.</p>
+      </div>
+      <div class="faq-premium reveal">
+
+        <div class="faq-premium-item">
+          <button class="faq-premium-q" onclick="toggleFaq(this)">
+            <span class="faq-num">1</span>
+            <span class="faq-q-text">How long does a typical project take?</span>
+            <span class="faq-toggle"><i class="ph-fill ph-plus"></i></span>
+          </button>
+          <div class="faq-premium-a"><div class="faq-premium-a-inner">Timelines vary by scope: a basic website typically takes 5–10 days; custom web or mobile applications 2–6 weeks; video editing 2–5 days; design projects 3–7 days. We'll give you a precise timeline during our initial consultation, and we stick to it.</div></div>
+        </div>
+
+        <div class="faq-premium-item">
+          <button class="faq-premium-q" onclick="toggleFaq(this)">
+            <span class="faq-num">2</span>
+            <span class="faq-q-text">Do you offer revisions?</span>
+            <span class="faq-toggle"><i class="ph-fill ph-plus"></i></span>
+          </button>
+          <div class="faq-premium-a"><div class="faq-premium-a-inner">Yes — every project includes structured revision rounds as part of the agreed scope. We continue refining until you're genuinely satisfied. Your approval is the final gate before delivery, and we never rush that process.</div></div>
+        </div>
+
+        <div class="faq-premium-item">
+          <button class="faq-premium-q" onclick="toggleFaq(this)">
+            <span class="faq-num">3</span>
+            <span class="faq-q-text">How do payments work?</span>
+            <span class="faq-toggle"><i class="ph-fill ph-plus"></i></span>
+          </button>
+          <div class="faq-premium-a"><div class="faq-premium-a-inner">We typically work on a 50% deposit upfront and 50% on completion model. For larger projects, milestone-based payment schedules are available. We accept bank transfer, PayPal, and major cards. Everything is agreed in writing before we start.</div></div>
+        </div>
+
+        <div class="faq-premium-item">
+          <button class="faq-premium-q" onclick="toggleFaq(this)">
+            <span class="faq-num">4</span>
+            <span class="faq-q-text">Will I own the finished work?</span>
+            <span class="faq-toggle"><i class="ph-fill ph-plus"></i></span>
+          </button>
+          <div class="faq-premium-a"><div class="faq-premium-a-inner">Absolutely. Upon final payment, full ownership and all source files transfer to you. We retain no rights to your project or deliverables whatsoever. You get everything — raw files, source code, and full IP.</div></div>
+        </div>
+
+        <div class="faq-premium-item">
+          <button class="faq-premium-q" onclick="toggleFaq(this)">
+            <span class="faq-num">5</span>
+            <span class="faq-q-text">Can you work with clients in different time zones?</span>
+            <span class="faq-toggle"><i class="ph-fill ph-plus"></i></span>
+          </button>
+          <div class="faq-premium-a"><div class="faq-premium-a-inner">Yes — we work with clients across the globe from Nigeria and the USA. We use async communication tools efficiently and schedule video calls at times that suit your timezone, whether you're in London, New York, Lagos, or Dubai.</div></div>
+        </div>
+
+        <div class="faq-premium-item">
+          <button class="faq-premium-q" onclick="toggleFaq(this)">
+            <span class="faq-num">6</span>
+            <span class="faq-q-text">Do you offer ongoing support after delivery?</span>
+            <span class="faq-toggle"><i class="ph-fill ph-plus"></i></span>
+          </button>
+          <div class="faq-premium-a"><div class="faq-premium-a-inner">Yes. We offer post-delivery support packages and ongoing retainers for clients who need regular updates, maintenance, new features, or continuous content creation. Many of our clients have been with us for years.</div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+          <p>Engineering Ideas. Empowering Independence.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" id="footer-fb2" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" id="footer-tw2" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon" id="footer-ig2" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" id="footer-tt2" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon" id="footer-li2" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon" id="footer-fv2" target="_blank"><i class="ph-fill ph-stack"></i></a>
+            <a href="#" class="social-icon" id="footer-uw2" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h5>Services</h5><a href="services/web-app-development.html">Web &amp; App Dev</a><a href="services/video-editing.html">Video Editing</a><a href="services/graphics-design.html">Graphics &amp; Design</a><a href="services/digital-marketing.html">Digital Marketing</a><a href="services/email-marketing.html">Email Marketing</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a href="testimonials.html">Testimonials</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h5>Newsletter</h5><p style="margin-bottom:14px;font-size:.88rem">Get tips and project updates.</p><div class="newsletter"><input type="email" placeholder="Your email" /><button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Darapet Technology. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <script src="../js/background.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/socials.js"></script>
+  <script>
+    // ── Social links via localStorage ──
+    document.addEventListener('DOMContentLoaded', () => {
+      const keys = { fb:'facebook', tw:'twitter', ig:'instagram', tt:'tiktok', li:'linkedin', fv:'fiverr', uw:'upwork' };
+      ['fb','tw','ig','tt','li','fv','uw'].forEach(k => {
+        const val = localStorage.getItem('dt_social_' + keys[k]);
+        if (!val) return;
+        const els = document.querySelectorAll(`[id$="-${k}"]`);
+        els.forEach(el => el.href = val);
+      });
+    });
+
+    // ── Multi-step form ──
+    function goStep(n) {
+      const steps = [1,2,3];
+      // Validate step 1
+      if (n === 2) {
+        const fname = document.getElementById('fname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        if (!fname) { highlight('fname'); return; }
+        if (!email || !email.includes('@')) { highlight('email'); return; }
+      }
+      // Validate step 3 submit
+      steps.forEach(s => {
+        document.getElementById('form-step-' + s).style.display = (s === n) ? 'block' : 'none';
+        const ind = document.getElementById('step-' + s + '-indicator');
+        ind.classList.remove('active','done');
+        if (s < n) ind.classList.add('done');
+        if (s === n) ind.classList.add('active');
+        if (s < n) {
+          const line = document.getElementById('line-' + s);
+          if (line) line.classList.add('done');
+        } else {
+          const line = document.getElementById('line-' + s);
+          if (line) line.classList.remove('done');
+        }
+      });
+    }
+
+    function highlight(id) {
+      const el = document.getElementById(id);
+      el.style.borderColor = '#ff4d4d';
+      el.focus();
+      setTimeout(() => el.style.borderColor = '', 2000);
+    }
+
+    function toggleChip(el) {
+      el.classList.toggle('selected');
+    }
+
+    function selectBudget(el) {
+      document.querySelectorAll('.budget-pill').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function submitForm() {
+      const msg = document.getElementById('message').value.trim();
+      if (!msg) { highlight('message'); return; }
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending…';
+      btn.classList.add('sending');
+
+      // Build mailto with collected data
+      const fname   = document.getElementById('fname').value.trim();
+      const lname   = document.getElementById('lname').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const phone   = document.getElementById('phone').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const source  = document.getElementById('source').value;
+      const services = [...document.querySelectorAll('.chip.selected')].map(c => c.dataset.val).join(', ') || 'Not specified';
+      const budget  = (document.querySelector('.budget-pill.selected') || {}).textContent || 'Not specified';
+
+      const subject = encodeURIComponent(`New Project Brief from ${fname} ${lname}`);
+      const body = encodeURIComponent(
+        `Name: ${fname} ${lname}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nCompany: ${company || 'N/A'}\n\nServices: ${services}\nBudget: ${budget}\nSource: ${source || 'N/A'}\n\nProject Brief:\n${msg}`
+      );
+
+      // Open mailto after short delay for UX
+      setTimeout(() => {
+        window.location.href = `mailto:darapettechnology@gmail.com?subject=${subject}&body=${body}`;
+        // Show success
+        document.getElementById('form-step-3').style.display = 'none';
+        document.getElementById('form-success').classList.add('visible');
+        // Hide step bar
+        document.querySelector('.form-step-bar').style.display = 'none';
+      }, 800);
+    }
+
+    // ── Premium FAQ accordion ──
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-premium-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-premium-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+
+  <!-- Firebase — must come AFTER inline script so submitForm() is overridden -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="../js/firebase-app.js"></script>
+</body>
+</html>

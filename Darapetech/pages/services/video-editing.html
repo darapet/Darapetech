@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Editing — Darapet Technology</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="../../css/animations.css" />
+  <link rel="stylesheet" href="../../css/background.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+</head>
+<body>
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+      <div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div>
+      <div class="strip-right"><span class="strip-badge">Available for Projects</span></div>
+    </div>
+  </div>
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="../../index.html" class="nav-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../../index.html">Home</a></li>
+        <li class="has-dropdown"><a href="../services.html" class="active">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu"><div class="mega-grid">
+            <div class="mega-col"><h4><i class="ph-fill ph-code"></i> Web & App Dev</h4><a href="web-app-development.html">WordPress</a><a href="web-app-development.html">Shopify</a><a href="web-app-development.html">Custom Apps</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4><a href="video-editing.html">YouTube</a><a href="video-editing.html">Short-Form</a><a href="video-editing.html">Motion Graphics</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-palette"></i> Design</h4><a href="graphics-design.html">Logo & Branding</a><a href="graphics-design.html">UI/UX</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-chart-line-up"></i> Marketing</h4><a href="digital-marketing.html">SEO</a><a href="email-marketing.html">Email Marketing</a></div>
+          </div></div>
+        </li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../testimonials.html">Testimonials</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav"><a href="../../index.html">Home</a><a href="../services.html">Services</a><a href="../portfolio.html">Portfolio</a><a href="../pricing.html">Pricing</a><a href="../about.html">About</a><a href="../testimonials.html">Testimonials</a><a href="../contact.html">Contact</a></nav>
+    <a href="../contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- HERO -->
+  <section class="page-hero" style="background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(245,158,11,0.1) 0%, rgba(239,68,68,0.07) 40%, transparent 70%)">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <span class="section-tag reveal">Video Editing</span>
+      <h1 class="reveal">Content That <span class="accent-gradient">Stops the Scroll</span></h1>
+      <p class="reveal">Professional video editing for YouTube creators, brands, and businesses. From long-form content to viral short-form Reels — we make your video stand out and your audience grow.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap" class="reveal">
+        <a href="../contact.html" class="btn btn-primary btn-lg">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        <a href="../pricing.html" class="btn btn-ghost btn-lg">View Pricing</a>
+        <a href="../chat.html" class="btn btn-outline btn-lg"><i class="ph-fill ph-chat-circle-dots"></i> Chat with an Expert</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">Our Video Services</span><h2>What We <span class="accent-gradient">Edit & Create</span></h2></div>
+      <div class="services-grid">
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="fab fa-youtube"></i></div>
+          <h3>YouTube Video Editing</h3>
+          <p>Long-form content professionally cut, colour-graded, captioned, and optimised for maximum watch time and subscriber growth.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="fab fa-tiktok"></i></div>
+          <h3>Short-Form / Reels Editing</h3>
+          <p>High-energy, scroll-stopping TikToks, Instagram Reels, and YouTube Shorts with viral hooks and trending formats.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="ph-fill ph-film-strip"></i></div>
+          <h3>Motion Graphics</h3>
+          <p>Animated intros, outros, lower thirds, logo reveals, kinetic typography, and explainer animations that elevate your brand.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="ph-fill ph-buildings"></i></div>
+          <h3>Corporate / Promo Videos</h3>
+          <p>Brand films, product demos, event highlights, testimonial compilations, and recruitment videos that tell your story professionally.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">What's Included</span><h2>Every Edit Comes With</h2></div>
+      <div class="why-grid">
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-paint-brush"></i></div><h4>Professional Colour Grade</h4><p>Cinematic colour grading using LUTs and manual correction to give your footage a polished, consistent look.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-music-notes"></i></div><h4>Sound Design</h4><p>Balanced audio mix, background music (royalty-free or licensed), sound effects, and voice-over cleaning.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-closed-captioning"></i></div><h4>Captions & Subtitles</h4><p>Accurate, styled captions for accessibility and social media engagement — animated or static, your choice.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-image"></i></div><h4>Thumbnail Design</h4><p>Click-worthy YouTube thumbnails designed to maximise CTR with bold text, strong contrast, and clear imagery.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-arrows-clockwise"></i></div><h4>Revision Rounds</h4><p>Structured revision rounds included in every package — we refine until you're genuinely happy with the result.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-download"></i></div><h4>Multi-Format Export</h4><p>Delivered in the correct format and resolution for your platform — YouTube, TikTok, Instagram, LinkedIn.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">Tools We Use</span><h2>Industry-Standard <span class="accent-gradient">Software</span></h2></div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center" class="reveal">
+        <div class="tool-badge-lg glass-card"><i class="fab fa-adobe"></i><span>Adobe Premiere Pro</span></div>
+        <div class="tool-badge-lg glass-card"><i class="ph-fill ph-stack"></i><span>After Effects</span></div>
+        <div class="tool-badge-lg glass-card"><i class="ph-fill ph-film-strip"></i><span>DaVinci Resolve</span></div>
+        <div class="tool-badge-lg glass-card"><i class="ph-fill ph-scissors"></i><span>Final Cut Pro</span></div>
+        <div class="tool-badge-lg glass-card"><i class="ph-fill ph-images"></i><span>CapCut</span></div>
+        <div class="tool-badge-lg glass-card"><i class="ph-fill ph-music-notes"></i><span>Epidemic Sound</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" style="background:rgba(255,255,255,0.01)">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">Investment</span><h2>Video Editing <span class="accent-gradient">Pricing</span></h2></div>
+      <div class="pricing-grid">
+        <div class="pricing-card glass-card reveal"><div class="pricing-tier">Basic</div><div class="pricing-price">From <span>$49</span></div><p style="font-size:0.82rem;color:var(--text-muted)">Per video, up to 10 mins</p><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Basic Cuts & Trim</li><li><i class="ph-fill ph-check"></i> Colour Correction</li><li><i class="ph-fill ph-check"></i> Background Music</li><li><i class="ph-fill ph-check"></i> Captions</li><li><i class="ph-fill ph-check"></i> 2 Revisions</li></ul><a href="../contact.html" class="btn btn-outline">Get Started</a></div>
+        <div class="pricing-card pricing-card--popular glass-card reveal"><div class="pricing-badge">Most Popular</div><div class="pricing-tier">Standard</div><div class="pricing-price">From <span>$120</span></div><p style="font-size:0.82rem;color:var(--text-muted)">Per video, up to 20 mins</p><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Advanced Colour Grade</li><li><i class="ph-fill ph-check"></i> Motion Graphics & Text</li><li><i class="ph-fill ph-check"></i> Sound Design</li><li><i class="ph-fill ph-check"></i> Thumbnail Design</li><li><i class="ph-fill ph-check"></i> 4 Revisions</li></ul><a href="../contact.html" class="btn btn-primary">Get Started</a></div>
+        <div class="pricing-card glass-card reveal"><div class="pricing-tier">Premium</div><div class="pricing-price">Custom <span>Quote</span></div><p style="font-size:0.82rem;color:var(--text-muted)">Long-form / Series / Corporate</p><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Cinematic Grade</li><li><i class="ph-fill ph-check"></i> Full Motion Package</li><li><i class="ph-fill ph-check"></i> Branded Intro/Outro</li><li><i class="ph-fill ph-check"></i> Multi-Platform Exports</li><li><i class="ph-fill ph-check"></i> Unlimited Revisions</li></ul><a href="../contact.html" class="btn btn-outline">Get a Quote</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">FAQ</span><h2>Video Editing Questions</h2></div>
+      <div style="max-width:760px;margin:0 auto">
+        <div class="faq-item"><button class="faq-question">How do I send you my footage? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">We use Google Drive, WeTransfer, or Dropbox for large file transfers. You upload your raw footage, we download and begin editing. Simple and secure.</div></div>
+        <div class="faq-item"><button class="faq-question">How long does editing take? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">Standard turnaround is 2–5 business days per video depending on length and complexity. Rush delivery options are available — just ask.</div></div>
+        <div class="faq-item"><button class="faq-question">Can I have a regular editor for ongoing content? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">Yes — we offer monthly retainer packages for content creators who need consistent editing. Weekly or bi-weekly delivery, same editor every time.</div></div>
+        <div class="faq-item"><button class="faq-question">What format do you deliver in? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">We deliver in the optimal format for your platform — 1080p or 4K MP4 for YouTube, 9:16 vertical for TikTok/Reels, and any other spec you need.</div></div>
+        <div class="faq-item"><button class="faq-question">Do you write scripts or manage uploads? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">Scriptwriting and channel management are available as add-on services. Ask us about our full content creator package.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  
+<!-- ═══ SERVICE VIDEO SECTION ═══ -->
+  <section class="section svc-video-section">
+    <div class="container svc-video-container">
+      <div class="svc-video-header">
+        <span class="section-tag">Watch It In Action</span>
+        <h2>Video Editing Showreel 2024 — Cinematic Demo & Portfolio</h2>
+      </div>
+      <div class="svc-video-frame">
+        <div class="svc-video-ratio">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/wSbqnIqLMNE?autoplay=1&mute=1&loop=1&playlist=wSbqnIqLMNE&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&color=white"
+            title="Video Editing Showreel 2024 — Cinematic Demo & Portfolio"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══ /SERVICE VIDEO SECTION ═══ -->
+  <section class="cta-banner">
+    <div class="cta-bg-effect"></div>
+    <div class="container cta-content reveal">
+      <h2>Ready to Elevate Your Video Content?</h2>
+      <p>Get a free quote and let's discuss your video editing needs.</p>
+      <div class="cta-actions"><a href="../contact.html" class="btn btn-primary btn-lg">Get in Touch With Us <i class="ph-fill ph-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="../../index.html" class="nav-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a><p>Engineering Ideas. Empowering Independence.</p>
+          <div class="footer-socials"><a href="#" class="social-icon" id="footer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon" id="footer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a><a href="#" class="social-icon" id="footer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon" id="footer-tt" target="_blank"><i class="fab fa-tiktok"></i></a><a href="#" class="social-icon" id="footer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon" id="footer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a><a href="#" class="social-icon" id="footer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a></div>
+        </div>
+        <div class="footer-col"><h5>Other Services</h5><a href="web-app-development.html">Web & App Dev</a><a href="graphics-design.html">Graphics & Design</a><a href="digital-marketing.html">Digital Marketing</a><a href="email-marketing.html">Email Marketing</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="../about.html">About Us</a><a href="../portfolio.html">Portfolio</a><a href="../testimonials.html">Testimonials</a><a href="../pricing.html">Pricing</a></div>
+        <div class="footer-col"><h5>Newsletter</h5><div class="newsletter"><input type="email" placeholder="Your email" /><button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Darapet Technology. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <style>
+    .tool-badge-lg { display:flex; align-items:center; gap:10px; padding:14px 20px; font-size:0.88rem; font-weight:600; color:var(--text-secondary); }
+    .tool-badge-lg i { color:var(--accent-1); font-size:1.2rem; }
+  </style>
+  <script src="../../js/background.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/socials.js"></script>
+</body>
+</html>

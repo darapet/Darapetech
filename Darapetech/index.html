@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darapet Technology — Engineering Ideas. Empowering Independence.</title>
+  <meta name="description" content="Darapet Technology is a premium freelance agency offering software development, video editing, graphics design, digital marketing, and more." />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="assets/images/logo.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/background.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER 1: ANNOUNCEMENT STRIP ===== -->
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left">
+        <img src="assets/images/logo.png" alt="Darapet Technology" class="site-logo-img">
+      </div>
+      <div class="strip-typewriter">
+        <span class="typewriter-text" id="typewriterText"></span>
+        <span class="cursor">|</span>
+      </div>
+      <div class="strip-right">
+        <span class="strip-badge">Available for Projects</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER 2: MAIN NAVIGATION ===== -->
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/logo.png" alt="Darapet Technology" class="site-logo-img">
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="has-dropdown">
+          <a href="pages/services.html">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h4><i class="ph-fill ph-code"></i> Web & App Dev</h4>
+                <a href="pages/services/web-app-development.html">Website Development</a>
+                <a href="pages/services/web-app-development.html">WordPress Development</a>
+                <a href="pages/services/web-app-development.html">Shopify Development</a>
+                <a href="pages/services/web-app-development.html">Mobile App Development</a>
+              </div>
+              <div class="mega-col">
+                <h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4>
+                <a href="pages/services/video-editing.html">YouTube Video Editing</a>
+                <a href="pages/services/video-editing.html">Short-Form / Reels</a>
+                <a href="pages/services/video-editing.html">Motion Graphics</a>
+                <a href="pages/services/video-editing.html">Corporate Videos</a>
+              </div>
+              <div class="mega-col">
+                <h4><i class="ph-fill ph-palette"></i> Graphics & Design</h4>
+                <a href="pages/services/graphics-design.html">Logo & Brand Identity</a>
+                <a href="pages/services/graphics-design.html">UI/UX Design</a>
+                <a href="pages/services/graphics-design.html">Social Media Graphics</a>
+                <a href="pages/services/graphics-design.html">Print Design</a>
+              </div>
+              <div class="mega-col">
+                <h4><i class="ph-fill ph-chart-line-up"></i> Marketing</h4>
+                <a href="pages/services/digital-marketing.html">SEO Services</a>
+                <a href="pages/services/digital-marketing.html">Social Media Marketing</a>
+                <a href="pages/services/email-marketing.html">Email Marketing</a>
+                <a href="pages/services/digital-marketing.html">Paid Ads (PPC)</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="pages/portfolio.html">Portfolio</a></li>
+        <li><a href="pages/pricing.html">Pricing</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/testimonials.html">Testimonials</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="pages/contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MOBILE DRAWER ===== -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo">
+      <img src="assets/images/logo.png" alt="Darapet Technology" class="site-logo-img">
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html">Home</a>
+      <a href="pages/services.html">Services</a>
+      <a href="pages/portfolio.html">Portfolio</a>
+      <a href="pages/pricing.html">Pricing</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/testimonials.html">Testimonials</a>
+      <a href="pages/contact.html">Contact</a>
+    </nav>
+    <a href="pages/contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-gradient"></div>
+    <div class="container hero-content">
+      <div class="hero-welcome reveal" style="--delay:0s">
+        <span class="wave">👋</span>
+        <span class="hero-welcome-text"><span id="heroWelcomeText" class="accent-gradient"></span><span class="hero-welcome-cursor">|</span> to Darapet Technology</span>
+      </div>
+      <div class="hero-badge reveal">Premium Freelance Agency</div>
+      <h1 class="hero-title reveal">
+        <span class="word" style="--delay:0.1s">Engineering</span>
+        <span class="word" style="--delay:0.2s">Ideas.</span>
+        <br/>
+        <span class="word accent-gradient" style="--delay:0.35s">Empowering</span>
+        <span class="word" style="--delay:0.45s"><span id="heroTyped" class="accent-gradient">Independence.</span><span class="hero-typed-cursor">|</span></span>
+      </h1>
+      <p class="hero-sub reveal" style="--delay:0.6s">
+        We design, develop, and deliver premium digital solutions — from web & app development to video editing, branding, and digital marketing. Your vision, engineered to perfection.
+      </p>
+      <div class="hero-typing-service reveal" style="--delay:0.68s">
+        <span class="typing-label">Currently crafting →</span>
+        <span id="serviceTyped" class="typing-service-text"></span><span class="typed-cursor-inline">|</span>
+      </div>
+      <div class="hero-actions reveal" style="--delay:0.75s">
+        <a href="pages/contact.html" class="btn btn-primary btn-lg">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        <a href="pages/services.html" class="btn btn-ghost btn-lg">Explore Services</a>
+        <a href="pages/chat.html" class="btn btn-outline btn-lg"><i class="ph-fill ph-chat-circle-dots"></i> Chat with an Expert</a>
+      </div>
+      <div class="hero-stats reveal" style="--delay:0.9s">
+        <div class="stat"><span class="count" data-target="150">0</span><span>+</span><small>Projects</small></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="count" data-target="80">0</span><span>+</span><small>Clients</small></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="count" data-target="5">0</span><span>+</span><small>Years Active</small></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="count" data-target="98">0</span><span>%</span><small>Satisfaction</small></div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll Down</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== PARTNER LOGOS MARQUEE ===== -->
+  <section class="partners-strip">
+    <div class="marquee-label">Trusted Technologies & Platforms</div>
+    <div class="marquee-track">
+      <div class="marquee-inner" id="marqueeInner">
+        <span class="partner-item"><i class="fab fa-wordpress"></i> WordPress</span>
+        <span class="partner-item"><i class="fab fa-shopify"></i> Shopify</span>
+        <span class="partner-item"><i class="fab fa-react"></i> React</span>
+        <span class="partner-item"><i class="fab fa-node-js"></i> Node.js</span>
+        <span class="partner-item"><i class="fab fa-figma"></i> Figma</span>
+        <span class="partner-item"><i class="fab fa-adobe"></i> Adobe Suite</span>
+        <span class="partner-item"><i class="fab fa-mailchimp"></i> Mailchimp</span>
+        <span class="partner-item"><i class="fab fa-google"></i> Google Ads</span>
+        <span class="partner-item"><i class="fab fa-facebook"></i> Meta Ads</span>
+        <span class="partner-item"><i class="fab fa-tiktok"></i> TikTok</span>
+        <span class="partner-item"><i class="fab fa-stripe"></i> Stripe</span>
+        <span class="partner-item"><i class="ph-fill ph-database"></i> Supabase</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES OVERVIEW ===== -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">What We Do</span>
+        <h2>Services Built for <span class="accent-gradient">Real Results</span></h2>
+        <p>From concept to launch, we cover every digital touchpoint your brand needs to grow.</p>
+      </div>
+      <div class="services-grid">
+        <a href="pages/services/web-app-development.html" class="service-card reveal glass-card">
+          <div class="service-icon"><i class="ph-fill ph-code"></i></div>
+          <h3>Web & App Development</h3>
+          <p>Custom websites, web apps, WordPress, Shopify, and mobile solutions built to scale.</p>
+          <span class="card-link">Explore Service <i class="ph-fill ph-arrow-right"></i></span>
+        </a>
+        <a href="pages/services/video-editing.html" class="service-card reveal glass-card">
+          <div class="service-icon"><i class="ph-fill ph-video-camera"></i></div>
+          <h3>Video Editing</h3>
+          <p>YouTube videos, short-form Reels, motion graphics and corporate promo content that captivates.</p>
+          <span class="card-link">Explore Service <i class="ph-fill ph-arrow-right"></i></span>
+        </a>
+        <a href="pages/services/graphics-design.html" class="service-card reveal glass-card">
+          <div class="service-icon"><i class="ph-fill ph-palette"></i></div>
+          <h3>Graphics & Design</h3>
+          <p>Brand identities, logos, UI/UX designs and visuals that make your brand unforgettable.</p>
+          <span class="card-link">Explore Service <i class="ph-fill ph-arrow-right"></i></span>
+        </a>
+        <a href="pages/services/digital-marketing.html" class="service-card reveal glass-card">
+          <div class="service-icon"><i class="ph-fill ph-chart-line-up"></i></div>
+          <h3>Digital Marketing</h3>
+          <p>SEO, social media, paid ads and content strategy that drives traffic and converts leads.</p>
+          <span class="card-link">Explore Service <i class="ph-fill ph-arrow-right"></i></span>
+        </a>
+        <a href="pages/services/email-marketing.html" class="service-card reveal glass-card">
+          <div class="service-icon"><i class="ph-fill ph-envelope-open"></i></div>
+          <h3>Email Marketing</h3>
+          <p>Campaigns, automations and newsletters that keep your audience engaged and buying.</p>
+          <span class="card-link">Explore Service <i class="ph-fill ph-arrow-right"></i></span>
+        </a>
+        <a href="pages/contact.html" class="service-card reveal glass-card service-card--other">
+          <div class="service-icon"><i class="ph-fill ph-lightbulb"></i></div>
+          <h3>Other Tech Services</h3>
+          <p>Custom requirements? API integrations, automation, consulting — let's talk about your project.</p>
+          <span class="card-link">Get in Touch <i class="ph-fill ph-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY CHOOSE US ===== -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Why Us</span>
+        <h2>Why Choose <span class="accent-gradient">Darapet Technology</span></h2>
+        <p>We don't just deliver projects — we build relationships and results that last.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal glass-card">
+          <div class="why-icon"><i class="ph-fill ph-trophy"></i></div>
+          <h4>Premium Quality</h4>
+          <p>Every deliverable is crafted to a professional standard that matches or exceeds top agency output.</p>
+        </div>
+        <div class="why-card reveal glass-card">
+          <div class="why-icon"><i class="ph-fill ph-rocket-launch"></i></div>
+          <h4>Fast Turnaround</h4>
+          <p>We respect your deadlines. Our efficient process ensures projects are delivered on time, every time.</p>
+        </div>
+        <div class="why-card reveal glass-card">
+          <div class="why-icon"><i class="ph-fill ph-headset"></i></div>
+          <h4>Dedicated Support</h4>
+          <p>Direct communication with your team from start to finish. No ticket systems, no delays.</p>
+        </div>
+        <div class="why-card reveal glass-card">
+          <div class="why-icon"><i class="ph-fill ph-shield-check"></i></div>
+          <h4>Transparent Pricing</h4>
+          <p>No hidden fees. Clear scopes, honest quotes, and flexible packages for every budget.</p>
+        </div>
+        <div class="why-card reveal glass-card">
+          <div class="why-icon"><i class="ph-fill ph-stack"></i></div>
+          <h4>Full-Stack Capability</h4>
+          <p>From design to deployment, we handle every layer of your digital product in-house.</p>
+        </div>
+        <div class="why-card reveal glass-card">
+          <div class="why-icon"><i class="ph-fill ph-arrows-clockwise"></i></div>
+          <h4>Ongoing Partnership</h4>
+          <p>Our relationship doesn't end at delivery. We offer retainers, maintenance, and growth support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS TIMELINE ===== -->
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Process</span>
+        <h2>How We <span class="accent-gradient">Deliver Excellence</span></h2>
+        <p>A clear, structured approach that keeps you informed and in control at every step.</p>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step reveal">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="ph-fill ph-magnifying-glass"></i></div>
+          <h4>Discover</h4>
+          <p>We learn your goals, audience, and requirements through a structured discovery session.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="ph-fill ph-compass-tool"></i></div>
+          <h4>Design</h4>
+          <p>We create wireframes, prototypes, and design assets aligned to your brand and vision.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="ph-fill ph-code"></i></div>
+          <h4>Build</h4>
+          <p>Our engineers build your solution with clean, scalable, production-ready code.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal">
+          <div class="step-number">04</div>
+          <div class="step-icon"><i class="ph-fill ph-paper-plane-tilt"></i></div>
+          <h4>Deliver</h4>
+          <p>After quality review and your sign-off, we launch your project and hand over all assets.</p>
+        </div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal">
+          <div class="step-number">05</div>
+          <div class="step-icon"><i class="ph-fill ph-lifebuoy"></i></div>
+          <h4>Support</h4>
+          <p>Ongoing maintenance, updates, and growth support to keep your product performing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS COUNTER ===== -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-block reveal">
+          <span class="big-count" data-target="150">0</span><span class="stat-unit">+</span>
+          <p>Projects Completed</p>
+        </div>
+        <div class="stat-block reveal">
+          <span class="big-count" data-target="80">0</span><span class="stat-unit">+</span>
+          <p>Happy Clients</p>
+        </div>
+        <div class="stat-block reveal">
+          <span class="big-count" data-target="5">0</span><span class="stat-unit">+</span>
+          <p>Years of Excellence</p>
+        </div>
+        <div class="stat-block reveal">
+          <span class="big-count" data-target="98">0</span><span class="stat-unit">%</span>
+          <p>Client Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO PREVIEW ===== -->
+  <section class="section portfolio-section" id="portfolio">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Work</span>
+        <h2>Featured <span class="accent-gradient">Projects</span></h2>
+        <p>A selection of projects that demonstrate our range, quality, and commitment to results.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card reveal glass-card">
+          <div class="portfolio-img">
+            <img src="assets/images/portfolio/ecommerce-platform.jpg" alt="E-Commerce Platform Redesign" loading="lazy">
+            <div class="portfolio-overlay">
+              <a href="pages/portfolio.html" class="btn btn-sm btn-primary">View Case Study</a>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag">Web Development</span>
+            <h4>E-Commerce Platform Redesign</h4>
+            <p>Complete Shopify redesign boosting conversion by 43% for a fashion brand.</p>
+          </div>
+        </div>
+        <div class="portfolio-card reveal glass-card">
+          <div class="portfolio-img">
+            <img src="assets/images/portfolio/brand-launch-video.jpg" alt="Brand Launch Video Series" loading="lazy">
+            <div class="portfolio-overlay">
+              <a href="pages/portfolio.html" class="btn btn-sm btn-primary">View Case Study</a>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag">Video Editing</span>
+            <h4>Brand Launch Video Series</h4>
+            <p>5-part brand story series that grew a YouTube channel from 0 to 12K subscribers.</p>
+          </div>
+        </div>
+        <div class="portfolio-card reveal glass-card">
+          <div class="portfolio-img">
+            <img src="assets/images/portfolio/startup-branding.jpg" alt="Tech Startup Full Branding" loading="lazy">
+            <div class="portfolio-overlay">
+              <a href="pages/portfolio.html" class="btn btn-sm btn-primary">View Case Study</a>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag">Brand Identity</span>
+            <h4>Tech Startup Full Branding</h4>
+            <p>Complete brand identity, logo system, and visual guidelines for a SaaS startup.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURED WORK CAROUSEL -->
+      <div class="carousel reveal" id="featuredCarousel">
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="assets/images/portfolio/saas-dashboard.jpg" alt="SaaS Dashboard Redesign">
+              <div class="carousel-slide-info">
+                <span class="portfolio-tag">UI/UX Design</span>
+                <h3>SaaS Dashboard Redesign</h3>
+                <p>A full UX audit and visual overhaul of a B2B analytics dashboard, cutting support tickets by 60% and lifting the UX score to 4.8/5.</p>
+                <a href="pages/portfolio.html" class="btn btn-ghost">View Full Portfolio <i class="ph-fill ph-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/images/portfolio/social-content.jpg" alt="Social Media Content Package">
+              <div class="carousel-slide-info">
+                <span class="portfolio-tag">Short-Form / Reels</span>
+                <h3>Social Media Content Package</h3>
+                <p>60 short-form Reels and TikToks a month for a lifestyle brand, growing their following from 2K to 85K.</p>
+                <a href="pages/portfolio.html" class="btn btn-ghost">View Full Portfolio <i class="ph-fill ph-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/images/portfolio/food-delivery-app.jpg" alt="Food Delivery Mobile App">
+              <div class="carousel-slide-info">
+                <span class="portfolio-tag">Mobile App Development</span>
+                <h3>Food Delivery Mobile App</h3>
+                <p>A React Native app for a regional food delivery startup, shipped to a 4.7★ App Store rating and 10K+ downloads.</p>
+                <a href="pages/portfolio.html" class="btn btn-ghost">View Full Portfolio <i class="ph-fill ph-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-arrow carousel-prev" aria-label="Previous"><i class="ph-fill ph-arrow-left"></i></button>
+          <div class="carousel-dots"></div>
+          <button class="carousel-arrow carousel-next" aria-label="Next"><i class="ph-fill ph-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="section-cta reveal">
+        <a href="pages/portfolio.html" class="btn btn-outline btn-lg">View Full Portfolio <i class="ph-fill ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO SHOWCASE (video editing & graphics design) ===== -->
+  <section class="video-showcase" id="video-showcase">
+    <img class="video-showcase-bg" src="assets/images/video-showcase-poster.jpg" alt="" id="videoShowcasePoster">
+    <iframe class="video-showcase-frame" id="videoShowcaseFrame"
+      src="https://www.youtube.com/embed/gQldOO6KiU8?autoplay=1&mute=1&loop=1&playlist=gQldOO6KiU8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+      title="Motion design showreel background" allow="autoplay; encrypted-media" loading="lazy"></iframe>
+    <div class="video-showcase-overlay"></div>
+    <div class="container video-showcase-content reveal">
+      <span class="section-tag">Video Editing &amp; Graphics Design</span>
+      <h2>We Tell Stories in <span class="accent-gradient">Motion</span></h2>
+      <p>From YouTube edits and short-form reels to full motion graphics packages — this is the craft behind every frame we deliver. Real timelines, real color grades, real brand visuals.</p>
+      <div class="video-showcase-actions">
+        <a href="pages/services/video-editing.html" class="btn btn-primary btn-lg">Explore Video Editing <i class="ph-fill ph-video-camera"></i></a>
+        <a href="pages/services/graphics-design.html" class="btn btn-ghost btn-lg">Explore Graphics Design <i class="ph-fill ph-palette"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Testimonials</span>
+        <h2>What Clients <span class="accent-gradient">Say About Us</span></h2>
+        <p>Real feedback from real clients who trusted Darapet Technology with their vision.</p>
+      </div>
+      <div class="testimonials-slider">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <div class="testimonial-card glass-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Darapet Technology completely transformed our online presence. The website they built is fast, beautiful, and our customers love it. Best investment we've made."</p>
+            <div class="client-info">
+              <div class="client-avatar">JM</div>
+              <div>
+                <strong>James Mitchell</strong>
+                <span>CEO, BrightStore UK</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"The video editing team at Darapet is exceptional. My YouTube content quality jumped overnight — my audience noticed immediately. Super professional, fast delivery."</p>
+            <div class="client-info">
+              <div class="client-avatar">SA</div>
+              <div>
+                <strong>Sofia Adeyemi</strong>
+                <span>Content Creator, 45K Subscribers</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"From logo to full brand identity — the design work was stunning. Darapet Technology understood our brand vision better than we did. Truly premium quality."</p>
+            <div class="client-info">
+              <div class="client-avatar">KN</div>
+              <div>
+                <strong>Kwame Nkrumah Jr.</strong>
+                <span>Founder, Nexus Ventures</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Our email marketing campaigns went from 12% open rate to 38% after Darapet redesigned our strategy. The ROI speaks for itself. Highly recommended."</p>
+            <div class="client-info">
+              <div class="client-avatar">RL</div>
+              <div>
+                <strong>Rachel Liu</strong>
+                <span>Marketing Director, CloudPath</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="prevBtn"><i class="ph-fill ph-caret-left"></i></button>
+          <div class="slider-dots" id="sliderDots"></div>
+          <button class="slider-btn" id="nextBtn"><i class="ph-fill ph-caret-right"></i></button>
+        </div>
+      </div>
+      <div class="section-cta reveal">
+        <a href="pages/testimonials.html" class="btn btn-outline btn-lg">Read All Testimonials <i class="ph-fill ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING TEASER ===== -->
+  <section class="section pricing-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Pricing</span>
+        <h2>Transparent <span class="accent-gradient">Packages</span></h2>
+        <p>Flexible pricing designed to match your goals and budget — no surprises, ever.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal glass-card">
+          <div class="pricing-tier">Starter</div>
+          <div class="pricing-price">From <span>$299</span></div>
+          <ul class="pricing-features">
+            <li><i class="ph-fill ph-check"></i> Up to 5 Pages</li>
+            <li><i class="ph-fill ph-check"></i> Mobile Responsive</li>
+            <li><i class="ph-fill ph-check"></i> Basic SEO Setup</li>
+            <li><i class="ph-fill ph-check"></i> Contact Form</li>
+            <li><i class="ph-fill ph-check"></i> 14-Day Support</li>
+          </ul>
+          <a href="pages/contact.html" class="btn btn-outline">Get Started</a>
+        </div>
+        <div class="pricing-card pricing-card--popular reveal glass-card">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-tier">Professional</div>
+          <div class="pricing-price">From <span>$799</span></div>
+          <ul class="pricing-features">
+            <li><i class="ph-fill ph-check"></i> Up to 15 Pages</li>
+            <li><i class="ph-fill ph-check"></i> Custom Design</li>
+            <li><i class="ph-fill ph-check"></i> Advanced SEO</li>
+            <li><i class="ph-fill ph-check"></i> CMS Integration</li>
+            <li><i class="ph-fill ph-check"></i> 30-Day Support</li>
+            <li><i class="ph-fill ph-check"></i> Speed Optimization</li>
+          </ul>
+          <a href="pages/contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="pricing-card reveal glass-card">
+          <div class="pricing-tier">Enterprise</div>
+          <div class="pricing-price">Custom <span>Quote</span></div>
+          <ul class="pricing-features">
+            <li><i class="ph-fill ph-check"></i> Unlimited Pages</li>
+            <li><i class="ph-fill ph-check"></i> Full Custom Dev</li>
+            <li><i class="ph-fill ph-check"></i> E-Commerce Ready</li>
+            <li><i class="ph-fill ph-check"></i> API Integrations</li>
+            <li><i class="ph-fill ph-check"></i> Ongoing Retainer</li>
+            <li><i class="ph-fill ph-check"></i> Priority Support</li>
+          </ul>
+          <a href="pages/contact.html" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+      <div class="section-cta reveal">
+        <a href="pages/pricing.html" class="btn btn-outline btn-lg">View Full Pricing <i class="ph-fill ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM PREVIEW ===== -->
+  <section class="section team-preview-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Team</span>
+        <h2>The People Who <span class="accent-gradient">Build Your Vision</span></h2>
+        <p>A tight-knit team of specialists — not generalists. Every project gets the right expert from day one.</p>
+      </div>
+      <div class="team-grid team-grid--4">
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop&q=80" alt="Alex — Founder" loading="lazy">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Alex D.</p>
+            <span class="team-role-badge">Founder &amp; Dev Lead</span>
+            <div class="team-skills"><span>React</span><span>Node.js</span><span>Web Apps</span></div>
+            <div class="team-socials">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=500&h=400&fit=crop&q=80" alt="Jordan — Video Lead" loading="lazy">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Jordan M.</p>
+            <span class="team-role-badge">Video &amp; Motion Lead</span>
+            <div class="team-skills"><span>After Effects</span><span>Davinci</span><span>Motion</span></div>
+            <div class="team-socials">
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&h=400&fit=crop&q=80" alt="Sam — Marketing" loading="lazy">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Sam P.</p>
+            <span class="team-role-badge">Marketing Strategist</span>
+            <div class="team-skills"><span>SEO / SEM</span><span>Google Ads</span><span>Analytics</span></div>
+            <div class="team-socials">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&h=400&fit=crop&q=80" alt="Riley — Creative Director" loading="lazy">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Riley O.</p>
+            <span class="team-role-badge">Creative Director</span>
+            <div class="team-skills"><span>Figma</span><span>Branding</span><span>UI/UX</span></div>
+            <div class="team-socials">
+              <a href="#"><i class="fab fa-figma"></i></a>
+              <a href="#"><i class="fab fa-dribbble"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="section-cta reveal">
+        <a href="pages/about.html#team" class="btn btn-outline btn-lg">Meet the Full Team <i class="ph-fill ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="cta-bg-effect"></div>
+    <div class="container cta-content reveal">
+      <h2>Ready to Start Your Project?</h2>
+      <p>Let's build something extraordinary together. Tell us about your vision and we'll make it real.</p>
+      <div class="cta-actions">
+        <a href="pages/contact.html" class="btn btn-primary btn-lg">Start a Project <i class="ph-fill ph-arrow-right"></i></a>
+        <a href="pages/services.html" class="btn btn-ghost btn-lg">Browse Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <img src="assets/images/logo.png" alt="Darapet Technology" class="site-logo-img">
+          </a>
+          <p>Engineering Ideas. Empowering Independence. Your premium technology & creative freelance agency.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" id="footer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" id="footer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon" id="footer-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" id="footer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon" id="footer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon" id="footer-fv" target="_blank" title="Fiverr"><i class="ph-fill ph-stack"></i></a>
+            <a href="#" class="social-icon" id="footer-uw" target="_blank" title="Upwork"><i class="ph-fill ph-briefcase"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="pages/services/web-app-development.html">Web & App Development</a>
+          <a href="pages/services/video-editing.html">Video Editing</a>
+          <a href="pages/services/graphics-design.html">Graphics & Design</a>
+          <a href="pages/services/digital-marketing.html">Digital Marketing</a>
+          <a href="pages/services/email-marketing.html">Email Marketing</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="pages/about.html">About Us</a>
+          <a href="pages/portfolio.html">Portfolio</a>
+          <a href="pages/testimonials.html">Testimonials</a>
+          <a href="pages/pricing.html">Pricing</a>
+          <a href="pages/contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Get in Touch</h5>
+          <p><i class="ph-fill ph-envelope"></i> darapettechnology@gmail.com</p>
+          <p><i class="fab fa-whatsapp"></i> +234 913 487 3694</p>
+          <p><i class="ph-fill ph-map-pin"></i> Nigeria &amp; USA</p>
+          <div class="newsletter">
+            <input type="email" id="newsletterEmail" placeholder="Your email address" />
+            <button class="btn btn-primary" id="newsletterBtn"><i class="ph-fill ph-paper-plane-tilt"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Darapet Technology. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/background.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/socials.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-app.js"></script>
+</body>
+</html>

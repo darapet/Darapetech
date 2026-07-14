@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Darapet Technology</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="../assets/images/logo.png" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/background.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+</head>
+<body>
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left"><img src="../assets/images/logo.png" alt="DT" class="site-logo-img"></div>
+      <div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div>
+      <div class="strip-right"><span class="strip-badge">Available for Projects</span></div>
+    </div>
+  </div>
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-dropdown"><a href="services.html">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu"><div class="mega-grid">
+            <div class="mega-col"><h4><i class="ph-fill ph-code"></i> Web & App Dev</h4><a href="services/web-app-development.html">WordPress</a><a href="services/web-app-development.html">Shopify</a><a href="services/web-app-development.html">Custom Web Apps</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4><a href="services/video-editing.html">YouTube</a><a href="services/video-editing.html">Short-Form/Reels</a><a href="services/video-editing.html">Motion Graphics</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-palette"></i> Design</h4><a href="services/graphics-design.html">Logo & Branding</a><a href="services/graphics-design.html">UI/UX Design</a><a href="services/graphics-design.html">Social Graphics</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-chart-line-up"></i> Marketing</h4><a href="services/digital-marketing.html">SEO</a><a href="services/digital-marketing.html">Paid Ads</a><a href="services/email-marketing.html">Email Marketing</a></div>
+          </div></div>
+        </li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav">
+      <a href="../index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="testimonials.html">Testimonials</a><a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <span class="section-tag reveal">About Us</span>
+      <h1 class="reveal">Built on Craft. <span class="accent-gradient">Driven by Results.</span></h1>
+      <p class="reveal">Darapet Technology is a premium freelance agency born from a passion for technology and a commitment to delivering work that makes a genuine difference for clients worldwide.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg reveal">Work With Us <i class="ph-fill ph-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text reveal">
+          <span class="section-tag">Our Story</span>
+          <h2 style="margin:16px 0">Where It All Began</h2>
+          <p>Darapet Technology started with a simple belief: that small businesses and independent entrepreneurs deserve access to the same quality of digital services as Fortune 500 companies — without the agency overheads or inflated fees.</p>
+          <p style="margin-top:16px">What began as a one-person freelance operation has grown into a full creative & technology agency, delivering premium results across web development, design, video, and marketing. Every project is treated as if it were our own.</p>
+          <p style="margin-top:16px">Today, Darapet serves clients globally — from solo founders launching their first product to established businesses scaling their digital presence. Our promise remains unchanged: real premium quality, every single time.</p>
+        </div>
+        <div class="story-visual reveal">
+          <div class="story-card glass-card">
+            <div class="story-stat"><span class="big-count" data-target="150">0</span><span class="stat-unit">+</span><p>Projects Delivered</p></div>
+          </div>
+          <div class="story-card glass-card" style="margin-top:16px">
+            <div class="story-stat"><span class="big-count" data-target="80">0</span><span class="stat-unit">+</span><p>Satisfied Clients</p></div>
+          </div>
+          <div class="story-card glass-card" style="margin-top:16px">
+            <div class="story-stat"><span class="big-count" data-target="5">0</span><span class="stat-unit">+</span><p>Years of Excellence</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION & VISION -->
+  <section class="section" style="background:rgba(255,255,255,0.01)">
+    <div class="container">
+      <div class="mv-grid">
+        <div class="mv-card glass-card reveal">
+          <div class="mv-icon"><i class="ph-fill ph-crosshair"></i></div>
+          <h3>Our Mission</h3>
+          <p>To empower entrepreneurs, startups, and businesses with world-class digital solutions — delivered with the precision, speed, and personal care that only a dedicated boutique agency can provide.</p>
+        </div>
+        <div class="mv-card glass-card reveal">
+          <div class="mv-icon"><i class="ph-fill ph-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>To become the world's most trusted freelance technology agency — where every client leaves not just satisfied, but genuinely impressed. We measure our success entirely by yours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE VALUES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Core Values</span>
+        <h2>What We Stand For</h2>
+        <p>These aren't words on a wall — they are the principles that guide every client interaction and every line of code we write.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card glass-card reveal">
+          <div class="value-icon"><i class="ph-fill ph-diamond"></i></div>
+          <h4>Excellence</h4>
+          <p>Good enough is never good enough. We hold every deliverable to the highest possible standard.</p>
+        </div>
+        <div class="value-card glass-card reveal">
+          <div class="value-icon"><i class="ph-fill ph-handshake"></i></div>
+          <h4>Integrity</h4>
+          <p>Transparent communication, honest pricing, and promises we always keep.</p>
+        </div>
+        <div class="value-card glass-card reveal">
+          <div class="value-icon"><i class="ph-fill ph-lightbulb"></i></div>
+          <h4>Innovation</h4>
+          <p>We stay at the cutting edge of technology and design so your work always feels current.</p>
+        </div>
+        <div class="value-card glass-card reveal">
+          <div class="value-icon"><i class="ph-fill ph-users"></i></div>
+          <h4>Partnership</h4>
+          <p>Your success is our success. We invest in your outcomes as deeply as you do.</p>
+        </div>
+        <div class="value-card glass-card reveal">
+          <div class="value-icon"><i class="ph-fill ph-lightning"></i></div>
+          <h4>Speed</h4>
+          <p>We move fast without cutting corners. Timely delivery is a mark of respect for your time.</p>
+        </div>
+        <div class="value-card glass-card reveal">
+          <div class="value-icon"><i class="ph-fill ph-infinity"></i></div>
+          <h4>Continuity</h4>
+          <p>We build for the long term — scalable solutions that grow with your business, not against it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="section team-preview-section" id="team">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Leadership</span>
+        <h2>The People Behind <span class="accent-gradient">Every Project</span></h2>
+        <p>Darapet Technology is led by visionaries who combine deep technical expertise with a passion for delivering world-class results for every client.</p>
+      </div>
+
+      <!-- CEO & TEAM LEADER -->
+      <div class="leadership-grid">
+
+        <!-- CEO -->
+        <div class="leader-card glass-card reveal">
+          <div class="leader-badge-top">Chief Executive Officer</div>
+          <div class="leader-photo">
+            <img src="../assets/images/ceo-peter.png" alt="Daramola Peter Oluwaferanmi — CEO" id="ceo-photo">
+            <div class="team-photo-overlay"></div>
+            <div class="leader-flag">🇳🇬 Nigeria</div>
+          </div>
+          <div class="leader-info">
+            <p class="team-name">Daramola Peter Oluwaferanmi</p>
+            <span class="team-role-badge leader-role">Founder &amp; CEO</span>
+            <p class="team-bio">Visionary founder of Darapet Technology. Peter brings a rare blend of technical mastery and business acumen — leading the agency's strategy, operations, and the pursuit of excellence across every project delivered to clients worldwide.</p>
+            <div class="team-skills">
+              <span>Strategy &amp; Leadership</span><span>Full-Stack Development</span><span>Product Vision</span><span>Client Relations</span>
+            </div>
+            <div class="leader-contact">
+              <a href="tel:+2349134873694" class="leader-btn leader-btn--call" title="Call CEO">
+                <i class="ph-fill ph-phone"></i> Call
+              </a>
+              <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank" title="WhatsApp CEO">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a href="mailto:darapettechnology@gmail.com" class="leader-btn leader-btn--email" title="Email CEO">
+                <i class="ph-fill ph-envelope"></i> Email
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TEAM LEADER / CTO -->
+        <div class="leader-card glass-card reveal">
+          <div class="leader-badge-top">Team Leader &amp; CTO</div>
+          <div class="leader-photo">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=700&h=600&fit=crop&q=80" alt="Engineer Babasola Stephen — Team Leader">
+            <div class="team-photo-overlay"></div>
+            <div class="leader-flag">🇳🇬 Nigeria</div>
+          </div>
+          <div class="leader-info">
+            <p class="team-name">Engr. Babasola Stephen</p>
+            <span class="team-role-badge leader-role">Team Leader &amp; CTO</span>
+            <p class="team-bio">The engineering backbone of Darapet Technology. Engineer Babasola oversees all technical operations, leads the development team, and ensures every product we ship meets the highest standards of quality, performance, and reliability.</p>
+            <div class="team-skills">
+              <span>Technical Leadership</span><span>System Architecture</span><span>DevOps</span><span>Team Management</span>
+            </div>
+            <div class="leader-contact">
+              <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank" title="WhatsApp CTO">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+              <a href="mailto:darapettechnology@gmail.com" class="leader-btn leader-btn--email" title="Email CTO">
+                <i class="ph-fill ph-envelope"></i> Email
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE DEPARTMENT HEADS -->
+  <section class="section" style="background:rgba(255,255,255,0.01)">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Department Heads</span>
+        <h2>Service Department <span class="accent-gradient">Leadership</span></h2>
+        <p>Each service area is led by a dedicated department head supported by an assistant head — ensuring every project receives expert, focused attention.</p>
+      </div>
+
+      <!-- WEB & APP DEVELOPMENT -->
+      <div class="dept-block reveal">
+        <div class="dept-label"><i class="ph-fill ph-code"></i> Web &amp; App Development</div>
+        <div class="team-grid">
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=480&fit=crop&q=80" alt="Oluwaseun Adebayo">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Oluwaseun Adebayo</p>
+              <span class="team-role-badge">Dept. Head — Web &amp; App Dev</span>
+              <span class="dept-country-tag">🇳🇬 Nigeria</span>
+              <p class="team-bio">Leads the full-stack development team, architecting scalable web solutions and managing delivery from wireframe to deployment.</p>
+              <div class="team-skills"><span>React / Node.js</span><span>Shopify</span><span>WordPress</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=600&h=480&fit=crop&q=80" alt="Rachel Mitchell">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Rachel Mitchell</p>
+              <span class="team-role-badge">Assistant Head — Web &amp; App Dev</span>
+              <span class="dept-country-tag">🇺🇸 USA</span>
+              <p class="team-bio">Co-ordinates client requirements, manages sprint timelines, and ensures every web and mobile product is delivered to spec.</p>
+              <div class="team-skills"><span>Mobile Apps</span><span>API Backend</span><span>QA &amp; Testing</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO EDITING -->
+      <div class="dept-block reveal">
+        <div class="dept-label"><i class="ph-fill ph-video-camera"></i> Video Editing</div>
+        <div class="team-grid">
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=480&fit=crop&q=80" alt="Amara Okonkwo">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Amara Okonkwo</p>
+              <span class="team-role-badge">Dept. Head — Video Editing</span>
+              <span class="dept-country-tag">🇳🇬 Nigeria</span>
+              <p class="team-bio">Expert storyteller and post-production specialist. Leads the video team in crafting cinematic edits, motion graphics, and brand films.</p>
+              <div class="team-skills"><span>DaVinci Resolve</span><span>After Effects</span><span>Colour Grading</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=480&fit=crop&q=80" alt="Marcus Thompson">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Marcus Thompson</p>
+              <span class="team-role-badge">Assistant Head — Video Editing</span>
+              <span class="dept-country-tag">🇺🇸 USA</span>
+              <p class="team-bio">Handles short-form content, YouTube series, and motion graphics pipeline — ensuring fast turnaround without sacrificing quality.</p>
+              <div class="team-skills"><span>Premiere Pro</span><span>Short-Form Reels</span><span>Motion Graphics</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRAPHICS & DESIGN -->
+      <div class="dept-block reveal">
+        <div class="dept-label"><i class="ph-fill ph-palette"></i> Graphics &amp; Design</div>
+        <div class="team-grid">
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=480&fit=crop&q=80" alt="Tyler Johnson">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Tyler Johnson</p>
+              <span class="team-role-badge">Dept. Head — Graphics &amp; Design</span>
+              <span class="dept-country-tag">🇺🇸 USA</span>
+              <p class="team-bio">Creative director and brand identity architect. Tyler leads the design team in producing logos, UI/UX, and visual systems that stand out.</p>
+              <div class="team-skills"><span>Brand Identity</span><span>Figma / Adobe</span><span>UI/UX Design</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=480&fit=crop&q=80" alt="Chidinma Eze">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Chidinma Eze</p>
+              <span class="team-role-badge">Assistant Head — Graphics &amp; Design</span>
+              <span class="dept-country-tag">🇳🇬 Nigeria</span>
+              <p class="team-bio">Specialists in social graphics, print design, and packaging artwork — bringing detail-oriented precision to every visual deliverable.</p>
+              <div class="team-skills"><span>Illustrator</span><span>Social Graphics</span><span>Print Design</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIGITAL MARKETING -->
+      <div class="dept-block reveal">
+        <div class="dept-label"><i class="ph-fill ph-chart-line-up"></i> Digital Marketing</div>
+        <div class="team-grid">
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=480&fit=crop&q=80" alt="Fatimah Hassan">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Fatimah Hassan</p>
+              <span class="team-role-badge">Dept. Head — Digital Marketing</span>
+              <span class="dept-country-tag">🇳🇬 Nigeria</span>
+              <p class="team-bio">Growth-focused marketing strategist. Fatimah leads SEO, paid ads, and content campaigns that consistently deliver measurable ROI for clients.</p>
+              <div class="team-skills"><span>SEO Strategy</span><span>Paid Ads / PPC</span><span>Social Media</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=480&fit=crop&q=80" alt="James Anderson">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">James Anderson</p>
+              <span class="team-role-badge">Assistant Head — Digital Marketing</span>
+              <span class="dept-country-tag">🇺🇸 USA</span>
+              <p class="team-bio">Analytics and performance marketing expert. James ensures every dollar of ad spend is tracked, optimised, and delivering maximum results.</p>
+              <div class="team-skills"><span>Google Analytics</span><span>Meta Ads</span><span>Brand Strategy</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMAIL MARKETING -->
+      <div class="dept-block reveal">
+        <div class="dept-label"><i class="ph-fill ph-envelope-open"></i> Email Marketing</div>
+        <div class="team-grid">
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=480&fit=crop&q=80" alt="Adaeze Nwosu">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Adaeze Nwosu</p>
+              <span class="team-role-badge">Dept. Head — Email Marketing</span>
+              <span class="dept-country-tag">🇳🇬 Nigeria</span>
+              <p class="team-bio">Master of conversion-focused email strategy. Adaeze builds campaigns and automations that turn cold subscribers into loyal, paying customers.</p>
+              <div class="team-skills"><span>Mailchimp / Klaviyo</span><span>Copywriting</span><span>Automation Flows</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card glass-card">
+            <div class="team-photo">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=480&fit=crop&q=80" alt="Robert Davis">
+              <div class="team-photo-overlay"></div>
+            </div>
+            <div class="team-info">
+              <p class="team-name">Robert Davis</p>
+              <span class="team-role-badge">Assistant Head — Email Marketing</span>
+              <span class="dept-country-tag">🇺🇸 USA</span>
+              <p class="team-bio">Leads newsletter design, lead nurturing sequences, and list-building strategies that grow audiences and maximise open rates consistently.</p>
+              <div class="team-skills"><span>Lead Nurturing</span><span>Newsletter Design</span><span>List Building</span></div>
+              <div class="leader-contact">
+                <a href="https://wa.me/2349134873694" class="leader-btn leader-btn--whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEE FEW OF OUR TEAM MEMBERS -->
+  <section class="section team-preview-section" id="team-members">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Meet the Team</span>
+        <h2>See Few of Our <span class="accent-gradient">Team Members</span></h2>
+        <p>Behind every great project is a talented, dedicated person who gives it their very best. Here are some of the brilliant people who make Darapet Technology exceptional.</p>
+      </div>
+      <div class="team-grid" style="margin-bottom:28px;">
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=600&h=480&fit=crop&q=80" alt="Jordan M.">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Jordan M.</p>
+            <span class="team-role-badge">Senior Video Editor &amp; Motion Designer</span>
+            <p class="team-bio">Expert in post-production, colour grading, and visual storytelling that keeps audiences hooked from the very first frame.</p>
+            <div class="team-skills"><span>After Effects</span><span>DaVinci Resolve</span><span>Motion Graphics</span></div>
+            <div class="team-socials">
+              <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=480&fit=crop&q=80" alt="Riley O.">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Riley O.</p>
+            <span class="team-role-badge">Creative Director &amp; UI/UX Specialist</span>
+            <p class="team-bio">Leads all brand and design work — from full logo systems to pixel-perfect UI prototypes that users actually enjoy using.</p>
+            <div class="team-skills"><span>Figma</span><span>Brand Identity</span><span>UI / UX</span></div>
+            <div class="team-socials">
+              <a href="#" title="Figma"><i class="fab fa-figma"></i></a>
+              <a href="#" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=480&fit=crop&q=80" alt="Sam P.">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Sam P.</p>
+            <span class="team-role-badge">Digital Marketing Strategist</span>
+            <p class="team-bio">Drives organic and paid growth strategies that put clients in front of the right audience at exactly the right moment.</p>
+            <div class="team-skills"><span>SEO / SEM</span><span>Google Ads</span><span>Analytics</span></div>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" title="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="team-grid" style="grid-template-columns:repeat(2,1fr);max-width:820px;margin:0 auto;">
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=480&fit=crop&q=80" alt="Taylor R.">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Taylor R.</p>
+            <span class="team-role-badge">Email &amp; Content Marketing Lead</span>
+            <p class="team-bio">Crafts email sequences and content strategies that nurture leads, build trust, and turn subscribers into paying clients.</p>
+            <div class="team-skills"><span>Email Campaigns</span><span>Copywriting</span><span>Automation</span></div>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" title="Upwork"><i class="ph-fill ph-briefcase"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass-card reveal">
+          <div class="team-photo">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=480&fit=crop&q=80" alt="Ngozi A.">
+            <div class="team-photo-overlay"></div>
+          </div>
+          <div class="team-info">
+            <p class="team-name">Ngozi A.</p>
+            <span class="team-role-badge">Full-Stack Developer</span>
+            <p class="team-bio">Builds robust backend systems and front-end experiences that power our clients' most ambitious web applications.</p>
+            <div class="team-skills"><span>Node.js / React</span><span>Database Design</span><span>API Dev</span></div>
+            <div class="team-socials">
+              <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CLIENTS CHOOSE US -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Why Clients Choose Us</span>
+        <h2>The Darapet <span class="accent-gradient">Difference</span></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-chat-circle-dots"></i></div><h4>Direct Communication</h4><p>You speak directly with the person doing the work — no account managers, no lost messages.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-eye"></i></div><h4>Full Transparency</h4><p>Regular updates, milestone reviews, and complete visibility into project progress at every stage.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-medal"></i></div><h4>Proven Track Record</h4><p>150+ successful projects and a client retention rate that speaks louder than any marketing copy.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-globe"></i></div><h4>Global Availability</h4><p>We serve clients across time zones, adapting our hours and communication to suit your schedule.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-tag"></i></div><h4>Agency Quality, Freelance Price</h4><p>Full agency capabilities at a fraction of the cost — because we don't have layers of overhead.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-lock-simple"></i></div><h4>Confidentiality</h4><p>Your project details, business data, and IP are treated with complete professional discretion.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-bg-effect"></div>
+    <div class="container cta-content reveal">
+      <h2>Ready to Work Together?</h2>
+      <p>Join 80+ clients who chose Darapet Technology for their digital growth. Let's build something great.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-primary btn-lg">Start a Project <i class="ph-fill ph-arrow-right"></i></a>
+        <a href="services.html" class="btn btn-ghost btn-lg">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+          <p>Engineering Ideas. Empowering Independence.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" id="footer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" id="footer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon" id="footer-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" id="footer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon" id="footer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon" id="footer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+            <a href="#" class="social-icon" id="footer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h5>Services</h5><a href="services/web-app-development.html">Web & App Dev</a><a href="services/video-editing.html">Video Editing</a><a href="services/graphics-design.html">Graphics & Design</a><a href="services/digital-marketing.html">Digital Marketing</a><a href="services/email-marketing.html">Email Marketing</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a href="testimonials.html">Testimonials</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h5>Contact</h5><p><i class="ph-fill ph-envelope"></i> darapettechnology@gmail.com</p><p><i class="fab fa-whatsapp"></i> +234 913 487 3694</p><div class="newsletter"><input type="email" placeholder="Your email" /><button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Darapet Technology. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <style>
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .story-visual { display: flex; flex-direction: column; gap: 0; }
+    .story-card { padding: 24px 32px; }
+    .story-stat { text-align: center; }
+    .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .mv-card { padding: 40px; }
+    .mv-icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(56,189,248,0.1); border: 2px solid rgba(56,189,248,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--accent-1); margin-bottom: 20px; }
+    .mv-card h3 { margin-bottom: 12px; }
+    @media(max-width:768px){.story-grid,.mv-grid{grid-template-columns:1fr}}
+  </style>
+  <script src="../js/background.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/socials.js"></script>
+</body>
+</html>

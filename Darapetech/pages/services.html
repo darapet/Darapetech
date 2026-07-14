@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Darapet Technology</title>
+  <meta name="description" content="Full-service digital agency — web development, software engineering, video editing, graphics design, digital marketing, and email marketing. Every service you need, one team." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="../assets/images/logo.png" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/background.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+  <style>
+    /* ── Page-specific enhancements ── */
+    .svc-hero-stats { display:flex; gap:40px; justify-content:center; flex-wrap:wrap; margin-top:48px; }
+    .svc-hero-stat { text-align:center; }
+    .svc-hero-stat .stat-num { font-size:2.4rem; font-weight:800; background:var(--gradient-text); -webkit-background-clip:text; -webkit-text-fill-color:transparent; display:block; }
+    .svc-hero-stat .stat-label { font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; }
+
+    /* Category section */
+    .cat-section { padding:72px 0; border-bottom:1px solid var(--border); }
+    .cat-section:last-child { border-bottom:none; }
+    .cat-section-inner { display:grid; grid-template-columns:320px 1fr; gap:60px; align-items:start; }
+    @media(max-width:900px){ .cat-section-inner { grid-template-columns:1fr; gap:32px; } }
+    .cat-left {}
+    .cat-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.18); border-radius:32px; padding:6px 16px; font-size:0.78rem; color:var(--accent-1); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
+    .cat-left h2 { font-size:2rem; line-height:1.2; margin-bottom:16px; }
+    .cat-left p { color:var(--text-muted); line-height:1.8; margin-bottom:24px; }
+    .cat-highlights { list-style:none; padding:0; margin:0 0 28px; }
+    .cat-highlights li { display:flex; align-items:center; gap:10px; color:var(--text-muted); font-size:0.9rem; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .cat-highlights li:last-child { border-bottom:none; }
+    .cat-highlights li i { color:var(--accent-1); width:16px; flex-shrink:0; }
+    .cat-explore-btn { display:inline-flex; align-items:center; gap:8px; background:var(--gradient-1); color:#fff; padding:12px 24px; border-radius:8px; font-weight:600; font-size:0.9rem; text-decoration:none; transition:opacity .2s; }
+    .cat-explore-btn:hover { opacity:.85; }
+
+    /* Service cards in category */
+    .cat-services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
+    .cat-svc-card { background:rgba(255,255,255,0.025); border:1px solid var(--border); border-radius:14px; padding:24px; text-decoration:none; color:inherit; display:block; transition:all .25s; position:relative; overflow:hidden; }
+    .cat-svc-card::before { content:''; position:absolute; inset:0; background:var(--gradient-1); opacity:0; transition:opacity .25s; border-radius:14px; }
+    .cat-svc-card:hover { border-color:rgba(56,189,248,0.4); transform:translateY(-3px); box-shadow:0 12px 40px rgba(56,189,248,0.1); }
+    .cat-svc-card:hover::before { opacity:0.04; }
+    .cat-svc-card .svc-icon { width:44px; height:44px; border-radius:10px; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.15); display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--accent-1); margin-bottom:14px; }
+    .cat-svc-card h4 { font-size:0.95rem; font-weight:700; margin-bottom:8px; color:var(--text); }
+    .cat-svc-card p { font-size:0.82rem; color:var(--text-muted); line-height:1.6; margin-bottom:14px; }
+    .cat-svc-card .price-from { font-size:0.78rem; color:var(--accent-1); font-weight:600; margin-bottom:10px; display:block; }
+    .cat-svc-card .view-link { font-size:0.8rem; color:var(--accent-1); font-weight:600; display:flex; align-items:center; gap:5px; }
+    .cat-svc-card .view-link i { font-size:0.7rem; transition:transform .2s; }
+    .cat-svc-card:hover .view-link i { transform:translateX(3px); }
+
+    /* Other services */
+    .other-services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
+    .other-svc-pill { background:rgba(255,255,255,0.025); border:1px solid var(--border); border-radius:10px; padding:16px 20px; display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text); transition:all .2s; }
+    .other-svc-pill:hover { border-color:rgba(56,189,248,0.3); background:rgba(56,189,248,0.05); }
+    .other-svc-pill i { color:var(--accent-1); width:18px; }
+    .other-svc-pill span { font-size:0.85rem; font-weight:500; }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left"><img src="../assets/images/logo.png" alt="DT" class="site-logo-img"></div>
+      <div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div>
+      <div class="strip-right"><span class="strip-badge">Available for Projects</span></div>
+    </div>
+  </div>
+
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-dropdown">
+          <a href="services.html" class="active">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu">
+            <div class="mega-grid">
+              <div class="mega-col">
+                <h4><i class="ph-fill ph-code"></i> Web & App Dev</h4>
+                <a href="services/web-dev/website-development.html">Website Development</a>
+                <a href="services/web-dev/wordpress.html">WordPress Development</a>
+                <a href="services/web-dev/shopify.html">Shopify Development</a>
+                <a href="services/web-dev/custom-web-apps.html">Custom Web Apps</a>
+                <a href="services/web-dev/mobile-app.html">Mobile App Development</a>
+                <a href="services/web-dev/api-backend.html">API & Backend Dev</a>
+              </div>
+              <div class="mega-col">
+                <h4><i class="ph-fill ph-laptop"></i> Software & Tech</h4>
+                <a href="services/software/full-stack.html">Full-Stack Development</a>
+                <a href="services/software/database.html">Database Design</a>
+                <a href="services/software/desktop-app.html">Desktop Applications</a>
+                <a href="services/software/chatbot-ai.html">Chatbot & AI Integration</a>
+                <a href="services/software/automation.html">Automation & Scripting</a>
+                <a href="services/software/devops.html">Cloud & DevOps</a>
+              </div>
+              <div class="mega-col">
+                <h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4>
+                <a href="services/video/youtube.html">YouTube Video Editing</a>
+                <a href="services/video/short-form.html">Short-Form / Reels</a>
+                <a href="services/video/motion-graphics.html">Motion Graphics</a>
+                <a href="services/video/corporate.html">Corporate Videos</a>
+                <a href="services/video/wedding-event.html">Wedding & Event Video</a>
+                <a href="services/video/video-ads.html">Video Ads</a>
+              </div>
+              <div class="mega-col">
+                <h4><i class="ph-fill ph-palette"></i> Design & Marketing</h4>
+                <a href="services/design/logo-branding.html">Logo & Branding</a>
+                <a href="services/design/ui-ux.html">UI/UX Design</a>
+                <a href="services/digital-marketing/seo.html">SEO Services</a>
+                <a href="services/digital-marketing/paid-ads.html">Paid Advertising</a>
+                <a href="services/email/campaigns.html">Email Campaigns</a>
+                <a href="services/email/automation.html">Email Automation</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav">
+      <a href="../index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- HERO -->
+  <section class="page-hero" style="background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(56,189,248,0.1) 0%,transparent 70%)">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <span class="section-tag reveal">What We Do</span>
+      <h1 class="reveal">50+ Premium Services.<br><span class="accent-gradient">One Trusted Team.</span></h1>
+      <p class="reveal" style="max-width:600px;margin:0 auto">From your first line of code to your first viral video — Darapet Technology is the full-service digital partner for founders, brands, and creators who refuse to settle for average.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px" class="reveal">
+        <a href="contact.html" class="btn btn-primary btn-lg">Start a Project <i class="ph-fill ph-arrow-right"></i></a>
+        <a href="pricing.html" class="btn btn-ghost btn-lg">See Pricing</a>
+        <a href="chat.html" class="btn btn-outline btn-lg"><i class="ph-fill ph-chat-circle-dots"></i> Chat with an Expert</a>
+      </div>
+      <div class="svc-hero-stats reveal">
+        <div class="svc-hero-stat"><span class="stat-num">50+</span><span class="stat-label">Services Offered</span></div>
+        <div class="svc-hero-stat"><span class="stat-num">7</span><span class="stat-label">Service Categories</span></div>
+        <div class="svc-hero-stat"><span class="stat-num">200+</span><span class="stat-label">Projects Delivered</span></div>
+        <div class="svc-hero-stat"><span class="stat-num">48hr</span><span class="stat-label">Average Response Time</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORY 1: WEB & APP DEVELOPMENT ═══ -->
+  <section class="cat-section">
+    <div class="container">
+      <div class="cat-section-inner">
+        <div class="cat-left reveal">
+          <span class="cat-badge"><i class="ph-fill ph-code"></i> Category 01</span>
+          <h2>Web &amp; App<br>Development</h2>
+          <p>We build digital products that work. Not just beautiful websites, but fast, secure, and scalable systems engineered to grow with your business — using modern frameworks and clean, maintainable code.</p>
+          <ul class="cat-highlights">
+            <li><i class="ph-fill ph-check-circle"></i> Every project starts with a technical discovery session</li>
+            <li><i class="ph-fill ph-check-circle"></i> Mobile-first, performance-optimised by default</li>
+            <li><i class="ph-fill ph-check-circle"></i> Full source code ownership — no lock-in</li>
+            <li><i class="ph-fill ph-check-circle"></i> Post-launch support included on every project</li>
+            <li><i class="ph-fill ph-check-circle"></i> Built on React, Next.js, Node.js, WordPress &amp; Shopify</li>
+          </ul>
+          <a href="services/web-dev/website-development.html" class="cat-explore-btn">Explore Web Dev <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="cat-services-grid reveal">
+          <a href="services/web-dev/website-development.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-globe"></i></div>
+            <h4>Website Development</h4>
+            <p>Custom business websites and landing pages designed to attract visitors and convert them into customers.</p>
+            <span class="price-from">From $299</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/wordpress.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="fab fa-wordpress"></i></div>
+            <h4>WordPress Development</h4>
+            <p>Custom themes, plugin development, WooCommerce stores, and enterprise CMS platforms.</p>
+            <span class="price-from">From $399</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/shopify.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="fab fa-shopify"></i></div>
+            <h4>Shopify Development</h4>
+            <p>High-converting Shopify storefronts with custom themes, app integrations, and checkout optimisation.</p>
+            <span class="price-from">From $499</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/custom-web-apps.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="fab fa-react"></i></div>
+            <h4>Custom Web Apps</h4>
+            <p>Full-stack SaaS platforms, dashboards, booking systems, and any complex web application.</p>
+            <span class="price-from">From $1,500</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/mobile-app.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-device-mobile"></i></div>
+            <h4>Mobile App Development</h4>
+            <p>Cross-platform iOS &amp; Android apps with React Native — one codebase, native performance.</p>
+            <span class="price-from">From $2,000</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/api-backend.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-plug"></i></div>
+            <h4>API &amp; Backend Development</h4>
+            <p>REST APIs, GraphQL, database architecture, and cloud backend systems built for production.</p>
+            <span class="price-from">From $800</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/ecommerce.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-shopping-bag"></i></div>
+            <h4>E-commerce Development</h4>
+            <p>Platform-agnostic online stores — Shopify, WooCommerce, or custom — built to sell.</p>
+            <span class="price-from">From $599</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/landing-page.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-rocket-launch"></i></div>
+            <h4>Landing Page Development</h4>
+            <p>High-converting single pages for campaigns, products, events, and lead generation.</p>
+            <span class="price-from">From $199</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/maintenance.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-arrows-clockwise"></i></div>
+            <h4>Website Maintenance</h4>
+            <p>Ongoing updates, security monitoring, daily backups, and content changes — so you never worry.</p>
+            <span class="price-from">From $79/mo</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/bug-fixing.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-bug"></i></div>
+            <h4>Bug Fixing &amp; Optimization</h4>
+            <p>Rapid diagnosis and fixing of website bugs, performance issues, and broken functionality.</p>
+            <span class="price-from">From $49</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/web-dev/hosting-setup.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-hard-drives"></i></div>
+            <h4>Hosting &amp; Domain Setup</h4>
+            <p>Complete hosting configuration, SSL, DNS, Cloudflare CDN, and professional email setup.</p>
+            <span class="price-from">From $99</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORY 2: SOFTWARE & PROGRAMMING ═══ -->
+  <section class="cat-section" style="background:rgba(129,140,248,0.02)">
+    <div class="container">
+      <div class="cat-section-inner">
+        <div class="cat-left reveal">
+          <span class="cat-badge" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-laptop"></i> Category 02</span>
+          <h2>Software &amp;<br>Programming</h2>
+          <p>Deep technical work — full-stack systems, database architecture, AI integrations, automation scripts, and cloud infrastructure. We solve problems other developers say can't be done.</p>
+          <ul class="cat-highlights">
+            <li><i class="ph-fill ph-check-circle"></i> Full technical discovery before any development begins</li>
+            <li><i class="ph-fill ph-check-circle"></i> Architecture designed for scale, not just MVP</li>
+            <li><i class="ph-fill ph-check-circle"></i> Clean, documented, tested code on every project</li>
+            <li><i class="ph-fill ph-check-circle"></i> Node.js, Python, PostgreSQL, and cloud-native tools</li>
+            <li><i class="ph-fill ph-check-circle"></i> Transparent project management and weekly updates</li>
+          </ul>
+          <a href="services/software/full-stack.html" class="cat-explore-btn" style="background:linear-gradient(135deg,#818cf8,#a78bfa)">Explore Software Dev <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="cat-services-grid reveal">
+          <a href="services/software/full-stack.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-stack"></i></div>
+            <h4>Full-Stack Software Development</h4>
+            <p>End-to-end software — frontend, backend, database, and DevOps — built and shipped by one expert team.</p>
+            <span class="price-from" style="color:#818cf8">From $2,000</span>
+            <span class="view-link" style="color:#818cf8">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/software/database.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-database"></i></div>
+            <h4>Database Design &amp; Management</h4>
+            <p>Schema design, query optimisation, migrations, backups, and ongoing database management.</p>
+            <span class="price-from" style="color:#818cf8">From $299</span>
+            <span class="view-link" style="color:#818cf8">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/software/desktop-app.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-desktop"></i></div>
+            <h4>Desktop App Development</h4>
+            <p>Cross-platform Windows, macOS, and Linux apps built with Electron or Tauri.</p>
+            <span class="price-from" style="color:#818cf8">From $1,500</span>
+            <span class="view-link" style="color:#818cf8">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/software/chatbot-ai.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-robot"></i></div>
+            <h4>Chatbot &amp; AI Integration</h4>
+            <p>Custom AI chatbots, GPT-4/Claude integrations, document processing, and intelligent automation.</p>
+            <span class="price-from" style="color:#818cf8">From $599</span>
+            <span class="view-link" style="color:#818cf8">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/software/automation.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-gear-six"></i></div>
+            <h4>Automation &amp; Scripting</h4>
+            <p>Python and Node.js scripts that eliminate repetitive tasks, scrape data, and automate workflows.</p>
+            <span class="price-from" style="color:#818cf8">From $149</span>
+            <span class="view-link" style="color:#818cf8">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/software/consulting.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-chat-circle-dots"></i></div>
+            <h4>System &amp; Software Consulting</h4>
+            <p>Architecture reviews, tech stack advice, code audits, and independent technical guidance.</p>
+            <span class="price-from" style="color:#818cf8">From $199</span>
+            <span class="view-link" style="color:#818cf8">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/software/devops.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-cloud"></i></div>
+            <h4>Cloud Deployment &amp; DevOps</h4>
+            <p>AWS, GCP, DigitalOcean setup with CI/CD pipelines, Docker, monitoring, and auto-scaling.</p>
+            <span class="price-from" style="color:#818cf8">From $499</span>
+            <span class="view-link" style="color:#818cf8">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/software/technical-support.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(129,140,248,0.1);border-color:rgba(129,140,248,0.2);color:#818cf8"><i class="ph-fill ph-headset"></i></div>
+            <h4>Technical Support &amp; IT Consulting</h4>
+            <p>On-demand expert IT support — remote troubleshooting, system setup, and technical guidance.</p>
+            <span class="price-from" style="color:#818cf8">From $79/hr</span>
+            <span class="view-link" style="color:#818cf8">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORY 3: VIDEO EDITING ═══ -->
+  <section class="cat-section">
+    <div class="container">
+      <div class="cat-section-inner">
+        <div class="cat-left reveal">
+          <span class="cat-badge" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="ph-fill ph-video-camera"></i> Category 03</span>
+          <h2>Video<br>Editing</h2>
+          <p>Professional video editing for every format and platform — from cinematic long-form YouTube content to scroll-stopping short-form reels. We cut, colour-grade, and deliver content that builds audiences.</p>
+          <ul class="cat-highlights">
+            <li><i class="ph-fill ph-check-circle"></i> DaVinci Resolve &amp; Adobe Premiere Pro editing</li>
+            <li><i class="ph-fill ph-check-circle"></i> 2–4 day standard turnaround on all projects</li>
+            <li><i class="ph-fill ph-check-circle"></i> Optimised for every major platform's algorithm</li>
+            <li><i class="ph-fill ph-check-circle"></i> Captions, thumbnails, and SFX included in packages</li>
+            <li><i class="ph-fill ph-check-circle"></i> Monthly creator retainers available</li>
+          </ul>
+          <a href="services/video/youtube.html" class="cat-explore-btn" style="background:linear-gradient(135deg,#ef4444,#f97316)">Explore Video Services <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="cat-services-grid reveal">
+          <a href="services/video/youtube.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="fab fa-youtube"></i></div>
+            <h4>YouTube Video Editing</h4>
+            <p>Long-form content editing — cuts, colour grading, captions, B-roll, thumbnails, and more.</p>
+            <span class="price-from" style="color:#f87171">From $49/video</span>
+            <span class="view-link" style="color:#f87171">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/video/short-form.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="fab fa-tiktok"></i></div>
+            <h4>Short-Form / Reels &amp; TikTok</h4>
+            <p>Scroll-stopping vertical content for TikTok, Instagram Reels, and YouTube Shorts.</p>
+            <span class="price-from" style="color:#f87171">From $25/video</span>
+            <span class="view-link" style="color:#f87171">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/video/motion-graphics.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="ph-fill ph-film-strip"></i></div>
+            <h4>Motion Graphics &amp; Animation</h4>
+            <p>Animated intros, lower thirds, logo reveals, kinetic typography, and explainer animations.</p>
+            <span class="price-from" style="color:#f87171">From $149</span>
+            <span class="view-link" style="color:#f87171">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/video/corporate.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="ph-fill ph-buildings"></i></div>
+            <h4>Corporate &amp; Promotional Video</h4>
+            <p>Brand films, product demos, testimonial reels, and corporate event highlight videos.</p>
+            <span class="price-from" style="color:#f87171">From $199</span>
+            <span class="view-link" style="color:#f87171">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/video/wedding-event.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="ph-fill ph-heart"></i></div>
+            <h4>Wedding &amp; Event Video</h4>
+            <p>Cinematic wedding films and event highlight reels that capture every meaningful moment.</p>
+            <span class="price-from" style="color:#f87171">From $199</span>
+            <span class="view-link" style="color:#f87171">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/video/podcast.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="ph-fill ph-microphone"></i></div>
+            <h4>Podcast Video Editing</h4>
+            <p>Multi-camera podcast edits with audio enhancement, chapter markers, and short-form repurposing.</p>
+            <span class="price-from" style="color:#f87171">From $49/episode</span>
+            <span class="view-link" style="color:#f87171">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/video/color-sound.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="ph-fill ph-palette"></i></div>
+            <h4>Color Grading &amp; Sound Design</h4>
+            <p>Cinematic colour grades and professional audio mixing for existing footage or full edits.</p>
+            <span class="price-from" style="color:#f87171">From $79</span>
+            <span class="view-link" style="color:#f87171">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/video/video-ads.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:#f87171"><i class="ph-fill ph-megaphone"></i></div>
+            <h4>Video Ads Editing</h4>
+            <p>Conversion-focused ad creatives for Facebook, Instagram, YouTube, TikTok, and Google.</p>
+            <span class="price-from" style="color:#f87171">From $79/ad</span>
+            <span class="view-link" style="color:#f87171">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORY 4: GRAPHICS & DESIGN ═══ -->
+  <section class="cat-section" style="background:rgba(245,158,11,0.02)">
+    <div class="container">
+      <div class="cat-section-inner">
+        <div class="cat-left reveal">
+          <span class="cat-badge" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="ph-fill ph-palette"></i> Category 04</span>
+          <h2>Graphics &amp;<br>Design</h2>
+          <p>Visual identities, digital interfaces, and print materials that make your brand look like it means business. Design isn't decoration — it's communication, and we make every pixel count.</p>
+          <ul class="cat-highlights">
+            <li><i class="ph-fill ph-check-circle"></i> All files delivered in editable source formats</li>
+            <li><i class="ph-fill ph-check-circle"></i> Designed in Figma, Adobe Illustrator &amp; Photoshop</li>
+            <li><i class="ph-fill ph-check-circle"></i> Brand guidelines included with identity projects</li>
+            <li><i class="ph-fill ph-check-circle"></i> Print-ready CMYK files for all print work</li>
+            <li><i class="ph-fill ph-check-circle"></i> Canva templates available for easy team use</li>
+          </ul>
+          <a href="services/design/logo-branding.html" class="cat-explore-btn" style="background:linear-gradient(135deg,#f59e0b,#f97316)">Explore Design Services <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="cat-services-grid reveal">
+          <a href="services/design/logo-branding.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="ph-fill ph-star"></i></div>
+            <h4>Logo &amp; Brand Identity</h4>
+            <p>Complete brand systems — logo, colours, typography, and full brand guidelines document.</p>
+            <span class="price-from" style="color:#fbbf24">From $149</span>
+            <span class="view-link" style="color:#fbbf24">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/design/ui-ux.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="ph-fill ph-desktop"></i></div>
+            <h4>UI/UX Design</h4>
+            <p>User research, wireframes, and high-fidelity Figma prototypes for web and mobile products.</p>
+            <span class="price-from" style="color:#fbbf24">From $299</span>
+            <span class="view-link" style="color:#fbbf24">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/design/social-graphics.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="fab fa-instagram"></i></div>
+            <h4>Social Media Graphics</h4>
+            <p>On-brand posts, stories, carousels, and banners for every platform with editable templates.</p>
+            <span class="price-from" style="color:#fbbf24">From $149</span>
+            <span class="view-link" style="color:#fbbf24">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/design/print.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="ph-fill ph-printer"></i></div>
+            <h4>Print Design</h4>
+            <p>Flyers, business cards, brochures, posters, and banners — print-ready at 300dpi CMYK.</p>
+            <span class="price-from" style="color:#fbbf24">From $79</span>
+            <span class="view-link" style="color:#fbbf24">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/design/packaging.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="ph-fill ph-package"></i></div>
+            <h4>Packaging Design</h4>
+            <p>Product boxes, labels, pouches, and packaging with dielines and 3D mockups included.</p>
+            <span class="price-from" style="color:#fbbf24">From $149</span>
+            <span class="view-link" style="color:#fbbf24">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/design/illustration.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="ph-fill ph-paint-brush"></i></div>
+            <h4>Illustration &amp; Custom Artwork</h4>
+            <p>Custom digital illustrations, mascots, icon sets, and brand artwork in any style.</p>
+            <span class="price-from" style="color:#fbbf24">From $99</span>
+            <span class="view-link" style="color:#fbbf24">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/design/pitch-deck.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="ph-fill ph-file-ppt"></i></div>
+            <h4>Presentation &amp; Pitch Deck</h4>
+            <p>Investor decks, sales presentations, and keynote slides that win rooms and deals.</p>
+            <span class="price-from" style="color:#fbbf24">From $199</span>
+            <span class="view-link" style="color:#fbbf24">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/design/book-cover.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.2);color:#fbbf24"><i class="ph-fill ph-book-open"></i></div>
+            <h4>Book Cover Design</h4>
+            <p>Ebook and print book covers for Amazon KDP, IngramSpark, and all major platforms.</p>
+            <span class="price-from" style="color:#fbbf24">From $99</span>
+            <span class="view-link" style="color:#fbbf24">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORY 5: DIGITAL MARKETING ═══ -->
+  <section class="cat-section">
+    <div class="container">
+      <div class="cat-section-inner">
+        <div class="cat-left reveal">
+          <span class="cat-badge" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399"><i class="ph-fill ph-chart-line-up"></i> Category 05</span>
+          <h2>Digital<br>Marketing</h2>
+          <p>Strategy-first marketing that builds real visibility, drives qualified traffic, and converts visitors into revenue. We don't chase vanity metrics — we chase results that show up in your bank account.</p>
+          <ul class="cat-highlights">
+            <li><i class="ph-fill ph-check-circle"></i> Clear KPIs agreed before any campaign starts</li>
+            <li><i class="ph-fill ph-check-circle"></i> Monthly performance reports in plain language</li>
+            <li><i class="ph-fill ph-check-circle"></i> Google, Meta, TikTok, and LinkedIn advertising</li>
+            <li><i class="ph-fill ph-check-circle"></i> Full conversion tracking setup on every project</li>
+            <li><i class="ph-fill ph-check-circle"></i> No black-hat SEO — only sustainable, white-hat methods</li>
+          </ul>
+          <a href="services/digital-marketing/seo.html" class="cat-explore-btn" style="background:linear-gradient(135deg,#10b981,#06b6d4)">Explore Digital Marketing <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="cat-services-grid reveal">
+          <a href="services/digital-marketing/seo.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399"><i class="ph-fill ph-magnifying-glass"></i></div>
+            <h4>Search Engine Optimisation (SEO)</h4>
+            <p>Technical audits, on-page optimisation, link building, and local SEO for sustainable organic growth.</p>
+            <span class="price-from" style="color:#34d399">From $299/mo</span>
+            <span class="view-link" style="color:#34d399">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/digital-marketing/social-media.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399"><i class="fab fa-instagram"></i></div>
+            <h4>Social Media Marketing</h4>
+            <p>Strategy, content creation, scheduling, and community management across all major platforms.</p>
+            <span class="price-from" style="color:#34d399">From $299/mo</span>
+            <span class="view-link" style="color:#34d399">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/digital-marketing/paid-ads.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399"><i class="fab fa-google"></i></div>
+            <h4>Paid Advertising (Google &amp; Meta)</h4>
+            <p>ROI-focused Google Ads, Meta Ads, and TikTok Ads campaigns managed for maximum return.</p>
+            <span class="price-from" style="color:#34d399">From $299/mo</span>
+            <span class="view-link" style="color:#34d399">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/digital-marketing/content-marketing.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399"><i class="ph-fill ph-pen-nib"></i></div>
+            <h4>Content Marketing Strategy</h4>
+            <p>SEO-driven blog posts, pillar content, case studies, and content calendars that build authority.</p>
+            <span class="price-from" style="color:#34d399">From $299/mo</span>
+            <span class="view-link" style="color:#34d399">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/digital-marketing/influencer.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399"><i class="ph-fill ph-users"></i></div>
+            <h4>Influencer Marketing Campaigns</h4>
+            <p>Influencer research, outreach, contract management, and campaign reporting end-to-end.</p>
+            <span class="price-from" style="color:#34d399">From $499</span>
+            <span class="view-link" style="color:#34d399">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/digital-marketing/brand-strategy.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399"><i class="ph-fill ph-crosshair"></i></div>
+            <h4>Brand Strategy &amp; Positioning</h4>
+            <p>Positioning statements, messaging frameworks, competitive analysis, and go-to-market strategy.</p>
+            <span class="price-from" style="color:#34d399">From $799</span>
+            <span class="view-link" style="color:#34d399">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/digital-marketing/analytics.html" class="cat-svc-card">
+            <div class="svc-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#34d399"><i class="ph-fill ph-chart-bar"></i></div>
+            <h4>Analytics &amp; Performance Reporting</h4>
+            <p>GA4 setup, custom dashboards, pixel implementation, and clear monthly performance reports.</p>
+            <span class="price-from" style="color:#34d399">From $299</span>
+            <span class="view-link" style="color:#34d399">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORY 6: EMAIL MARKETING ═══ -->
+  <section class="cat-section" style="background:rgba(56,189,248,0.02)">
+    <div class="container">
+      <div class="cat-section-inner">
+        <div class="cat-left reveal">
+          <span class="cat-badge"><i class="ph-fill ph-envelope-open"></i> Category 06</span>
+          <h2>Email<br>Marketing</h2>
+          <p>Email still delivers the highest ROI of any marketing channel — $42 for every $1 spent on average. We design campaigns that get opened, automations that run 24/7, and strategies that build subscriber loyalty.</p>
+          <ul class="cat-highlights">
+            <li><i class="ph-fill ph-check-circle"></i> Works with Mailchimp, Klaviyo, HubSpot &amp; more</li>
+            <li><i class="ph-fill ph-check-circle"></i> Mobile-optimised HTML templates on every project</li>
+            <li><i class="ph-fill ph-check-circle"></i> A/B testing included in all packages</li>
+            <li><i class="ph-fill ph-check-circle"></i> GDPR-compliant list management practices</li>
+            <li><i class="ph-fill ph-check-circle"></i> Open rate, CTR, and revenue tracked per campaign</li>
+          </ul>
+          <a href="services/email/campaigns.html" class="cat-explore-btn">Explore Email Services <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="cat-services-grid reveal">
+          <a href="services/email/campaigns.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-envelope"></i></div>
+            <h4>Email Campaign Design &amp; Copywriting</h4>
+            <p>Branded promotional emails, product launches, and broadcast campaigns with conversion-focused copy.</p>
+            <span class="price-from">From $149</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/email/automation.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-gear-six"></i></div>
+            <h4>Email Automation Setup</h4>
+            <p>Welcome sequences, abandoned cart flows, post-purchase journeys, and re-engagement automations.</p>
+            <span class="price-from">From $299</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/email/newsletter.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-newspaper"></i></div>
+            <h4>Newsletter Management</h4>
+            <p>End-to-end newsletter strategy, writing, design, scheduling, and monthly performance reporting.</p>
+            <span class="price-from">From $199/mo</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/email/lead-nurturing.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-plant"></i></div>
+            <h4>Lead Nurturing Sequences</h4>
+            <p>B2B and B2C nurture sequences that guide prospects from first touch to confident purchase decision.</p>
+            <span class="price-from">From $399</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="services/email/list-building.html" class="cat-svc-card">
+            <div class="svc-icon"><i class="ph-fill ph-users"></i></div>
+            <h4>List Building &amp; Segmentation</h4>
+            <p>Lead magnets, opt-in forms, subscriber acquisition campaigns, and intelligent list segmentation.</p>
+            <span class="price-from">From $299</span>
+            <span class="view-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORY 7: OTHER SERVICES ═══ -->
+  <section class="cat-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Category 07</span>
+        <h2>Other Freelance <span class="accent-gradient">Tech Services</span></h2>
+        <p>Additional services available on request — contact us to discuss your specific needs.</p>
+      </div>
+      <div class="other-services-grid reveal">
+        <a href="contact.html" class="other-svc-pill"><i class="ph-fill ph-pen-nib"></i><span>Copywriting &amp; Content Writing</span></a>
+        <a href="contact.html" class="other-svc-pill"><i class="ph-fill ph-check-square"></i><span>Virtual Assistance</span></a>
+        <a href="contact.html" class="other-svc-pill"><i class="ph-fill ph-table"></i><span>Data Entry &amp; Data Analysis</span></a>
+        <a href="contact.html" class="other-svc-pill"><i class="ph-fill ph-microphone-stage"></i><span>Voice-Over &amp; Audio Editing</span></a>
+        <a href="contact.html" class="other-svc-pill"><i class="ph-fill ph-file-text"></i><span>Technical Writing &amp; Documentation</span></a>
+        <a href="contact.html" class="other-svc-pill"><i class="ph-fill ph-question"></i><span>Got Something Else? Ask Us</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-bg-effect"></div>
+    <div class="container cta-content reveal">
+      <h2>Not Sure Which Service You Need?</h2>
+      <p>Tell us about your project and we'll map out the exact services, timeline, and budget — completely free. No hard sell, no commitment.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-primary btn-lg">Let's Talk <i class="ph-fill ph-arrow-right"></i></a>
+        <a href="pricing.html" class="btn btn-ghost btn-lg">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+          <p>Engineering Ideas. Empowering Independence.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" id="footer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" id="footer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="social-icon" id="footer-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon" id="footer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon" id="footer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon" id="footer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+            <a href="#" class="social-icon" id="footer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Web & Dev</h5>
+          <a href="services/web-dev/website-development.html">Website Development</a>
+          <a href="services/web-dev/wordpress.html">WordPress</a>
+          <a href="services/web-dev/shopify.html">Shopify</a>
+          <a href="services/web-dev/mobile-app.html">Mobile Apps</a>
+          <a href="services/software/chatbot-ai.html">AI &amp; Chatbots</a>
+        </div>
+        <div class="footer-col">
+          <h5>Creative</h5>
+          <a href="services/video/youtube.html">YouTube Editing</a>
+          <a href="services/design/logo-branding.html">Logo &amp; Branding</a>
+          <a href="services/design/ui-ux.html">UI/UX Design</a>
+          <a href="services/digital-marketing/seo.html">SEO Services</a>
+          <a href="services/email/campaigns.html">Email Marketing</a>
+        </div>
+        <div class="footer-col">
+          <h5>Newsletter</h5>
+          <p>Get project tips and updates.</p>
+          <div class="newsletter">
+            <input type="email" placeholder="Your email address" />
+            <button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Darapet Technology. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/background.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/socials.js"></script>
+</body>
+</html>

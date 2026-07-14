@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — Darapet Technology</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;min-height:100vh;display:flex;overflow:hidden}
+    .auth-bg{position:fixed;inset:0;z-index:0}
+    .auth-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease;background-color:#020c1b}
+    .auth-slide.active{opacity:1}
+    .auth-slide::after{content:'';position:absolute;inset:0;background:rgba(2,12,27,0.72)}
+    .auth-slide-1{background-image:url('../assets/images/auth-bg-1.jpg'),linear-gradient(135deg,#020c1b,#0a2a6e)}
+    .auth-slide-2{background-image:url('../assets/images/auth-bg-2.jpg'),linear-gradient(135deg,#020c1b,#05174a)}
+    .auth-slide-3{background-image:url('../assets/images/auth-bg-3.jpg'),linear-gradient(135deg,#020c1b,#0d2253)}
+    .auth-slide-4{background-image:url('../assets/images/auth-bg-4.jpg'),linear-gradient(135deg,#020c1b,#071d45)}
+    .auth-slide-5{background-image:url('../assets/images/auth-bg-5.jpg'),linear-gradient(135deg,#020c1b,#0c1f50)}
+    .auth-wrap{position:relative;z-index:1;display:flex;width:100%;min-height:100vh}
+    .auth-left{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:48px;color:#fff}
+    .auth-brand{display:flex;align-items:center;gap:12px}
+    .auth-brand img{height:40px}
+    .auth-brand-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:#fff}
+    .auth-tagline{margin-top:auto}
+    .auth-tagline h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2}
+    .auth-tagline p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:420px}
+    .auth-dots{display:flex;gap:8px;margin-top:32px}
+    .auth-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all .3s}
+    .auth-dot.active{width:24px;border-radius:4px;background:#3b82f6}
+    .auth-right{width:480px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:32px 24px;overflow-y:auto}
+    .auth-card{background:#fff;border-radius:20px;padding:40px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+    .auth-card h1{font-family:'Space Grotesk',sans-serif;font-size:1.7rem;font-weight:700;color:#0f172a;margin-bottom:6px}
+    .auth-card .sub{font-size:.9rem;color:#64748b;margin-bottom:28px}
+    .field{margin-bottom:18px}
+    .field label{display:block;font-size:.82rem;font-weight:600;color:#374151;margin-bottom:6px}
+    .field input{width:100%;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.92rem;font-family:inherit;color:#0f172a;outline:none;transition:border .2s}
+    .field input:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
+    .field input::placeholder{color:#9ca3af}
+    .field-row{display:flex;gap:12px}
+    .field-row .field{flex:1;margin-bottom:0}
+    .btn-auth{width:100%;padding:13px;background:#1d4ed8;color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s}
+    .btn-auth:hover{background:#1e40af}
+    .btn-auth:disabled{opacity:.6;cursor:not-allowed}
+    .auth-err{color:#ef4444;font-size:.83rem;margin-bottom:14px;padding:10px 14px;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;display:none}
+    .auth-switch{text-align:center;margin-top:20px;font-size:.88rem;color:#64748b}
+    .auth-switch a{color:#3b82f6;font-weight:600;text-decoration:none}
+    .auth-switch a:hover{text-decoration:underline}
+    .terms{font-size:.78rem;color:#94a3b8;margin-top:14px;text-align:center;line-height:1.5}
+    @media(max-width:768px){.auth-left{display:none}.auth-right{width:100%}.auth-card{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <div class="auth-bg">
+    <div class="auth-slide auth-slide-3 active"></div>
+    <div class="auth-slide auth-slide-4"></div>
+    <div class="auth-slide auth-slide-5"></div>
+    <div class="auth-slide auth-slide-1"></div>
+    <div class="auth-slide auth-slide-2"></div>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="auth-left">
+      <a href="../index.html" class="auth-brand">
+        <img src="../assets/images/logo.png" alt="Darapet Technology">
+        <span class="auth-brand-name">Darapet Technology</span>
+      </a>
+      <div class="auth-tagline">
+        <h2>Join the community.<br>Get expert help.</h2>
+        <p>Create a free account and connect directly with our specialists in development, design, video, and marketing.</p>
+        <div class="auth-dots" id="authDots">
+          <div class="auth-dot active" data-slide="0"></div>
+          <div class="auth-dot" data-slide="1"></div>
+          <div class="auth-dot" data-slide="2"></div>
+          <div class="auth-dot" data-slide="3"></div>
+          <div class="auth-dot" data-slide="4"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <div class="auth-card">
+        <h1>Create account</h1>
+        <p class="sub">Free account — takes 30 seconds</p>
+
+        <div class="auth-err" id="regErr"></div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="regFirst">First name</label>
+            <input type="text" id="regFirst" placeholder="John" autocomplete="given-name" />
+          </div>
+          <div class="field">
+            <label for="regLast">Last name</label>
+            <input type="text" id="regLast" placeholder="Doe" autocomplete="family-name" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="regEmail">Email address</label>
+          <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="regPassword">Password</label>
+          <input type="password" id="regPassword" placeholder="At least 6 characters" autocomplete="new-password" />
+        </div>
+
+        <button class="btn-auth" id="regBtn">Create Account</button>
+
+        <p class="terms">By creating an account you agree to our <a href="#" style="color:#3b82f6">Terms of Service</a> and <a href="#" style="color:#3b82f6">Privacy Policy</a>.</p>
+
+        <div class="auth-switch">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="../js/firebase-app.js"></script>
+  <script>
+    let slide = 0;
+    const slides = document.querySelectorAll('.auth-slide');
+    const dots = document.querySelectorAll('.auth-dot');
+    function goSlide(n) {
+      slides[slide].classList.remove('active'); dots[slide].classList.remove('active');
+      slide = n % slides.length;
+      slides[slide].classList.add('active'); dots[slide].classList.add('active');
+    }
+    let timer = setInterval(() => goSlide(slide + 1), 5000);
+    dots.forEach(d => d.addEventListener('click', () => { clearInterval(timer); goSlide(+d.dataset.slide); timer = setInterval(() => goSlide(slide + 1), 5000); }));
+
+    auth.onAuthStateChanged(user => { if (user) window.location = 'chat.html'; });
+
+    document.getElementById('regBtn').addEventListener('click', async () => {
+      const first = document.getElementById('regFirst').value.trim();
+      const last  = document.getElementById('regLast').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const pw    = document.getElementById('regPassword').value;
+      const errEl = document.getElementById('regErr');
+      const btn   = document.getElementById('regBtn');
+      errEl.style.display = 'none';
+      if (!first || !email || !pw) { errEl.textContent='Please fill in all required fields.'; errEl.style.display=''; return; }
+      if (pw.length < 6) { errEl.textContent='Password must be at least 6 characters.'; errEl.style.display=''; return; }
+      btn.disabled = true; btn.textContent = 'Creating account…';
+      try {
+        const name = `${first} ${last}`.trim();
+        const cred = await auth.createUserWithEmailAndPassword(email, pw);
+        await cred.user.updateProfile({ displayName: name });
+        await db.collection('users').doc(cred.user.uid).set({
+          name, email,
+          initials: (first[0]+(last[0]||'')).toUpperCase(),
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      } catch(e) {
+        errEl.textContent = e.code === 'auth/email-already-in-use'
+          ? 'This email is already registered. Try signing in.' : e.message;
+        errEl.style.display = '';
+        btn.disabled = false; btn.textContent = 'Create Account';
+      }
+    });
+
+    document.getElementById('regPassword').addEventListener('keypress', e => {
+      if (e.key === 'Enter') document.getElementById('regBtn').click();
+    });
+  </script>
+</body>
+</html>

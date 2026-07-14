@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web & App Development — Darapet Technology</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="../../css/animations.css" />
+  <link rel="stylesheet" href="../../css/background.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+</head>
+<body>
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+      <div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div>
+      <div class="strip-right"><span class="strip-badge">Available for Projects</span></div>
+    </div>
+  </div>
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="../../index.html" class="nav-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../../index.html">Home</a></li>
+        <li class="has-dropdown"><a href="../services.html" class="active">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu"><div class="mega-grid">
+            <div class="mega-col"><h4><i class="ph-fill ph-code"></i> Web & App Dev</h4><a href="web-app-development.html">WordPress</a><a href="web-app-development.html">Shopify</a><a href="web-app-development.html">Custom Apps</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4><a href="video-editing.html">YouTube</a><a href="video-editing.html">Short-Form</a><a href="video-editing.html">Motion Graphics</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-palette"></i> Design</h4><a href="graphics-design.html">Logo & Branding</a><a href="graphics-design.html">UI/UX</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-chart-line-up"></i> Marketing</h4><a href="digital-marketing.html">SEO</a><a href="email-marketing.html">Email Marketing</a></div>
+          </div></div>
+        </li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../testimonials.html">Testimonials</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav"><a href="../../index.html">Home</a><a href="../services.html">Services</a><a href="../portfolio.html">Portfolio</a><a href="../pricing.html">Pricing</a><a href="../about.html">About</a><a href="../testimonials.html">Testimonials</a><a href="../contact.html">Contact</a></nav>
+    <a href="../contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <span class="section-tag reveal">Web & App Development</span>
+      <h1 class="reveal">Custom Digital Products <span class="accent-gradient">Built to Scale</span></h1>
+      <p class="reveal">From landing pages to full-stack web applications and mobile apps — we build performant, scalable digital products using the world's best technologies.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap" class="reveal">
+        <a href="../contact.html" class="btn btn-primary btn-lg">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        <a href="../pricing.html" class="btn btn-ghost btn-lg">View Pricing</a>
+        <a href="../chat.html" class="btn btn-outline btn-lg"><i class="ph-fill ph-chat-circle-dots"></i> Chat with an Expert</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AIM -->
+  <section class="section">
+    <div class="container">
+      <div class="aim-grid">
+        <div class="reveal">
+          <span class="section-tag">Our Aim</span>
+          <h2 style="margin:16px 0">We Build Products <span class="accent-gradient">People Love</span></h2>
+          <p>Every website or application we build is designed with a single goal: to deliver results for your business. We combine clean code, thoughtful UX, and conversion-focused design to create digital products that don't just look good — they perform.</p>
+          <p style="margin-top:16px">Whether you need a WordPress blog, a Shopify store, a React web app, or a cross-platform mobile app — our team has the technical depth to deliver it at a premium level.</p>
+        </div>
+        <div class="tools-icons-grid reveal">
+          <div class="tool-badge"><i class="fab fa-wordpress"></i><span>WordPress</span></div>
+          <div class="tool-badge"><i class="fab fa-shopify"></i><span>Shopify</span></div>
+          <div class="tool-badge"><i class="fab fa-react"></i><span>React</span></div>
+          <div class="tool-badge"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+          <div class="tool-badge"><i class="fab fa-js"></i><span>JavaScript</span></div>
+          <div class="tool-badge"><i class="ph-fill ph-device-mobile"></i><span>React Native</span></div>
+          <div class="tool-badge"><i class="fab fa-css3-alt"></i><span>Tailwind CSS</span></div>
+          <div class="tool-badge"><i class="ph-fill ph-database"></i><span>PostgreSQL</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES UNDER THIS CATEGORY -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Individual Services</span>
+        <h2>What We Build</h2>
+        <p>Six specialized development services, each with dedicated expertise and a track record of results.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="fab fa-wordpress"></i></div>
+          <h3>WordPress Development</h3>
+          <p>Bespoke WordPress websites — custom themes from scratch, plugin development, WooCommerce stores, and enterprise CMS platforms built for editors.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="fab fa-shopify"></i></div>
+          <h3>Shopify Development</h3>
+          <p>High-converting Shopify storefronts — custom theme development, app integrations, checkout optimisation, and headless Shopify builds.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="fab fa-react"></i></div>
+          <h3>Custom Web Applications</h3>
+          <p>React, Next.js, and full-stack web applications — SaaS tools, internal dashboards, booking platforms, and CRM systems built for scale.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="ph-fill ph-device-mobile"></i></div>
+          <h3>Mobile App Development</h3>
+          <p>Cross-platform iOS and Android apps with React Native — native performance, single codebase, App Store and Play Store submission handled.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="ph-fill ph-plug"></i></div>
+          <h3>API & Backend Development</h3>
+          <p>REST APIs, GraphQL endpoints, Supabase/Firebase integrations, database architecture, and cloud infrastructure on AWS or Vercel.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+        <div class="service-card glass-card reveal">
+          <div class="service-icon"><i class="ph-fill ph-code"></i></div>
+          <h3>Website Development</h3>
+          <p>Professional business websites — landing pages, portfolio sites, corporate websites, and marketing pages built to convert visitors into clients.</p>
+          <a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY FEATURES -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">What You Get</span>
+        <h2>Every Project Includes</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-device-mobile"></i></div><h4>Fully Responsive</h4><p>Every site we build looks and works perfectly on mobile, tablet, and desktop — no compromises.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-gauge"></i></div><h4>Performance Optimized</h4><p>Fast loading speeds, optimised assets, and clean code that ranks well on Google Core Web Vitals.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-magnifying-glass"></i></div><h4>SEO-Ready</h4><p>Semantic HTML, proper meta tags, structured data, and site speed — SEO fundamentals built in by default.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-shield-check"></i></div><h4>Secure & Maintained</h4><p>SSL, clean dependency management, and best-practice security patterns. Plus ongoing support post-launch.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-git-branch"></i></div><h4>Source Code Ownership</h4><p>You receive full source code and assets. Nothing is locked behind proprietary systems or subscriptions.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-graduation-cap"></i></div><h4>Training & Handover</h4><p>We walk you through how to use and manage your new product. You'll never feel left in the dark.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">How It Works</span><h2>Our Development <span class="accent-gradient">Process</span></h2></div>
+      <div class="process-timeline">
+        <div class="process-step reveal"><div class="step-number">01</div><div class="step-icon"><i class="ph-fill ph-magnifying-glass"></i></div><h4>Discovery</h4><p>We scope your requirements, goals, and technical constraints in detail.</p></div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal"><div class="step-number">02</div><div class="step-icon"><i class="ph-fill ph-tree-structure"></i></div><h4>Architecture</h4><p>We design the tech stack, database schema, and system architecture.</p></div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal"><div class="step-number">03</div><div class="step-icon"><i class="ph-fill ph-compass-tool"></i></div><h4>Design</h4><p>Wireframes and high-fidelity mockups for your approval before coding begins.</p></div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal"><div class="step-number">04</div><div class="step-icon"><i class="ph-fill ph-code"></i></div><h4>Build</h4><p>Iterative development with regular preview links so you can track progress.</p></div>
+        <div class="process-connector"></div>
+        <div class="process-step reveal"><div class="step-number">05</div><div class="step-icon"><i class="ph-fill ph-rocket-launch"></i></div><h4>Launch</h4><p>Testing, QA, deployment, and full handover with documentation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background:rgba(255,255,255,0.01)">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">Client Reviews</span><h2>What Clients Say</h2></div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px" class="reveal">
+        <div class="testimonial-full-card glass-card reveal"><div class="stars">★★★★★</div><p class="quote">"They built our Shopify store from scratch in 12 days and our conversion rate jumped by 43% in the first month. Incredible work — exactly what we asked for and more."</p><div class="client-info"><div class="client-avatar">AT</div><div><strong>Amara Tunde</strong><span>Owner, LuxeThreads Fashion</span></div></div></div>
+        <div class="testimonial-full-card glass-card reveal"><div class="stars">★★★★★</div><p class="quote">"The mobile app they delivered has a 4.7-star App Store rating. Communication was excellent throughout and the code quality is genuinely impressive."</p><div class="client-info"><div class="client-avatar">BC</div><div><strong>Ben Chibuzo</strong><span>CTO, QuickByte Startup</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">Investment</span><h2>Web Development <span class="accent-gradient">Pricing</span></h2></div>
+      <div class="pricing-grid">
+        <div class="pricing-card glass-card reveal"><div class="pricing-tier">Starter</div><div class="pricing-price">From <span>$299</span></div><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Up to 5 Pages</li><li><i class="ph-fill ph-check"></i> Mobile Responsive</li><li><i class="ph-fill ph-check"></i> Basic SEO Setup</li><li><i class="ph-fill ph-check"></i> Contact Form</li><li><i class="ph-fill ph-check"></i> 14-Day Support</li></ul><a href="../contact.html" class="btn btn-outline">Get Started</a></div>
+        <div class="pricing-card pricing-card--popular glass-card reveal"><div class="pricing-badge">Most Popular</div><div class="pricing-tier">Professional</div><div class="pricing-price">From <span>$799</span></div><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Up to 15 Pages</li><li><i class="ph-fill ph-check"></i> Custom Design</li><li><i class="ph-fill ph-check"></i> Advanced SEO</li><li><i class="ph-fill ph-check"></i> CMS Integration</li><li><i class="ph-fill ph-check"></i> 30-Day Support</li></ul><a href="../contact.html" class="btn btn-primary">Get Started</a></div>
+        <div class="pricing-card glass-card reveal"><div class="pricing-tier">Enterprise</div><div class="pricing-price">From <span>$2,500</span></div><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Unlimited Pages</li><li><i class="ph-fill ph-check"></i> Full Custom Dev</li><li><i class="ph-fill ph-check"></i> E-Commerce</li><li><i class="ph-fill ph-check"></i> API Integrations</li><li><i class="ph-fill ph-check"></i> Ongoing Support</li></ul><a href="../contact.html" class="btn btn-outline">Contact Us</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">FAQ</span><h2>Common Questions</h2></div>
+      <div style="max-width:760px;margin:0 auto">
+        <div class="faq-item"><button class="faq-question">How long does a website take? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">A standard 5-page business website takes 5–10 days. WordPress or Shopify builds typically take 10–18 days depending on complexity. Custom web apps are scoped individually — usually 3–8 weeks.</div></div>
+        <div class="faq-item"><button class="faq-question">Do I need to provide content? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">Ideally yes — you know your brand best. However, we can write placeholder copy that you edit, or offer professional copywriting as an add-on service.</div></div>
+        <div class="faq-item"><button class="faq-question">Will I be able to edit the site myself? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">Absolutely. WordPress and Shopify sites are built with non-technical users in mind. For custom web apps, we provide documentation and a training call before handover.</div></div>
+        <div class="faq-item"><button class="faq-question">What about hosting? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">We build for your chosen hosting environment (or recommend one). We can also manage deployment to Vercel, Netlify, WP Engine, or a VPS as part of the project.</div></div>
+        <div class="faq-item"><button class="faq-question">Do you provide ongoing maintenance? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">Yes — we offer maintenance retainers covering updates, backups, performance monitoring, and content changes on a monthly basis.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  
+<!-- ═══ SERVICE VIDEO SECTION ═══ -->
+  <section class="section svc-video-section">
+    <div class="container svc-video-container">
+      <div class="svc-video-header">
+        <span class="section-tag">Watch It In Action</span>
+        <h2>Web & App Development — Design Trends That Win in 2026</h2>
+      </div>
+      <div class="svc-video-frame">
+        <div class="svc-video-ratio">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/waHuVF3XuMA?autoplay=1&mute=1&loop=1&playlist=waHuVF3XuMA&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&color=white"
+            title="Web & App Development — Design Trends That Win in 2026"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══ /SERVICE VIDEO SECTION ═══ -->
+  <section class="cta-banner">
+    <div class="cta-bg-effect"></div>
+    <div class="container cta-content reveal">
+      <h2>Ready to Build Something Exceptional?</h2>
+      <p>Tell us about your project and get a free quote within 24 hours.</p>
+      <div class="cta-actions"><a href="../contact.html" class="btn btn-primary btn-lg">Get in Touch With Us <i class="ph-fill ph-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="../../index.html" class="nav-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a><p>Engineering Ideas. Empowering Independence.</p>
+          <div class="footer-socials"><a href="#" class="social-icon" id="footer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon" id="footer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a><a href="#" class="social-icon" id="footer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon" id="footer-tt" target="_blank"><i class="fab fa-tiktok"></i></a><a href="#" class="social-icon" id="footer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon" id="footer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a><a href="#" class="social-icon" id="footer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a></div>
+        </div>
+        <div class="footer-col"><h5>Other Services</h5><a href="video-editing.html">Video Editing</a><a href="graphics-design.html">Graphics & Design</a><a href="digital-marketing.html">Digital Marketing</a><a href="email-marketing.html">Email Marketing</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="../about.html">About Us</a><a href="../portfolio.html">Portfolio</a><a href="../testimonials.html">Testimonials</a><a href="../pricing.html">Pricing</a></div>
+        <div class="footer-col"><h5>Newsletter</h5><div class="newsletter"><input type="email" placeholder="Your email" /><button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Darapet Technology. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <style>
+    .aim-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    .tools-icons-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .tool-badge { display:flex; flex-direction:column; align-items:center; gap:6px; padding:16px 8px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-sm); transition:var(--transition); }
+    .tool-badge:hover { border-color:var(--border-hover); background:var(--bg-card-hover); }
+    .tool-badge i { font-size:1.5rem; color:var(--accent-1); }
+    .tool-badge span { font-size:0.72rem; font-weight:600; color:var(--text-muted); text-align:center; }
+    .testimonial-full-card { padding:28px; display:flex; flex-direction:column; gap:16px; }
+    .testimonial-full-card .stars { font-size:1rem; color:#f59e0b; letter-spacing:2px; }
+    @media(max-width:768px){.aim-grid{grid-template-columns:1fr}.tools-icons-grid{grid-template-columns:repeat(4,1fr)}}
+  </style>
+  <script src="../../js/background.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/socials.js"></script>
+</body>
+</html>

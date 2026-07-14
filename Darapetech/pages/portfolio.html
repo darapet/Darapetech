@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Darapet Technology</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="../assets/images/logo.png" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/background.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+</head>
+<body>
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left"><img src="../assets/images/logo.png" alt="DT" class="site-logo-img"></div>
+      <div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div>
+      <div class="strip-right"><span class="strip-badge">Available for Projects</span></div>
+    </div>
+  </div>
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-dropdown"><a href="services.html">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu"><div class="mega-grid">
+            <div class="mega-col"><h4><i class="ph-fill ph-code"></i> Web & App Dev</h4><a href="services/web-app-development.html">WordPress</a><a href="services/web-app-development.html">Shopify</a><a href="services/web-app-development.html">Custom Apps</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4><a href="services/video-editing.html">YouTube</a><a href="services/video-editing.html">Short-Form</a><a href="services/video-editing.html">Motion Graphics</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-palette"></i> Design</h4><a href="services/graphics-design.html">Logo & Branding</a><a href="services/graphics-design.html">UI/UX</a><a href="services/graphics-design.html">Social Graphics</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-chart-line-up"></i> Marketing</h4><a href="services/digital-marketing.html">SEO</a><a href="services/digital-marketing.html">Paid Ads</a><a href="services/email-marketing.html">Email Marketing</a></div>
+          </div></div>
+        </li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav"><a href="../index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="testimonials.html">Testimonials</a><a href="contact.html">Contact</a></nav>
+    <a href="contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <span class="section-tag reveal">Our Work</span>
+      <h1 class="reveal">Projects That <span class="accent-gradient">Define Us</span></h1>
+      <p class="reveal">Every project in our portfolio represents a real client, a real challenge, and a real result. Browse by category to see what we can do for you.</p>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Web & App Dev</button>
+        <button class="filter-btn" data-filter="video">Video Editing</button>
+        <button class="filter-btn" data-filter="design">Graphics & Design</button>
+        <button class="filter-btn" data-filter="marketing">Digital Marketing</button>
+        <button class="filter-btn" data-filter="email">Email Marketing</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+        <div class="portfolio-card glass-card reveal" data-category="web">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/ecommerce-platform.jpg" alt="E-Commerce Platform" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div><span class="portfolio-img-label">Web Dev</span></div>
+          <div class="portfolio-info"><span class="portfolio-tag">Shopify Development</span><h4>E-Commerce Platform Redesign</h4><p>Complete Shopify redesign boosting conversion by 43% for a premium fashion brand.</p><div class="portfolio-results"><span><i class="ph-fill ph-arrow-up"></i> 43% Conversion</span><span><i class="ph-fill ph-clock"></i> 12 Days</span></div></div>
+        </div>
+        <div class="portfolio-card glass-card reveal" data-category="video">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/brand-launch-video.jpg" alt="Brand Launch Video" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div></div>
+          <div class="portfolio-info"><span class="portfolio-tag">YouTube Video Editing</span><h4>Brand Launch Video Series</h4><p>5-part brand story series that grew a YouTube channel from 0 to 12K subscribers in 3 months.</p><div class="portfolio-results"><span><i class="ph-fill ph-users"></i> 12K Subscribers</span><span><i class="ph-fill ph-clock"></i> 8 Days</span></div></div>
+        </div>
+        <div class="portfolio-card glass-card reveal" data-category="design">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/startup-branding.jpg" alt="Tech Startup Branding" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div></div>
+          <div class="portfolio-info"><span class="portfolio-tag">Brand Identity</span><h4>Tech Startup Full Branding</h4><p>Complete brand identity, logo system, and visual guidelines for a SaaS startup raising seed funding.</p><div class="portfolio-results"><span><i class="ph-fill ph-star"></i> Full Identity</span><span><i class="ph-fill ph-clock"></i> 7 Days</span></div></div>
+        </div>
+        <div class="portfolio-card glass-card reveal" data-category="web">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/wellness-platform.jpg" alt="Health Platform" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div></div>
+          <div class="portfolio-info"><span class="portfolio-tag">WordPress Development</span><h4>Health & Wellness Platform</h4><p>Custom WordPress membership site with online courses, booking system, and payment integration.</p><div class="portfolio-results"><span><i class="ph-fill ph-users"></i> 500+ Members</span><span><i class="ph-fill ph-clock"></i> 18 Days</span></div></div>
+        </div>
+        <div class="portfolio-card glass-card reveal" data-category="marketing">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/seo-campaign.jpg" alt="Local SEO Campaign" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div></div>
+          <div class="portfolio-info"><span class="portfolio-tag">SEO & Content Marketing</span><h4>Local Business SEO Campaign</h4><p>12-month SEO strategy that took a local services business from page 4 to #1 Google ranking.</p><div class="portfolio-results"><span><i class="ph-fill ph-magnifying-glass"></i> #1 Rankings</span><span><i class="ph-fill ph-chart-line-up"></i> 280% Traffic</span></div></div>
+        </div>
+        <div class="portfolio-card glass-card reveal" data-category="email">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/email-automation.jpg" alt="Email Automation" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div></div>
+          <div class="portfolio-info"><span class="portfolio-tag">Email Marketing</span><h4>E-Commerce Email Automation</h4><p>Complete Klaviyo automation setup — welcome series, abandonment flows, and re-engagement campaigns.</p><div class="portfolio-results"><span><i class="ph-fill ph-envelope-open"></i> 38% Open Rate</span><span><i class="ph-fill ph-currency-dollar"></i> 4.2x ROI</span></div></div>
+        </div>
+        <div class="portfolio-card glass-card reveal" data-category="video">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/social-content.jpg" alt="Social Content Package" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div></div>
+          <div class="portfolio-info"><span class="portfolio-tag">Short-Form / Reels</span><h4>Social Media Content Package</h4><p>60 short-form Reels and TikToks per month for a lifestyle brand — grew from 2K to 85K followers.</p><div class="portfolio-results"><span><i class="ph-fill ph-users"></i> 85K Followers</span><span><i class="ph-fill ph-clock"></i> Ongoing</span></div></div>
+        </div>
+        <div class="portfolio-card glass-card reveal" data-category="design">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/saas-dashboard.jpg" alt="SaaS Dashboard" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div></div>
+          <div class="portfolio-info"><span class="portfolio-tag">UI/UX Design</span><h4>SaaS Dashboard Redesign</h4><p>Complete UX audit and redesign of a B2B analytics dashboard — reduced support tickets by 60%.</p><div class="portfolio-results"><span><i class="ph-fill ph-arrow-down"></i> 60% Less Support</span><span><i class="ph-fill ph-smiley"></i> 4.8/5 UX Score</span></div></div>
+        </div>
+        <div class="portfolio-card glass-card reveal" data-category="web">
+          <div class="portfolio-img"><img src="../assets/images/portfolio/food-delivery-app.jpg" alt="Food Delivery App" loading="lazy"><div class="portfolio-overlay"><a href="contact.html" class="btn btn-sm btn-primary">Start Similar Project</a></div></div>
+          <div class="portfolio-info"><span class="portfolio-tag">Mobile App Development</span><h4>Food Delivery Mobile App</h4><p>React Native iOS & Android app for a regional food delivery startup — 4.7★ App Store rating.</p><div class="portfolio-results"><span><i class="ph-fill ph-star"></i> 4.7★ Rating</span><span><i class="ph-fill ph-download"></i> 10K+ Downloads</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO PORTFOLIO -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Video Editing &amp; Motion Graphics</span>
+        <h2>Watch the <span class="accent-gradient">Craft in Motion</span></h2>
+        <p>A few reels that show the kind of edits, color grading, and motion design we bring to every project. Click a thumbnail to play.</p>
+      </div>
+      <div class="video-portfolio-grid">
+        <div class="video-portfolio-card reveal" data-yt="gQldOO6KiU8">
+          <img src="https://img.youtube.com/vi/gQldOO6KiU8/hqdefault.jpg" alt="Motion design showreel">
+          <div class="video-portfolio-play"><i class="ph-fill ph-play"></i></div>
+          <span class="video-portfolio-label">Motion Design Reel</span>
+        </div>
+        <div class="video-portfolio-card reveal" data-yt="8IX7INkgnPo">
+          <img src="https://img.youtube.com/vi/8IX7INkgnPo/hqdefault.jpg" alt="Motion graphics showreel">
+          <div class="video-portfolio-play"><i class="ph-fill ph-play"></i></div>
+          <span class="video-portfolio-label">Motion Graphics Showreel</span>
+        </div>
+        <div class="video-portfolio-card reveal" data-yt="x1G85G01jRE">
+          <img src="https://img.youtube.com/vi/x1G85G01jRE/hqdefault.jpg" alt="Video editing showreel">
+          <div class="video-portfolio-play"><i class="ph-fill ph-play"></i></div>
+          <span class="video-portfolio-label">Video Editing Reel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-bg-effect"></div>
+    <div class="container cta-content reveal">
+      <h2>Want Results Like These?</h2>
+      <p>Every project above started with a conversation. Let's talk about what we can build for you.</p>
+      <div class="cta-actions"><a href="contact.html" class="btn btn-primary btn-lg">Start Your Project <i class="ph-fill ph-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a><p>Engineering Ideas. Empowering Independence.</p>
+          <div class="footer-socials"><a href="#" class="social-icon" id="footer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon" id="footer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a><a href="#" class="social-icon" id="footer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon" id="footer-tt" target="_blank"><i class="fab fa-tiktok"></i></a><a href="#" class="social-icon" id="footer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon" id="footer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a><a href="#" class="social-icon" id="footer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a></div>
+        </div>
+        <div class="footer-col"><h5>Services</h5><a href="services/web-app-development.html">Web & App Dev</a><a href="services/video-editing.html">Video Editing</a><a href="services/graphics-design.html">Graphics & Design</a><a href="services/digital-marketing.html">Digital Marketing</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a href="testimonials.html">Testimonials</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h5>Newsletter</h5><div class="newsletter"><input type="email" placeholder="Your email" /><button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Darapet Technology. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <style>
+    .portfolio-img-label { position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.5); color:#fff; font-size:0.72rem; padding:3px 10px; border-radius:100px; backdrop-filter:blur(8px); }
+    .portfolio-results { display:flex; gap:12px; margin-top:10px; flex-wrap:wrap; }
+    .portfolio-results span { font-size:0.75rem; color:var(--accent-1); display:flex; align-items:center; gap:4px; font-weight:600; }
+  </style>
+  <script src="../js/background.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/socials.js"></script>
+</body>
+</html>

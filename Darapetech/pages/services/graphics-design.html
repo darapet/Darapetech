@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphics & Design — Darapet Technology</title>
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="../../css/animations.css" />
+  <link rel="stylesheet" href="../../css/background.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+</head>
+<body>
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+      <div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div>
+      <div class="strip-right"><span class="strip-badge">Available for Projects</span></div>
+    </div>
+  </div>
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="../../index.html" class="nav-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../../index.html">Home</a></li>
+        <li class="has-dropdown"><a href="../services.html" class="active">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu"><div class="mega-grid">
+            <div class="mega-col"><h4><i class="ph-fill ph-code"></i> Web & App Dev</h4><a href="web-app-development.html">WordPress</a><a href="web-app-development.html">Shopify</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4><a href="video-editing.html">YouTube</a><a href="video-editing.html">Short-Form</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-palette"></i> Design</h4><a href="graphics-design.html">Logo & Branding</a><a href="graphics-design.html">UI/UX</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-chart-line-up"></i> Marketing</h4><a href="digital-marketing.html">SEO</a><a href="email-marketing.html">Email Marketing</a></div>
+          </div></div>
+        </li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../testimonials.html">Testimonials</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav"><a href="../../index.html">Home</a><a href="../services.html">Services</a><a href="../portfolio.html">Portfolio</a><a href="../pricing.html">Pricing</a><a href="../about.html">About</a><a href="../testimonials.html">Testimonials</a><a href="../contact.html">Contact</a></nav>
+    <a href="../contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <section class="page-hero" style="background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(16,185,129,0.1) 0%, rgba(14,165,233,0.07) 40%, transparent 70%)">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <span class="section-tag reveal">Graphics & Design</span>
+      <h1 class="reveal">Visuals That Make Your Brand <span class="accent-gradient">Unforgettable</span></h1>
+      <p class="reveal">From logos and brand identities to UI/UX, social media graphics, and print design — we craft visuals that communicate your brand's value at a glance.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap" class="reveal">
+        <a href="../contact.html" class="btn btn-primary btn-lg">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+        <a href="../pricing.html" class="btn btn-ghost btn-lg">View Pricing</a>
+        <a href="../chat.html" class="btn btn-outline btn-lg"><i class="ph-fill ph-chat-circle-dots"></i> Chat with an Expert</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">Our Design Services</span><h2>What We <span class="accent-gradient">Design</span></h2></div>
+      <div class="services-grid">
+        <div class="service-card glass-card reveal"><div class="service-icon"><i class="ph-fill ph-star"></i></div><h3>Logo & Brand Identity</h3><p>Comprehensive brand identity systems — logo, colour palette, typography, and brand guidelines that make you instantly recognisable.</p><a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a></div>
+        <div class="service-card glass-card reveal"><div class="service-icon"><i class="ph-fill ph-desktop"></i></div><h3>UI/UX Design</h3><p>User research, wireframes, and high-fidelity Figma prototypes for web and mobile products — designed to convert and delight.</p><a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a></div>
+        <div class="service-card glass-card reveal"><div class="service-icon"><i class="fab fa-instagram"></i></div><h3>Social Media Graphics</h3><p>On-brand social content — posts, stories, carousels, and ad creatives designed at scale and consistently branded.</p><a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a></div>
+        <div class="service-card glass-card reveal"><div class="service-icon"><i class="ph-fill ph-printer"></i></div><h3>Print Design</h3><p>Business cards, brochures, flyers, banners, packaging, and any other print collateral — print-ready files delivered.</p><a href="../contact.html" class="card-link">Get Started <i class="ph-fill ph-arrow-right"></i></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">What You Get</span><h2>Our Design Standards</h2></div>
+      <div class="why-grid">
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-export"></i></div><h4>All File Formats</h4><p>You receive every format: AI, EPS, SVG, PNG, PDF — in both full-colour and monochrome versions.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-copyright"></i></div><h4>Full Copyright Transfer</h4><p>All designs are 100% yours upon final payment. We retain no rights to your creative assets.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-arrows-clockwise"></i></div><h4>Structured Revisions</h4><p>Clear revision rounds built into every project — we work until you're completely satisfied.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="fab fa-figma"></i></div><h4>Figma Source Files</h4><p>UI/UX projects include full Figma source files so your development team can access every design asset.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-book-open"></i></div><h4>Brand Guidelines</h4><p>Every brand identity includes a professional guidelines document covering usage rules, spacing, and don'ts.</p></div>
+        <div class="why-card glass-card reveal"><div class="why-icon"><i class="ph-fill ph-lightning"></i></div><h4>Fast Turnaround</h4><p>Logo concepts within 48–72 hours. Full brand identities within 7 days. No unnecessary delays.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">Investment</span><h2>Design <span class="accent-gradient">Pricing</span></h2></div>
+      <div class="pricing-grid">
+        <div class="pricing-card glass-card reveal"><div class="pricing-tier">Logo Only</div><div class="pricing-price">From <span>$99</span></div><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> 3 Initial Concepts</li><li><i class="ph-fill ph-check"></i> 2 Revision Rounds</li><li><i class="ph-fill ph-check"></i> PNG / SVG / PDF</li><li><i class="ph-fill ph-check"></i> Full Copyright</li></ul><a href="../contact.html" class="btn btn-outline">Get Started</a></div>
+        <div class="pricing-card pricing-card--popular glass-card reveal"><div class="pricing-badge">Best Value</div><div class="pricing-tier">Brand Identity</div><div class="pricing-price">From <span>$349</span></div><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Logo System</li><li><i class="ph-fill ph-check"></i> Colour Palette</li><li><i class="ph-fill ph-check"></i> Typography System</li><li><i class="ph-fill ph-check"></i> Brand Guidelines PDF</li><li><i class="ph-fill ph-check"></i> Social Media Kit</li></ul><a href="../contact.html" class="btn btn-primary">Get Started</a></div>
+        <div class="pricing-card glass-card reveal"><div class="pricing-tier">UI/UX Design</div><div class="pricing-price">From <span>$499</span></div><ul class="pricing-features"><li><i class="ph-fill ph-check"></i> User Research</li><li><i class="ph-fill ph-check"></i> Wireframes</li><li><i class="ph-fill ph-check"></i> Hi-Fi Mockups</li><li><i class="ph-fill ph-check"></i> Figma Source Files</li><li><i class="ph-fill ph-check"></i> Interactive Prototype</li></ul><a href="../contact.html" class="btn btn-outline">Get Started</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">FAQ</span><h2>Design Questions</h2></div>
+      <div style="max-width:760px;margin:0 auto">
+        <div class="faq-item"><button class="faq-question">How many logo concepts will I see? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">We present 3 distinct logo concepts in the first round. You choose one direction to develop and refine through the revision process.</div></div>
+        <div class="faq-item"><button class="faq-question">What information do you need to get started? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">We'll send you a brief questionnaire covering your brand values, target audience, competitor references, and any visual preferences or examples you like.</div></div>
+        <div class="faq-item"><button class="faq-question">Can you match our existing brand style? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">Absolutely — we can design within your existing brand guidelines for consistency, or create new assets that feel natural extensions of your current identity.</div></div>
+        <div class="faq-item"><button class="faq-question">Do you design for print? <i class="ph-fill ph-plus faq-icon"></i></button><div class="faq-answer">Yes — all print designs are delivered as CMYK-ready PDF files at the correct resolution and bleed specifications for professional printing.</div></div>
+      </div>
+    </div>
+  </section>
+
+  
+<!-- ═══ SERVICE VIDEO SECTION ═══ -->
+  <section class="section svc-video-section">
+    <div class="container svc-video-container">
+      <div class="svc-video-header">
+        <span class="section-tag">Watch It In Action</span>
+        <h2>Graphic Design Portfolio — Motion Graphics Showreel 2026</h2>
+      </div>
+      <div class="svc-video-frame">
+        <div class="svc-video-ratio">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/KchRWDX1e38?autoplay=1&mute=1&loop=1&playlist=KchRWDX1e38&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&color=white"
+            title="Graphic Design Portfolio — Motion Graphics Showreel 2026"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══ /SERVICE VIDEO SECTION ═══ -->
+  <section class="cta-banner">
+    <div class="cta-bg-effect"></div>
+    <div class="container cta-content reveal">
+      <h2>Ready to Transform Your Visual Identity?</h2>
+      <p>Tell us about your brand and let's create something extraordinary together.</p>
+      <div class="cta-actions"><a href="../contact.html" class="btn btn-primary btn-lg">Get in Touch With Us <i class="ph-fill ph-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="../../index.html" class="nav-logo"><img src="../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a><p>Engineering Ideas. Empowering Independence.</p>
+          <div class="footer-socials"><a href="#" class="social-icon" id="footer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon" id="footer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a><a href="#" class="social-icon" id="footer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon" id="footer-tt" target="_blank"><i class="fab fa-tiktok"></i></a><a href="#" class="social-icon" id="footer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon" id="footer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a><a href="#" class="social-icon" id="footer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a></div>
+        </div>
+        <div class="footer-col"><h5>Other Services</h5><a href="web-app-development.html">Web & App Dev</a><a href="video-editing.html">Video Editing</a><a href="digital-marketing.html">Digital Marketing</a><a href="email-marketing.html">Email Marketing</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="../about.html">About Us</a><a href="../portfolio.html">Portfolio</a><a href="../pricing.html">Pricing</a><a href="../contact.html">Contact</a></div>
+        <div class="footer-col"><h5>Newsletter</h5><div class="newsletter"><input type="email" placeholder="Your email" /><button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Darapet Technology. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+  <script src="../../js/background.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/socials.js"></script>
+</body>
+</html>

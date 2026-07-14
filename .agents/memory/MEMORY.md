@@ -1,0 +1,1 @@
+- [Darapetech Chat System](darapetech-chat.md) — full agent chat system built and pushed to GitHub; Firestore collections, auth flow, and secondary Firebase app pattern documented.

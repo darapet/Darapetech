@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonials — Darapet Technology</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <link rel="apple-touch-icon" href="../assets/images/logo.png" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/background.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+</head>
+<body>
+  <div class="announcement-strip" id="announcementStrip">
+    <div class="strip-inner">
+      <div class="strip-logo slide-in-left"><img src="../assets/images/logo.png" alt="DT" class="site-logo-img"></div>
+      <div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div>
+      <div class="strip-right"><span class="strip-badge">Available for Projects</span></div>
+    </div>
+  </div>
+  <header class="main-header" id="mainHeader">
+    <nav class="nav-container">
+      <a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li class="has-dropdown"><a href="services.html">Services <i class="ph-fill ph-caret-down"></i></a>
+          <div class="mega-menu"><div class="mega-grid">
+            <div class="mega-col"><h4><i class="ph-fill ph-code"></i> Web & App Dev</h4><a href="services/web-app-development.html">WordPress</a><a href="services/web-app-development.html">Shopify</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4><a href="services/video-editing.html">YouTube</a><a href="services/video-editing.html">Short-Form</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-palette"></i> Design</h4><a href="services/graphics-design.html">Logo & Branding</a><a href="services/graphics-design.html">UI/UX</a></div>
+            <div class="mega-col"><h4><i class="ph-fill ph-chart-line-up"></i> Marketing</h4><a href="services/digital-marketing.html">SEO</a><a href="services/email-marketing.html">Email Marketing</a></div>
+          </div></div>
+        </li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html" class="active">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button>
+    <div class="drawer-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav"><a href="../index.html">Home</a><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="testimonials.html">Testimonials</a><a href="contact.html">Contact</a></nav>
+    <a href="contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials">
+      <a href="#" id="drawer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" id="drawer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="drawer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" id="drawer-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" id="drawer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" id="drawer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a>
+      <a href="#" id="drawer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <span class="section-tag reveal">Testimonials</span>
+      <h1 class="reveal">Real Clients. <span class="accent-gradient">Real Results.</span></h1>
+      <p class="reveal">Don't take our word for it. Read what clients who've trusted Darapet Technology with their projects have to say about the experience and outcomes.</p>
+    </div>
+  </section>
+
+  <!-- STATS ROW -->
+  <section class="stats-section" style="padding:40px 0">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-block reveal"><span class="big-count" data-target="80">0</span><span class="stat-unit">+</span><p>Happy Clients</p></div>
+        <div class="stat-block reveal"><span class="big-count" data-target="98">0</span><span class="stat-unit">%</span><p>Satisfaction Rate</p></div>
+        <div class="stat-block reveal"><span class="big-count" data-target="5">0</span><span class="stat-unit">★</span><p>Average Rating</p></div>
+        <div class="stat-block reveal"><span class="big-count" data-target="150">0</span><span class="stat-unit">+</span><p>Projects Completed</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED VIDEO TESTIMONIAL -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Featured</span>
+        <h2>Video <span class="accent-gradient">Testimonial</span></h2>
+        <p>Hear directly from a client about their experience working with Darapet Technology.</p>
+      </div>
+      <div class="video-testimonial-card glass-card reveal" style="max-width:720px;margin:0 auto;padding:32px">
+        <div class="video-embed-placeholder">
+          <div class="video-play-icon"><i class="ph-fill ph-play"></i></div>
+          <p>Video Testimonial — Client Review</p>
+          <small>Replace this placeholder with your actual testimonial video embed (YouTube/Vimeo)</small>
+        </div>
+        <div class="client-info" style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+          <div class="client-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">KN</div>
+          <div>
+            <strong>Kwame Nkrumah Jr.</strong>
+            <span>Founder, Nexus Ventures — Brand Identity Client</span>
+          </div>
+          <div class="stars" style="margin-left:auto">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL TESTIMONIALS GRID -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Client Reviews</span>
+        <h2>What Everyone's <span class="accent-gradient">Saying</span></h2>
+      </div>
+      <div class="testimonials-full-grid">
+        <div class="testimonial-full-card glass-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Darapet Technology completely transformed our online presence. The website they built is fast, beautiful, and our customers love it. Best investment we've made this year."</p>
+          <div class="client-info"><div class="client-avatar">JM</div><div><strong>James Mitchell</strong><span>CEO, BrightStore UK — Web Development</span></div></div>
+        </div>
+        <div class="testimonial-full-card glass-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"The video editing team is exceptional. My YouTube content quality jumped overnight — my audience noticed immediately. Super professional, very fast delivery."</p>
+          <div class="client-info"><div class="client-avatar">SA</div><div><strong>Sofia Adeyemi</strong><span>Content Creator, 45K Subscribers — Video Editing</span></div></div>
+        </div>
+        <div class="testimonial-full-card glass-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"From logo to full brand identity — the design work was stunning. They understood our brand vision better than we did. Truly premium quality at a fair price."</p>
+          <div class="client-info"><div class="client-avatar">KN</div><div><strong>Kwame Nkrumah Jr.</strong><span>Founder, Nexus Ventures — Brand Identity</span></div></div>
+        </div>
+        <div class="testimonial-full-card glass-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Our email campaigns went from 12% open rate to 38% after Darapet redesigned our strategy and automation setup. The ROI speaks for itself."</p>
+          <div class="client-info"><div class="client-avatar">RL</div><div><strong>Rachel Liu</strong><span>Marketing Director, CloudPath — Email Marketing</span></div></div>
+        </div>
+        <div class="testimonial-full-card glass-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"The Shopify store they built converted at 43% higher than our old site within the first month. The whole project was done in under two weeks. Incredible work."</p>
+          <div class="client-info"><div class="client-avatar">AT</div><div><strong>Amara Tunde</strong><span>Owner, LuxeThreads Fashion — Shopify Development</span></div></div>
+        </div>
+        <div class="testimonial-full-card glass-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"From zero to #1 on Google for our main keyword in 8 months. Darapet's SEO strategy was methodical, transparent, and genuinely effective. Would recommend to anyone."</p>
+          <div class="client-info"><div class="client-avatar">PO</div><div><strong>Paul Okonkwo</strong><span>Director, PO Legal Services — SEO</span></div></div>
+        </div>
+        <div class="testimonial-full-card glass-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Darapet edited 60 Reels per month for us and each one looked better than the last. Our TikTok grew from 2K to 85K followers in 6 months. The consistency and quality is unmatched."</p>
+          <div class="client-info"><div class="client-avatar">TM</div><div><strong>Temi Morgan</strong><span>Founder, LivFit Brand — Short-Form Video</span></div></div>
+        </div>
+        <div class="testimonial-full-card glass-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"The mobile app they built for us has a 4.7-star rating on the App Store. They handled everything from design to deployment. Communication throughout was excellent."</p>
+          <div class="client-info"><div class="client-avatar">BC</div><div><strong>Ben Chibuzo</strong><span>CTO, QuickByte Startup — Mobile App Development</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-bg-effect"></div>
+    <div class="container cta-content reveal">
+      <h2>Ready to Be Our Next Success Story?</h2>
+      <p>Join 80+ clients who chose Darapet Technology and got results that moved the needle.</p>
+      <div class="cta-actions"><a href="contact.html" class="btn btn-primary btn-lg">Start Your Project <i class="ph-fill ph-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="../index.html" class="nav-logo"><img src="../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a><p>Engineering Ideas. Empowering Independence.</p>
+          <div class="footer-socials"><a href="#" class="social-icon" id="footer-fb" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon" id="footer-tw" target="_blank"><i class="fab fa-x-twitter"></i></a><a href="#" class="social-icon" id="footer-ig" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon" id="footer-tt" target="_blank"><i class="fab fa-tiktok"></i></a><a href="#" class="social-icon" id="footer-li" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon" id="footer-fv" target="_blank"><i class="ph-fill ph-stack"></i></a><a href="#" class="social-icon" id="footer-uw" target="_blank"><i class="ph-fill ph-briefcase"></i></a></div>
+        </div>
+        <div class="footer-col"><h5>Services</h5><a href="services/web-app-development.html">Web & App Dev</a><a href="services/video-editing.html">Video Editing</a><a href="services/graphics-design.html">Graphics & Design</a><a href="services/digital-marketing.html">Digital Marketing</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="portfolio.html">Portfolio</a><a href="testimonials.html">Testimonials</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h5>Newsletter</h5><div class="newsletter"><input type="email" placeholder="Your email" /><button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Darapet Technology. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+
+  <style>
+    .testimonials-full-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+    .testimonial-full-card { padding:28px; display:flex; flex-direction:column; gap:16px; }
+    .testimonial-full-card .stars { font-size:1rem; color:#f59e0b; letter-spacing:2px; }
+    .video-embed-placeholder { background:linear-gradient(135deg,rgba(56,189,248,0.08),rgba(129,140,248,0.08)); border:2px dashed rgba(56,189,248,0.25); border-radius:var(--radius); padding:60px 32px; text-align:center; }
+    .video-play-icon { width:70px; height:70px; border-radius:50%; background:var(--accent-gradient); display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:#fff; margin:0 auto 16px; cursor:pointer; box-shadow:0 0 40px rgba(56,189,248,0.3); }
+    .video-embed-placeholder p { font-weight:600; margin-bottom:6px; }
+    .video-embed-placeholder small { color:var(--text-muted); font-size:0.78rem; }
+    @media(max-width:768px){.testimonials-full-grid{grid-template-columns:1fr}}
+  </style>
+  <script src="../js/background.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/socials.js"></script>
+</body>
+</html>

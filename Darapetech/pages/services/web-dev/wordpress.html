@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+  <html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>WordPress Development — Darapet Technology</title>
+  <meta name="description" content="Professional WordPress Development by Darapet Technology. Premium quality, transparent pricing, delivered on time."/>
+  <link rel="stylesheet" href="../../../css/main.css"/><link rel="stylesheet" href="../../../css/animations.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+      .premium-stats{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin-top:48px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+      .pstat{flex:1;min-width:140px;padding:24px 20px;text-align:center;border-right:1px solid var(--border)}
+      .pstat:last-child{border-right:none}
+      .pstat-num{display:block;font-size:2rem;font-weight:800;margin-bottom:4px}
+      .pstat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+      @media(max-width:600px){.pstat{min-width:50%;border-right:1px solid var(--border)}.pstat:nth-child(even){border-right:none}}
+
+      .pf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:40px}
+      .pf-card{display:flex;align-items:flex-start;gap:16px;padding:24px;border-radius:14px;transition:all .25s}
+      .pf-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+      .pf-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+      .pf-body h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+      .pf-body p{font-size:0.85rem;color:var(--text-muted);line-height:1.7;margin:0}
+
+      .pprocess-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;margin-top:40px}
+      .pprocess-step{padding:28px;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:14px;transition:all .25s}
+      .pprocess-step:hover{border-color:rgba(56,189,248,0.3);transform:translateY(-2px)}
+      .pprocess-num{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;margin-bottom:16px;font-family:'Space Grotesk',sans-serif}
+      .pprocess-step h4{font-size:1rem;font-weight:700;margin-bottom:8px}
+      .pprocess-step p{font-size:0.84rem;color:var(--text-muted);line-height:1.7;margin:0}
+
+      .ptools-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;justify-content:center}
+      .ptool-badge{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:32px;padding:8px 18px;font-size:0.85rem;font-weight:500;transition:all .2s}
+      .ptool-badge:hover{border-color:rgba(56,189,248,0.3);background:rgba(56,189,248,0.05)}
+      .ptool-badge i{font-size:1rem}
+
+      .btn-full{width:100%;justify-content:center;margin-top:8px}
+      .page-hero p{max-width:640px;margin-left:auto;margin-right:auto}
+    </style>
+  </head><body>
+  <div class="announcement-strip" id="announcementStrip"><div class="strip-inner"><div class="strip-logo slide-in-left"><img src="../../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div><div class="strip-typewriter"><span class="typewriter-text" id="typewriterText"></span><span class="cursor">|</span></div><div class="strip-right"><span class="strip-badge">Available for Projects</span></div></div></div>
+    <header class="main-header" id="mainHeader"><nav class="nav-container"><a href="../../../index.html" class="nav-logo"><img src="../../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a>
+    <ul class="nav-links"><li><a href="../../../index.html">Home</a></li>
+    <li class="has-dropdown"><a href="../../services.html" class="active">Services <i class="ph-fill ph-caret-down"></i></a><div class="mega-menu"><div class="mega-grid">
+      <div class="mega-col"><h4><i class="ph-fill ph-code"></i> Web &amp; App Dev</h4><a href="../web-dev/website-development.html">Website Dev</a><a href="../web-dev/wordpress.html">WordPress</a><a href="../web-dev/shopify.html">Shopify</a><a href="../web-dev/mobile-app.html">Mobile Apps</a><a href="../web-dev/api-backend.html">API &amp; Backend</a></div>
+      <div class="mega-col"><h4><i class="ph-fill ph-laptop"></i> Software &amp; Tech</h4><a href="../software/full-stack.html">Full-Stack Dev</a><a href="../software/database.html">Database Design</a><a href="../software/chatbot-ai.html">Chatbot &amp; AI</a><a href="../software/automation.html">Automation</a><a href="../software/devops.html">Cloud &amp; DevOps</a></div>
+      <div class="mega-col"><h4><i class="ph-fill ph-video-camera"></i> Video Editing</h4><a href="../video/youtube.html">YouTube Editing</a><a href="../video/short-form.html">Short-Form/Reels</a><a href="../video/motion-graphics.html">Motion Graphics</a><a href="../video/corporate.html">Corporate Video</a><a href="../video/video-ads.html">Video Ads</a></div>
+      <div class="mega-col"><h4><i class="ph-fill ph-palette"></i> Design &amp; Marketing</h4><a href="../design/logo-branding.html">Logo &amp; Branding</a><a href="../design/ui-ux.html">UI/UX Design</a><a href="../digital-marketing/seo.html">SEO</a><a href="../email/campaigns.html">Email Marketing</a><a href="../../contact.html">Other Services</a></div>
+    </div></div></li>
+    <li><a href="../../portfolio.html">Portfolio</a></li><li><a href="../../pricing.html">Pricing</a></li><li><a href="../../about.html">About</a></li><li><a href="../../testimonials.html">Testimonials</a></li><li><a href="../../contact.html">Contact</a></li></ul>
+    <div class="nav-actions"><a href="../../contact.html" class="btn btn-primary">Get Started</a><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav></header>
+    <div class="mobile-drawer" id="mobileDrawer"><button class="drawer-close" id="drawerClose"><i class="ph-fill ph-x"></i></button><div class="drawer-logo"><img src="../../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></div>
+    <nav class="drawer-nav"><a href="../../../index.html">Home</a><a href="../../services.html">Services</a><a href="../../portfolio.html">Portfolio</a><a href="../../pricing.html">Pricing</a><a href="../../about.html">About</a><a href="../../contact.html">Contact</a></nav>
+    <a href="../../contact.html" class="btn btn-primary drawer-cta">Get Started</a>
+    <div class="drawer-socials"><a href="#" id="drawer-fb"><i class="fab fa-facebook-f"></i></a><a href="#" id="drawer-tw"><i class="fab fa-x-twitter"></i></a><a href="#" id="drawer-ig"><i class="fab fa-instagram"></i></a><a href="#" id="drawer-tt"><i class="fab fa-tiktok"></i></a><a href="#" id="drawer-li"><i class="fab fa-linkedin-in"></i></a><a href="#" id="drawer-fv"><i class="ph-fill ph-stack"></i></a><a href="#" id="drawer-uw"><i class="ph-fill ph-briefcase"></i></a></div></div>
+    <div class="overlay" id="overlay"></div>
+
+  <section class="page-hero" style="background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(56,189,248,0.12) 0%,transparent 70%)"><div class="page-hero-bg"></div><div class="container page-hero-content">
+    <span class="section-tag reveal">Web & App Development</span>
+    <h1 class="reveal">WordPress Sites Built <span class="accent-gradient">The Right Way</span></h1>
+    <p class="reveal">Custom WordPress websites — bespoke themes built from scratch, plugin development, WooCommerce stores, and performance-optimised CMS platforms your whole team can use without touching a line of code.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px" class="reveal">
+      <a href="../../contact.html" class="btn btn-primary btn-lg">Get Started <i class="ph-fill ph-arrow-right"></i></a>
+      <a href="../../pricing.html" class="btn btn-ghost btn-lg">View All Pricing</a>
+      <a href="../../chat.html" class="btn btn-outline btn-lg"><i class="ph-fill ph-chat-circle-dots"></i> Chat with an Expert</a>
+    </div>
+    
+    <div class="premium-stats reveal">
+      <div class="pstat"><span class="pstat-num" style="color:#38bdf8">100+</span><span class="pstat-label">WordPress Sites Built</span></div><div class="pstat"><span class="pstat-num" style="color:#38bdf8">90+</span><span class="pstat-label">PageSpeed Score</span></div><div class="pstat"><span class="pstat-num" style="color:#38bdf8">48hr</span><span class="pstat-label">Avg Bug Response</span></div><div class="pstat"><span class="pstat-num" style="color:#38bdf8">0</span><span class="pstat-label">Templates Used</span></div>
+    </div>
+  </div></section>
+
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">What We Deliver</span><h2>8 Ways We Make Your <span class="accent-gradient">WordPress Development</span> Outstanding</h2><p>Every single thing in this list is something we actually do — not a promise, not a maybe, not "depending on the package."</p></div>
+      <div class="pf-grid">
+      <div class="pf-card glass-card reveal" style="--i:0">
+        <div class="pf-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8"><i class="fab fa-wordpress"></i></div>
+        <div class="pf-body">
+          <h4>Custom Theme Development</h4>
+          <p>No Elementor bloat, no page-builder overhead — custom WordPress themes coded for speed, flexibility, and pixel-perfect brand accuracy.</p>
+        </div>
+      </div>
+      <div class="pf-card glass-card reveal" style="--i:1">
+        <div class="pf-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8"><i class="ph-fill ph-plug"></i></div>
+        <div class="pf-body">
+          <h4>Plugin Development</h4>
+          <p>Need functionality that no plugin provides? We build bespoke WordPress plugins — booking systems, membership portals, custom post types, and more.</p>
+        </div>
+      </div>
+      <div class="pf-card glass-card reveal" style="--i:2">
+        <div class="pf-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8"><i class="ph-fill ph-shopping-cart"></i></div>
+        <div class="pf-body">
+          <h4>WooCommerce E-commerce</h4>
+          <p>Full WooCommerce stores with payment gateways, inventory management, shipping rules, tax setup, and product import handled end-to-end.</p>
+        </div>
+      </div>
+      <div class="pf-card glass-card reveal" style="--i:3">
+        <div class="pf-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8"><i class="ph-fill ph-gauge"></i></div>
+        <div class="pf-body">
+          <h4>Speed & Performance Optimisation</h4>
+          <p>Caching with WP Rocket or W3TC, CDN setup via Cloudflare, image optimisation, and database cleanup to achieve 90+ PageSpeed scores.</p>
+        </div>
+      </div>
+      <div class="pf-card glass-card reveal" style="--i:4">
+        <div class="pf-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8"><i class="ph-fill ph-user-gear"></i></div>
+        <div class="pf-body">
+          <h4>Editor-Friendly CMS</h4>
+          <p>Built so your marketing team can publish posts, update pages, add products, and manage media without ever calling a developer.</p>
+        </div>
+      </div>
+      <div class="pf-card glass-card reveal" style="--i:5">
+        <div class="pf-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8"><i class="ph-fill ph-shield-check"></i></div>
+        <div class="pf-body">
+          <h4>Security Hardening</h4>
+          <p>Login protection with 2FA, firewall configuration, malware scanning, file permission hardening, and XML-RPC disabled on every project.</p>
+        </div>
+      </div>
+      <div class="pf-card glass-card reveal" style="--i:6">
+        <div class="pf-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8"><i class="ph-fill ph-arrows-clockwise"></i></div>
+        <div class="pf-body">
+          <h4>Migration Services</h4>
+          <p>Moving from another CMS or builder? We migrate your content, media, SEO settings, and URL structure without losing search rankings.</p>
+        </div>
+      </div>
+      <div class="pf-card glass-card reveal" style="--i:7">
+        <div class="pf-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8"><i class="ph-fill ph-wrench"></i></div>
+        <div class="pf-body">
+          <h4>Ongoing Maintenance</h4>
+          <p>Monthly maintenance packages with updates, backups, uptime monitoring, and priority support so your WordPress site runs perfectly 24/7.</p>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  
+    <section class="section pprocess-section" style="background:rgba(255,255,255,0.015)">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-tag">How It Works</span><h2>Our <span class="accent-gradient">Process</span></h2><p>A clear, structured approach — so you always know what's happening and what comes next.</p></div>
+        <div class="pprocess-grid">
+          
+          <div class="pprocess-step reveal">
+            <div class="pprocess-num" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8">01</div>
+            <h4>Technical Brief</h4>
+            <p>Review your goals, required functionality, and any existing site or brand assets.</p>
+          </div>
+          <div class="pprocess-step reveal">
+            <div class="pprocess-num" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8">02</div>
+            <h4>Theme Architecture</h4>
+            <p>Plan the page templates, custom post types, and plugin requirements before coding begins.</p>
+          </div>
+          <div class="pprocess-step reveal">
+            <div class="pprocess-num" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8">03</div>
+            <h4>Design in Figma</h4>
+            <p>Full visual design of all templates reviewed and approved before development starts.</p>
+          </div>
+          <div class="pprocess-step reveal">
+            <div class="pprocess-num" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8">04</div>
+            <h4>Theme Development</h4>
+            <p>Coded on a staging environment — clean PHP, custom Gutenberg blocks, and optimised assets.</p>
+          </div>
+          <div class="pprocess-step reveal">
+            <div class="pprocess-num" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8">05</div>
+            <h4>Testing & QA</h4>
+            <p>Cross-browser testing, performance audit, security scan, and mobile testing before launch.</p>
+          </div>
+          <div class="pprocess-step reveal">
+            <div class="pprocess-num" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.15);color:#38bdf8">06</div>
+            <h4>Launch & Training</h4>
+            <p>Go-live with DNS, SSL, and a training session so your team can manage the site confidently.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-tag">Tools &amp; Tech</span><h2>What We <span class="accent-gradient">Work With</span></h2></div>
+        <div class="ptools-grid reveal">
+          <div class="ptool-badge"><i class="fab fa-wordpress" style="color:#38bdf8"></i><span>WordPress</span></div><div class="ptool-badge"><i class="ph-fill ph-database" style="color:#38bdf8"></i><span>MySQL</span></div><div class="ptool-badge"><i class="fab fa-php" style="color:#38bdf8"></i><span>PHP</span></div><div class="ptool-badge"><i class="fab fa-js" style="color:#38bdf8"></i><span>JavaScript</span></div><div class="ptool-badge"><i class="fab fa-css3-alt" style="color:#38bdf8"></i><span>SCSS</span></div><div class="ptool-badge"><i class="ph-fill ph-lightning" style="color:#38bdf8"></i><span>WP Rocket</span></div><div class="ptool-badge"><i class="ph-fill ph-cloud" style="color:#38bdf8"></i><span>Cloudflare</span></div><div class="ptool-badge"><i class="ph-fill ph-shopping-cart" style="color:#38bdf8"></i><span>WooCommerce</span></div><div class="ptool-badge"><i class="fab fa-figma" style="color:#38bdf8"></i><span>Figma</span></div><div class="ptool-badge"><i class="fab fa-github" style="color:#38bdf8"></i><span>GitHub</span></div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="section" style="background:rgba(255,255,255,0.01)">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-tag">Transparent Pricing</span><h2>Simple, Honest <span class="accent-gradient">Pricing</span></h2><p>No hidden fees. No surprises. Every package includes clear deliverables agreed upfront.</p></div>
+        <div class="pricing-grid">
+          
+          <div class="pricing-card  glass-card reveal">
+            
+            <div class="pricing-tier">Basic WordPress</div>
+            <div class="pricing-price">From <span>$399</span></div>
+            <ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Custom Theme</li><li><i class="ph-fill ph-check"></i> Up to 8 Pages</li><li><i class="ph-fill ph-check"></i> WP Setup & Config</li><li><i class="ph-fill ph-check"></i> Basic SEO</li><li><i class="ph-fill ph-check"></i> SSL & Security</li><li><i class="ph-fill ph-check"></i> 1 Month Support</li><li><i class="ph-fill ph-check"></i> 3 Revisions</li></ul>
+            <a href="../../contact.html" class="btn btn-outline btn-full">Get Started</a>
+          </div>
+          <div class="pricing-card pricing-card--popular glass-card reveal">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-tier">Professional</div>
+            <div class="pricing-price">From <span>$899</span></div>
+            <ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Full Custom Theme</li><li><i class="ph-fill ph-check"></i> Unlimited Pages</li><li><i class="ph-fill ph-check"></i> WooCommerce Store</li><li><i class="ph-fill ph-check"></i> Advanced SEO</li><li><i class="ph-fill ph-check"></i> Plugin Dev (1)</li><li><i class="ph-fill ph-check"></i> Performance Optimised</li><li><i class="ph-fill ph-check"></i> 3 Months Support</li><li><i class="ph-fill ph-check"></i> 5 Revisions</li></ul>
+            <a href="../../contact.html" class="btn btn-primary btn-full">Get Started</a>
+          </div>
+          <div class="pricing-card  glass-card reveal">
+            
+            <div class="pricing-tier">Enterprise</div>
+            <div class="pricing-price">Custom <span>Quote</span></div>
+            <ul class="pricing-features"><li><i class="ph-fill ph-check"></i> Bespoke Plugin Dev</li><li><i class="ph-fill ph-check"></i> Multisite Setup</li><li><i class="ph-fill ph-check"></i> Membership System</li><li><i class="ph-fill ph-check"></i> Advanced Security</li><li><i class="ph-fill ph-check"></i> Priority Support</li><li><i class="ph-fill ph-check"></i> Unlimited Revisions</li></ul>
+            <a href="../../contact.html" class="btn btn-outline btn-full">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal"><span class="section-tag">FAQ</span><h2>Questions We Get <span class="accent-gradient">All the Time</span></h2></div>
+      <div style="max-width:760px;margin:0 auto">
+      <div class="faq-item">
+        <button class="faq-question">Will my WordPress site be slow? <i class="ph-fill ph-plus faq-icon"></i></button>
+        <div class="faq-answer">Not if we build it. Every site we deliver is optimised with caching, image compression, and a CDN — we target 90+ on Google PageSpeed as standard.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can you rebuild my existing WordPress site? <i class="ph-fill ph-plus faq-icon"></i></button>
+        <div class="faq-answer">Yes — we redesign and rebuild existing WordPress sites regularly. We can keep your content and improve everything else.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do you build with Elementor or Divi? <i class="ph-fill ph-plus faq-icon"></i></button>
+        <div class="faq-answer">We don't — we build custom themes without page builders. This results in significantly faster, cleaner, and more maintainable sites.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What about WordPress security? <i class="ph-fill ph-plus faq-icon"></i></button>
+        <div class="faq-answer">Every site gets hardened — 2FA, firewall, scanning, and secure file permissions. We also offer ongoing security monitoring as a monthly add-on.</div>
+      </div></div>
+    </div>
+  </section>
+
+  
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-tag">Related Services</span><h2>You May Also <span class="accent-gradient">Need</span></h2></div>
+        <div class="services-grid">
+          
+          <a href="../web-dev/ecommerce.html" class="service-card glass-card reveal">
+            <div class="service-icon"><i class="ph-fill ph-shopping-bag"></i></div>
+            <h3>E-commerce Development</h3>
+            <p>Full e-commerce solutions across platforms.</p>
+            <span class="card-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="../web-dev/bug-fixing.html" class="service-card glass-card reveal">
+            <div class="service-icon"><i class="ph-fill ph-bug"></i></div>
+            <h3>Bug Fixing & Optimisation</h3>
+            <p>Fix existing WordPress issues fast.</p>
+            <span class="card-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+          <a href="../web-dev/maintenance.html" class="service-card glass-card reveal">
+            <div class="service-icon"><i class="ph-fill ph-arrows-clockwise"></i></div>
+            <h3>Website Maintenance</h3>
+            <p>Ongoing WordPress care and support.</p>
+            <span class="card-link">View Service <i class="ph-fill ph-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  
+<!-- ═══ SERVICE VIDEO SECTION ═══ -->
+  <section class="section svc-video-section">
+    <div class="container svc-video-container">
+      <div class="svc-video-header">
+        <span class="section-tag">Watch It In Action</span>
+        <h2>Premium WordPress Websites — Our Design Approach</h2>
+      </div>
+      <div class="svc-video-frame">
+        <div class="svc-video-ratio">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/qTw-HvYF-DM?autoplay=1&mute=1&loop=1&playlist=qTw-HvYF-DM&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&color=white"
+            title="Premium WordPress Websites — Our Design Approach"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══ /SERVICE VIDEO SECTION ═══ -->
+  <section class="cta-banner"><div class="cta-bg-effect"></div><div class="container cta-content reveal">
+    <h2>Ready to Start Your WordPress Development Project?</h2>
+    <p>Get a free consultation and custom quote — no commitment, no hard sell. Just a straight conversation about your project.</p>
+    <div class="cta-actions">
+      <a href="../../contact.html" class="btn btn-primary btn-lg">Book a Free Consultation <i class="ph-fill ph-arrow-right"></i></a>
+    </div>
+  </div></section>
+
+  <footer class="footer"><div class="container"><div class="footer-grid">
+      <div class="footer-brand"><a href="../../../index.html" class="nav-logo"><img src="../../../assets/images/logo.png" alt="Darapet Technology" class="site-logo-img"></a><p>Engineering Ideas. Empowering Independence.</p>
+        <div class="footer-socials"><a href="#" class="social-icon" id="footer-fb"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon" id="footer-tw"><i class="fab fa-x-twitter"></i></a><a href="#" class="social-icon" id="footer-ig"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon" id="footer-tt"><i class="fab fa-tiktok"></i></a><a href="#" class="social-icon" id="footer-li"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon" id="footer-fv"><i class="ph-fill ph-stack"></i></a><a href="#" class="social-icon" id="footer-uw"><i class="ph-fill ph-briefcase"></i></a></div></div>
+      <div class="footer-col"><h5>Web &amp; Dev</h5><a href="../web-dev/website-development.html">Website Development</a><a href="../web-dev/wordpress.html">WordPress</a><a href="../web-dev/shopify.html">Shopify</a><a href="../web-dev/mobile-app.html">Mobile Apps</a></div>
+      <div class="footer-col"><h5>Creative</h5><a href="../video/youtube.html">YouTube Editing</a><a href="../design/logo-branding.html">Logo &amp; Branding</a><a href="../digital-marketing/seo.html">SEO</a><a href="../email/campaigns.html">Email Marketing</a></div>
+      <div class="footer-col"><h5>Newsletter</h5><p>Get tips and updates.</p><div class="newsletter"><input type="email" placeholder="Your email"/><button class="btn btn-primary"><i class="ph-fill ph-paper-plane-tilt"></i></button></div></div>
+    </div><div class="footer-bottom"><p>&copy; 2025 Darapet Technology. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div></div></footer>
+    <script src="../../../js/main.js"></script><script src="../../../js/socials.js"></script>
+  </body></html>

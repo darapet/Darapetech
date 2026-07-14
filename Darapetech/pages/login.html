@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Darapet Technology</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;min-height:100vh;display:flex;overflow:hidden}
+    /* ---- BG SLIDESHOW ---- */
+    .auth-bg{position:fixed;inset:0;z-index:0}
+    .auth-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease;background-color:#020c1b}
+    .auth-slide.active{opacity:1}
+    .auth-slide::after{content:'';position:absolute;inset:0;background:rgba(2,12,27,0.72)}
+    .auth-slide-1{background-image:url('../assets/images/auth-bg-1.jpg'),linear-gradient(135deg,#020c1b,#0a2a6e)}
+    .auth-slide-2{background-image:url('../assets/images/auth-bg-2.jpg'),linear-gradient(135deg,#020c1b,#05174a)}
+    .auth-slide-3{background-image:url('../assets/images/auth-bg-3.jpg'),linear-gradient(135deg,#020c1b,#0d2253)}
+    .auth-slide-4{background-image:url('../assets/images/auth-bg-4.jpg'),linear-gradient(135deg,#020c1b,#071d45)}
+    .auth-slide-5{background-image:url('../assets/images/auth-bg-5.jpg'),linear-gradient(135deg,#020c1b,#0c1f50)}
+    /* ---- LAYOUT ---- */
+    .auth-wrap{position:relative;z-index:1;display:flex;width:100%;min-height:100vh}
+    .auth-left{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:48px;color:#fff}
+    .auth-brand{display:flex;align-items:center;gap:12px}
+    .auth-brand img{height:40px}
+    .auth-brand-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:#fff}
+    .auth-tagline{margin-top:auto}
+    .auth-tagline h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2}
+    .auth-tagline p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:420px}
+    .auth-dots{display:flex;gap:8px;margin-top:32px}
+    .auth-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all .3s}
+    .auth-dot.active{width:24px;border-radius:4px;background:#3b82f6}
+    /* ---- CARD ---- */
+    .auth-right{width:480px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:32px 24px}
+    .auth-card{background:#fff;border-radius:20px;padding:40px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+    .auth-card h1{font-family:'Space Grotesk',sans-serif;font-size:1.7rem;font-weight:700;color:#0f172a;margin-bottom:6px}
+    .auth-card .sub{font-size:.9rem;color:#64748b;margin-bottom:28px}
+    .field{margin-bottom:18px}
+    .field label{display:block;font-size:.82rem;font-weight:600;color:#374151;margin-bottom:6px}
+    .field input{width:100%;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.92rem;font-family:inherit;color:#0f172a;outline:none;transition:border .2s}
+    .field input:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
+    .field input::placeholder{color:#9ca3af}
+    .field-row{display:flex;gap:12px}
+    .field-row .field{flex:1}
+    .forgot{text-align:right;margin-top:-12px;margin-bottom:18px}
+    .forgot a{font-size:.82rem;color:#3b82f6;text-decoration:none}
+    .forgot a:hover{text-decoration:underline}
+    .btn-auth{width:100%;padding:13px;background:#1d4ed8;color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s,transform .1s}
+    .btn-auth:hover{background:#1e40af}
+    .btn-auth:active{transform:scale(.99)}
+    .btn-auth:disabled{opacity:.6;cursor:not-allowed}
+    .auth-err{color:#ef4444;font-size:.83rem;margin-bottom:14px;padding:10px 14px;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;display:none}
+    .auth-switch{text-align:center;margin-top:20px;font-size:.88rem;color:#64748b}
+    .auth-switch a{color:#3b82f6;font-weight:600;text-decoration:none}
+    .auth-switch a:hover{text-decoration:underline}
+    .divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:#9ca3af;font-size:.8rem}
+    .divider::before,.divider::after{content:'';flex:1;height:1px;background:#e2e8f0}
+    .agent-link{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;border:1.5px solid #e2e8f0;border-radius:10px;color:#374151;font-size:.88rem;font-weight:500;text-decoration:none;transition:all .2s}
+    .agent-link:hover{border-color:#3b82f6;color:#1d4ed8;background:#eff6ff}
+    @media(max-width:768px){.auth-left{display:none}.auth-right{width:100%}.auth-card{box-shadow:none;background:rgba(255,255,255,0.97)}}
+  </style>
+</head>
+<body>
+  <!-- Background slideshow -->
+  <div class="auth-bg">
+    <div class="auth-slide auth-slide-1 active"></div>
+    <div class="auth-slide auth-slide-2"></div>
+    <div class="auth-slide auth-slide-3"></div>
+    <div class="auth-slide auth-slide-4"></div>
+    <div class="auth-slide auth-slide-5"></div>
+  </div>
+
+  <div class="auth-wrap">
+    <!-- Left brand panel -->
+    <div class="auth-left">
+      <a href="../index.html" class="auth-brand">
+        <img src="../assets/images/logo.png" alt="Darapet Technology">
+        <span class="auth-brand-name">Darapet Technology</span>
+      </a>
+      <div class="auth-tagline">
+        <h2>Engineering Ideas.<br>Empowering Independence.</h2>
+        <p>Chat directly with our expert team — web, design, video, marketing and more.</p>
+        <div class="auth-dots" id="authDots">
+          <div class="auth-dot active" data-slide="0"></div>
+          <div class="auth-dot" data-slide="1"></div>
+          <div class="auth-dot" data-slide="2"></div>
+          <div class="auth-dot" data-slide="3"></div>
+          <div class="auth-dot" data-slide="4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right card -->
+    <div class="auth-right">
+      <div class="auth-card">
+        <h1>Welcome back</h1>
+        <p class="sub">Sign in to chat with our experts</p>
+
+        <div class="auth-err" id="loginErr"></div>
+
+        <div class="field">
+          <label for="loginEmail">Email address</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" />
+        </div>
+        <div class="forgot"><a href="#" id="forgotLink">Forgot password?</a></div>
+
+        <button class="btn-auth" id="loginBtn">Sign In</button>
+
+        <div class="divider">or</div>
+        <a href="agent-login.html" class="agent-link">
+          <i class="fas fa-headset"></i> Sign in as an Agent
+        </a>
+
+        <div class="auth-switch">
+          Don't have an account? <a href="register.html">Create one</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="../js/firebase-app.js"></script>
+  <script>
+    // Slideshow
+    let slide = 0;
+    const slides = document.querySelectorAll('.auth-slide');
+    const dots = document.querySelectorAll('.auth-dot');
+    function goSlide(n) {
+      slides[slide].classList.remove('active');
+      dots[slide].classList.remove('active');
+      slide = n % slides.length;
+      slides[slide].classList.add('active');
+      dots[slide].classList.add('active');
+    }
+    let timer = setInterval(() => goSlide(slide + 1), 5000);
+    dots.forEach(d => d.addEventListener('click', () => { clearInterval(timer); goSlide(+d.dataset.slide); timer = setInterval(() => goSlide(slide + 1), 5000); }));
+
+    // Auth
+    const next = new URLSearchParams(location.search).get('next') || 'chat.html';
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        // Check if agent
+        db.collection('agents').where('uid','==',user.uid).limit(1).get().then(snap => {
+          if (!snap.empty) { window.location = 'agent-dashboard.html'; }
+          else { window.location = next; }
+        }).catch(() => { window.location = next; });
+      }
+    });
+
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const email = document.getElementById('loginEmail').value.trim();
+      const pw = document.getElementById('loginPassword').value;
+      const errEl = document.getElementById('loginErr');
+      const btn = document.getElementById('loginBtn');
+      errEl.style.display = 'none';
+      if (!email || !pw) { errEl.textContent = 'Please fill in all fields.'; errEl.style.display = ''; return; }
+      btn.disabled = true; btn.textContent = 'Signing in…';
+      try {
+        await auth.signInWithEmailAndPassword(email, pw);
+      } catch(e) {
+        errEl.textContent = e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found'
+          ? 'Invalid email or password.' : e.message;
+        errEl.style.display = '';
+        btn.disabled = false; btn.textContent = 'Sign In';
+      }
+    });
+
+    document.getElementById('loginPassword').addEventListener('keypress', e => {
+      if (e.key === 'Enter') document.getElementById('loginBtn').click();
+    });
+
+    document.getElementById('forgotLink').addEventListener('click', async e => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const errEl = document.getElementById('loginErr');
+      if (!email) { errEl.textContent = 'Enter your email above first.'; errEl.style.display = ''; return; }
+      try {
+        await auth.sendPasswordResetEmail(email);
+        errEl.style.background = '#f0fdf4'; errEl.style.borderColor = '#86efac'; errEl.style.color = '#16a34a';
+        errEl.textContent = 'Reset link sent! Check your inbox.';
+        errEl.style.display = '';
+      } catch(e) {
+        errEl.textContent = e.message; errEl.style.display = '';
+      }
+    });
+  </script>
+</body>
+</html>
