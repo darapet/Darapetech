@@ -387,12 +387,26 @@ function escapeHtml(s) {
 const ADMIN_EMAIL = 'daramolapeter98@gmail.com';
 
 function initAdmin() {
-  if (!document.getElementById('adminApp')) return;
+  const app = document.getElementById('adminApp');
+  if (!app) return;
+
+  // Show a visible loading state immediately so the page is never blank
+  app.innerHTML = `
+  <div style="display:flex;align-items:center;justify-content:center;min-height:60vh">
+    <div style="text-align:center;color:#64748b">
+      <div style="width:32px;height:32px;border:3px solid #bfdbfe;border-top-color:#1d4ed8;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 14px"></div>
+      <p style="font-size:.85rem;font-family:inherit">Loading admin panel…</p>
+    </div>
+  </div>`;
+
+  // Fallback: if Firebase auth never fires within 4s, just show the login form
+  const authTimeout = setTimeout(() => showAdminLogin(), 4000);
 
   // Firebase Auth persists sign-in across visits by default, so once this
   // Google account has signed in on a browser once, it stays signed in and
   // future visits land straight on the dashboard with no extra click.
   auth.onAuthStateChanged(user => {
+    clearTimeout(authTimeout);
     if (user && user.email === ADMIN_EMAIL) {
       mountAdminDashboard();
     } else if (user) {
