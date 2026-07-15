@@ -251,9 +251,12 @@
 
   function subscribeMessages(conv) {
     if (msgUnsub) msgUnsub();
+    // NOTE: no .orderBy() here — an equality filter combined with an orderBy
+    // on a different field requires a Firestore composite index that was
+    // never created, which made this listener fail silently. Sorting
+    // client-side avoids needing that index.
     msgUnsub = db.collection('agent_messages')
       .where('conversationId','==',conv.id)
-      .orderBy('createdAt','asc')
       .onSnapshot(snap => {
         const wrap = document.getElementById('agentMsgWrap');
         if (!wrap) return;
@@ -262,8 +265,13 @@
           wrap.innerHTML = '<div style="text-align:center;padding:40px;color:#94a3b8;font-size:.85rem">Conversation started. Reply to the user below.</div>';
           return;
         }
+        const docs = snap.docs.slice().sort((a, b) => {
+          const ta = a.data().createdAt?.toMillis ? a.data().createdAt.toMillis() : 0;
+          const tb = b.data().createdAt?.toMillis ? b.data().createdAt.toMillis() : 0;
+          return ta - tb;
+        });
         let lastDay = '';
-        snap.forEach(doc => {
+        docs.forEach(doc => {
           const m = doc.data();
           const ts = m.createdAt?.toDate ? m.createdAt.toDate() : new Date();
           const dayStr = ts.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
@@ -299,6 +307,10 @@
           wrap.appendChild(row);
         });
         wrap.scrollTop = wrap.scrollHeight;
+      }, err => {
+        console.error('Chat listen error:', err);
+        const wrap = document.getElementById('agentMsgWrap');
+        if (wrap) wrap.innerHTML = '<div style="text-align:center;padding:40px;color:#94a3b8;font-size:.85rem">Could not load messages. Please refresh and try again.</div>';
       });
   }
 

@@ -190,52 +190,71 @@
     const msgWrap = document.getElementById('chatMessages');
     msgWrap.innerHTML = '<div style="display:flex;justify-content:center;padding:30px"><div class="spinner"></div></div>';
 
-    // Find existing conversation
-    const snap = await db.collection('agent_conversations')
-      .where('agentId','==',agentId)
-      .where('userId','==',uid)
-      .limit(1).get();
+    try {
+      // Find existing conversation (timeboxed so the UI never spins forever)
+      const snap = await Promise.race([
+        db.collection('agent_conversations')
+          .where('agentId','==',agentId)
+          .where('userId','==',uid)
+          .limit(1).get(),
+        new Promise((_,reject)=>setTimeout(()=>reject(new Error('timeout')),10000))
+      ]);
 
-    let convId;
-    if (snap.empty) {
-      const ref = await db.collection('agent_conversations').add({
-        agentId,
-        agentName: agent.name,
-        agentPhoto: agent.photoUrl || '',
-        userId: uid,
-        userName: currentUser.displayName || currentUser.email,
-        userEmail: currentUser.email,
-        lastMessage: '',
-        lastMessageAt: TS(),
-        createdAt: TS(),
-        unreadAgent: 0,
-        unreadUser: 0
-      });
-      convId = ref.id;
-    } else {
-      convId = snap.docs[0].id;
-      // Reset user unread
-      snap.docs[0].ref.update({ unreadUser: 0 }).catch(()=>{});
+      let convId;
+      if (snap.empty) {
+        const ref = await db.collection('agent_conversations').add({
+          agentId,
+          agentName: agent.name,
+          agentPhoto: agent.photoUrl || '',
+          userId: uid,
+          userName: currentUser.displayName || currentUser.email,
+          userEmail: currentUser.email,
+          lastMessage: '',
+          lastMessageAt: TS(),
+          createdAt: TS(),
+          unreadAgent: 0,
+          unreadUser: 0
+        });
+        convId = ref.id;
+      } else {
+        convId = snap.docs[0].id;
+        // Reset user unread
+        snap.docs[0].ref.update({ unreadUser: 0 }).catch(()=>{});
+      }
+
+      currentConvId = convId;
+      subscribeMessages(convId, agent);
+    } catch (e) {
+      console.error('Conversation load error:', e);
+      const msg = e.message === 'timeout'
+        ? 'Connection timed out. Please check your internet and try again.'
+        : 'Could not open this conversation. Please refresh and try again.';
+      msgWrap.innerHTML = `<div style="text-align:center;padding:40px 20px;color:#94a3b8;font-size:.85rem">${esc(msg)}</div>`;
     }
-
-    currentConvId = convId;
-    subscribeMessages(convId, agent);
   }
 
   function subscribeMessages(convId, agent) {
     if (msgUnsubscribe) msgUnsubscribe();
     const msgWrap = document.getElementById('chatMessages');
+    // NOTE: intentionally no .orderBy() here — an equality filter combined with
+    // an orderBy on a different field requires a Firestore composite index.
+    // That index was never created, so onSnapshot failed silently and the
+    // loading spinner never cleared. Sorting client-side avoids needing it.
     msgUnsubscribe = db.collection('agent_messages')
       .where('conversationId','==',convId)
-      .orderBy('createdAt','asc')
       .onSnapshot(snap => {
         msgWrap.innerHTML = '';
         if (snap.empty) {
           msgWrap.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#94a3b8;font-size:.85rem">👋 Say hello to ' + esc(agent.name) + '!</div>';
           return;
         }
+        const docs = snap.docs.slice().sort((a, b) => {
+          const ta = a.data().createdAt?.toMillis ? a.data().createdAt.toMillis() : 0;
+          const tb = b.data().createdAt?.toMillis ? b.data().createdAt.toMillis() : 0;
+          return ta - tb;
+        });
         let lastDay = '';
-        snap.forEach(doc => {
+        docs.forEach(doc => {
           const m = doc.data();
           const ts = m.createdAt?.toDate ? m.createdAt.toDate() : new Date();
           const dayStr = ts.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
@@ -270,7 +289,10 @@
           msgWrap.appendChild(row);
         });
         msgWrap.scrollTop = msgWrap.scrollHeight;
-      }, err => console.warn('Chat listen error:', err));
+      }, err => {
+        console.error('Chat listen error:', err);
+        msgWrap.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#94a3b8;font-size:.85rem">Could not load messages. Please refresh and try again.</div>';
+      });
   }
 
   // ---- SEND MESSAGE ----
