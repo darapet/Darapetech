@@ -87,6 +87,7 @@
         <input type="password" id="confirmPw" placeholder="Repeat password" />
       </div>
       <button class="btn" id="changePwBtn">Save & Continue</button>
+      <a href="#" id="changePwSignOut" style="display:none;text-align:center;margin-top:14px;font-size:.85rem;color:#3b82f6;text-decoration:underline">Sign out & try again</a>
     </div>
   </div>
 
@@ -141,6 +142,12 @@
       if (e.key === 'Enter') document.getElementById('loginBtn').click();
     });
 
+    document.getElementById('changePwSignOut').addEventListener('click', async e => {
+      e.preventDefault();
+      await auth.signOut();
+      location.reload();
+    });
+
     document.getElementById('changePwBtn').addEventListener('click', async () => {
       const newPw    = document.getElementById('newPw').value;
       const confirm  = document.getElementById('confirmPw').value;
@@ -163,7 +170,8 @@
             await withTimeout(user.reauthenticateWithCredential(cred), 15000);
             await withTimeout(user.updatePassword(newPw), 15000);
           } else if (e.code === 'auth/requires-recent-login') {
-            throw new Error('Your session is too old for this action. Please sign out and sign in again, then set your password.');
+            document.getElementById('changePwSignOut').style.display = 'block';
+            throw new Error('Your session is too old for this action.');
           } else {
             throw e;
           }
