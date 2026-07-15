@@ -482,6 +482,7 @@ function mountAdminDashboard() {
         <a href="#" data-section="adm-messages"><i class="ph-fill ph-inbox"></i> Messages <span class="unread-badge" id="unreadBadge">0</span></a>
         <a href="#" data-section="adm-newsletter"><i class="ph-fill ph-envelope-simple"></i> Newsletter</a>
         <a href="#" data-section="adm-portfolio"><i class="ph-fill ph-images"></i> Portfolio</a>
+        <a href="#" data-section="adm-portfolio-gallery"><i class="ph-fill ph-stack"></i> Portfolio Gallery</a>
         <a href="#" data-section="adm-testimonials"><i class="ph-fill ph-star"></i> Testimonials</a>
         <a href="#" data-section="adm-stats"><i class="ph-fill ph-chart-bar"></i> Live Stats</a>
         <a href="#" data-section="adm-pricing"><i class="ph-fill ph-money"></i> Pricing Inquiries</a>
@@ -503,7 +504,8 @@ function mountAdminDashboard() {
       <div id="adm-overview"    class="admin-section active"><h2>Loading…</h2></div>
       <div id="adm-messages"    class="admin-section"></div>
       <div id="adm-newsletter"  class="admin-section"></div>
-      <div id="adm-portfolio"   class="admin-section"></div>
+      <div id="adm-portfolio"         class="admin-section"></div>
+      <div id="adm-portfolio-gallery" class="admin-section"></div>
       <div id="adm-testimonials" class="admin-section"></div>
       <div id="adm-stats"       class="admin-section"></div>
       <div id="adm-pricing"     class="admin-section"></div>
@@ -555,7 +557,8 @@ async function loadAdminSection(sec) {
     case 'adm-overview':    await renderAdminOverview(el);    break;
     case 'adm-messages':    await renderAdminMessages(el);    el.dataset.loaded='1'; break;
     case 'adm-newsletter':  await renderAdminNewsletter(el);  el.dataset.loaded='1'; break;
-    case 'adm-portfolio':   await renderAdminPortfolio(el);   break; // always fresh
+    case 'adm-portfolio':         await renderAdminPortfolio(el);         break; // always fresh
+    case 'adm-portfolio-gallery': await renderAdminPortfolioGallery(el); break; // always fresh
     case 'adm-testimonials':await renderAdminTestimonials(el);break;
     case 'adm-stats':       await renderAdminStats(el);       break;
     case 'adm-pricing':     await renderAdminPricing(el);     el.dataset.loaded='1'; break;

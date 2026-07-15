@@ -1777,3 +1777,157 @@ small { font-size: 0.8rem; }
   .svc-video-header { margin-bottom: 24px; }
   .svc-video-container { padding: 0 16px; }
 }
+
+/* =========================================
+   GENERATED SECTION BACKGROUND IMAGES
+   Each section gets an AI-generated bg image
+   with a dark overlay so text stays legible.
+   ========================================= */
+
+/* WHY SECTION */
+.why-section {
+  position: relative;
+  background-image: url('../assets/images/bg-why.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.why-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 12, 35, 0.83);
+  z-index: 0;
+  pointer-events: none;
+}
+.why-section .container { position: relative; z-index: 1; }
+
+/* PROCESS SECTION */
+.process-section {
+  position: relative;
+  background-image: url('../assets/images/bg-process.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.process-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 10, 30, 0.85);
+  z-index: 0;
+  pointer-events: none;
+}
+.process-section .container { position: relative; z-index: 1; }
+
+/* STATS SECTION */
+.stats-section {
+  position: relative;
+  background-image: url('../assets/images/bg-stats.jpg') !important;
+  background-size: cover;
+  background-position: center 40%;
+  background-attachment: fixed;
+}
+.stats-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 10, 28, 0.80);
+  z-index: 0;
+  pointer-events: none;
+}
+.stats-section .container { position: relative; z-index: 1; }
+/* Make stat blocks transparent so bg shows through */
+.stats-section .stat-block {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+.stats-section .big-count,
+.stats-section .stat-unit { color: #fff; }
+.stats-section p { color: rgba(255,255,255,0.7); }
+
+/* TESTIMONIALS SECTION */
+.testimonials-section {
+  position: relative;
+  background-image: url('../assets/images/bg-testimonials.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.testimonials-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 12, 35, 0.84);
+  z-index: 0;
+  pointer-events: none;
+}
+.testimonials-section .container { position: relative; z-index: 1; }
+
+/* PRICING SECTION – subtle texture */
+.pricing-section {
+  position: relative;
+  background-image: url('../assets/images/bg-why.jpg') !important;
+  background-size: cover;
+  background-position: center 70%;
+  background-attachment: fixed;
+}
+.pricing-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 14, 38, 0.90);
+  z-index: 0;
+  pointer-events: none;
+}
+.pricing-section .container { position: relative; z-index: 1; }
+
+/* TEAM PREVIEW SECTION */
+.team-preview-section {
+  position: relative;
+  background-image: url('../assets/images/bg-team.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.team-preview-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 11, 32, 0.86);
+  z-index: 0;
+  pointer-events: none;
+}
+.team-preview-section .container { position: relative; z-index: 1; }
+
+/* CTA BANNER */
+.cta-banner {
+  position: relative;
+  background-image: url('../assets/images/bg-cta.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 8, 28, 0.78);
+  z-index: 0;
+  pointer-events: none;
+}
+.cta-banner .cta-bg-effect { display: none; } /* hide old gradient effect */
+.cta-banner .container { position: relative; z-index: 1; }
+
+/* Disable fixed bg on mobile (perf) */
+@media (max-width: 768px) {
+  .why-section,
+  .process-section,
+  .stats-section,
+  .testimonials-section,
+  .pricing-section,
+  .team-preview-section,
+  .cta-banner {
+    background-attachment: scroll !important;
+  }
+}
