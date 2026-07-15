@@ -143,8 +143,20 @@
     .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45}
     .sidebar-overlay.open{display:block}
 
+    /* Mobile conversations panel toggle button */
+    .convs-toggle{display:none;align-items:center;gap:8px;padding:10px 16px;background:#fff;border-bottom:1px solid #e2e8f0;cursor:pointer;font-size:.85rem;font-weight:600;color:#1d4ed8;border:none;width:100%;font-family:inherit;text-align:left}
+    .convs-toggle:hover{background:#eff6ff}
+    .convs-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:44}
+    .convs-overlay.open{display:block}
+
     /* Responsive */
-    @media(max-width:900px){.convs-panel{display:none}.sidebar{width:220px}}
+    @media(max-width:900px){
+      .sidebar{width:220px}
+      /* Convs panel slides in as an overlay on tablet/mobile */
+      .convs-panel{position:fixed;left:0;top:0;width:300px;height:100vh;z-index:45;transform:translateX(-100%);transition:transform .3s;box-shadow:4px 0 20px rgba(0,0,0,.15)}
+      .convs-panel.open{transform:translateX(0)}
+      .convs-toggle{display:flex}
+    }
     @media(max-width:640px){
       .sidebar{position:fixed;left:0;top:0;height:100vh;z-index:50;transform:translateX(-100%);transition:transform .3s}
       .sidebar.open{transform:translateX(0)}
@@ -192,12 +204,20 @@
     </div>
   </div>
 
+  <!-- Overlay for mobile conversations panel -->
+  <div class="convs-overlay" id="convsOverlay"></div>
+
   <!-- MAIN AREA -->
   <div class="main-area" style="position:relative">
     <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
     <!-- CONVERSATIONS TAB -->
-    <div id="tabChats" style="display:flex;flex:1;overflow:hidden">
-      <div class="convs-panel">
+    <div id="tabChats" style="display:flex;flex:1;overflow:hidden;flex-direction:column">
+      <!-- Mobile toggle button — visible only on ≤900px -->
+      <button class="convs-toggle" id="convsToggle">
+        <i class="fas fa-comments"></i> All Conversations
+      </button>
+      <div style="display:flex;flex:1;overflow:hidden">
+      <div class="convs-panel" id="convsPanel">
         <div class="convs-header">
           <h3>Conversations</h3>
           <div class="convs-search">
@@ -216,6 +236,7 @@
           </div>
         </div>
       </div>
+      </div><!-- end flex wrapper -->
     </div>
 
     <!-- PROFILE/SETTINGS TAB -->

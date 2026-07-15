@@ -70,7 +70,8 @@ service cloud.firestore {
     }
 
     match /settings/{id} {
-      allow read: if isAdmin();
+      // Agents need to read settings/cloudinary to upload files in chat
+      allow read: if isAdmin() || isSignedIn();
       allow write: if isAdmin();
     }
 

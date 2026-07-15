@@ -66,6 +66,7 @@
     setSidebarAgent();
     setupNav();
     setupMobileSidebar();
+    setupMobileConvsToggle();
     loadConversations();
     setupSettings();
     document.getElementById('signOutBtn').addEventListener('click', () => { auth.signOut(); window.location = 'agent-login.html'; });
@@ -82,6 +83,20 @@
     overlay.addEventListener('click', close);
     // Collapse the drawer after picking a nav item or a conversation on mobile
     document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', close));
+  }
+
+  // ---- MOBILE CONVERSATIONS PANEL TOGGLE ----
+  function setupMobileConvsToggle() {
+    const convsPanel = document.getElementById('convsPanel');
+    const convsOverlay = document.getElementById('convsOverlay');
+    const convsToggle = document.getElementById('convsToggle');
+    if (!convsPanel || !convsOverlay || !convsToggle) return;
+    const openPanel = () => { convsPanel.classList.add('open'); convsOverlay.classList.add('open'); };
+    const closePanel = () => { convsPanel.classList.remove('open'); convsOverlay.classList.remove('open'); };
+    convsToggle.addEventListener('click', openPanel);
+    convsOverlay.addEventListener('click', closePanel);
+    // Store close function so conversation clicks can close the panel
+    window._closeConvsPanel = closePanel;
   }
 
   function setSidebarAgent() {
@@ -120,9 +135,11 @@
     // agent. Sorting client-side avoids needing that index (same fix as the
     // messages listeners below and in chat.js).
     convsUnsub = db.collection('agent_conversations')
-      .where('agentId','==',agentData.id || agentData.docId)
+      .where('agentId','==',agentData.docId)
       .onSnapshot(snap => {
-        allConvs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        // IMPORTANT: put id LAST so the Firestore doc ID is never overwritten
+        // by an 'id' field that might exist inside the document data.
+        allConvs = snap.docs.map(d => ({ ...d.data(), id: d.id }));
         allConvs.sort((a, b) => {
           const ta = a.lastMessageAt?.toMillis ? a.lastMessageAt.toMillis() : 0;
           const tb = b.lastMessageAt?.toMillis ? b.lastMessageAt.toMillis() : 0;
@@ -177,6 +194,8 @@
     db.collection('agent_conversations').doc(conv.id).update({ unreadAgent: 0 }).catch(()=>{});
     renderChatArea(conv);
     subscribeMessages(conv);
+    // On mobile/tablet, close the conversations panel after selecting one
+    if (typeof window._closeConvsPanel === 'function') window._closeConvsPanel();
   }
 
   function renderChatArea(conv) {
