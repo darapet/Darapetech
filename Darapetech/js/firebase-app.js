@@ -486,6 +486,7 @@ function mountAdminDashboard() {
         <a href="#" data-section="adm-stats"><i class="ph-fill ph-chart-bar"></i> Live Stats</a>
         <a href="#" data-section="adm-pricing"><i class="ph-fill ph-money"></i> Pricing Inquiries</a>
         <a href="#" data-section="adm-chat"><i class="ph-fill ph-chat-circle-dots"></i> Live Chat</a>
+        <a href="#" data-section="adm-customers"><i class="ph-fill ph-identification-card"></i> Customers</a>
         <a href="#" data-section="adm-agent-list"><i class="ph-fill ph-users-three"></i> Agent List</a>
         <a href="#" data-section="adm-create-agent"><i class="ph-fill ph-user-plus"></i> Create Agent</a>
         <a href="#" data-section="adm-socials"><i class="ph-fill ph-share-network"></i> Social Links</a>
@@ -506,6 +507,7 @@ function mountAdminDashboard() {
       <div id="adm-stats"       class="admin-section"></div>
       <div id="adm-pricing"     class="admin-section"></div>
       <div id="adm-chat"        class="admin-section"></div>
+      <div id="adm-customers"   class="admin-section"></div>
       <div id="adm-agent-list"   class="admin-section"></div>
       <div id="adm-create-agent" class="admin-section"></div>
       <div id="adm-socials"     class="admin-section"></div>
@@ -556,6 +558,7 @@ async function loadAdminSection(sec) {
     case 'adm-stats':       await renderAdminStats(el);       break;
     case 'adm-pricing':     await renderAdminPricing(el);     el.dataset.loaded='1'; break;
     case 'adm-chat':        await renderAdminChat(el);        break; // always live
+    case 'adm-customers':   await renderAdminCustomers(el);   break;
     case 'adm-agent-list':   await renderAdminAgentList(el);   break;
     case 'adm-create-agent': await renderAdminCreateAgent(el); break;
     case 'adm-socials':     renderAdminSocials(el);           el.dataset.loaded='1'; break;
@@ -977,34 +980,100 @@ async function renderAdminSettings(el) {
 
 /* ---- OVERVIEW ---- */
 async function renderAdminOverview(el) {
-  const [contacts, portfolio, testimonials, newsletter, pricing] = await Promise.all([
+  el.innerHTML = `<p style="color:var(--text-muted);padding:32px">Loading overview…</p>`;
+
+  const [contacts, portfolio, testimonials, newsletter, pricing, agents, conversations] = await Promise.all([
     db.collection('contacts').where('status','==','new').get(),
     db.collection('portfolio').get(),
     db.collection('testimonials').get(),
     db.collection('newsletter').where('active','==',true).get(),
-    db.collection('pricing_inquiries').where('status','==','pending').get()
+    db.collection('pricing_inquiries').where('status','==','pending').get(),
+    db.collection('agents').get(),
+    db.collection('conversations').get()
   ]);
+
   const unread = contacts.size;
   const badge = document.getElementById('unreadBadge');
   if (badge) badge.textContent = unread;
 
+  // Agent breakdown
+  let agentActive = 0, agentSuspended = 0, agentBanned = 0;
+  agents.docs.forEach(d => {
+    const a = d.data();
+    const st = a.status || (a.active === false ? 'suspended' : 'active');
+    if (st === 'active') agentActive++;
+    else if (st === 'suspended') agentSuspended++;
+    else if (st === 'banned') agentBanned++;
+  });
+
+  // Conversation breakdown
+  let convOpen = 0, convResolved = 0;
+  const today = new Date(); today.setHours(0,0,0,0);
+  let convToday = 0;
+  conversations.docs.forEach(d => {
+    const c = d.data();
+    if (c.status === 'resolved' || c.status === 'closed') convResolved++;
+    else convOpen++;
+    const ts = c.createdAt?.toDate ? c.createdAt.toDate() : null;
+    if (ts && ts >= today) convToday++;
+  });
+
   el.innerHTML = `
-  <h2>Welcome Back 👋</h2>
-  <p style="color:var(--text-muted);margin-bottom:24px">Live overview from Firebase Firestore.</p>
-  <div class="admin-stats-row">
-    <div class="admin-stat-card"><div class="num">${unread}</div><span>Unread Messages</span></div>
-    <div class="admin-stat-card"><div class="num">${portfolio.size}</div><span>Portfolio Items</span></div>
-    <div class="admin-stat-card"><div class="num">${testimonials.size}</div><span>Testimonials</span></div>
-    <div class="admin-stat-card"><div class="num">${newsletter.size}</div><span>Subscribers</span></div>
-    <div class="admin-stat-card"><div class="num">${pricing.size}</div><span>Pending Quotes</span></div>
-  </div>
-  <div class="glass-card" style="padding:24px;margin-top:0">
-    <h4 style="margin-bottom:16px">Quick Actions</h4>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <button class="btn btn-outline" onclick="document.querySelector('[data-section=adm-messages]').click()"><i class="ph-fill ph-inbox"></i> Check Messages</button>
-      <button class="btn btn-outline" onclick="document.querySelector('[data-section=adm-portfolio]').click()"><i class="ph-fill ph-images"></i> Manage Portfolio</button>
-      <button class="btn btn-outline" onclick="document.querySelector('[data-section=adm-stats]').click()"><i class="ph-fill ph-chart-bar"></i> Update Stats</button>
+  <style>
+    .ov-section-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:32px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+    .ov-section-label:first-of-type{margin-top:0}
+    .ov-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:0}
+    .ov-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;transition:border-color .15s}
+    .ov-card:hover{border-color:var(--border-hover)}
+    .ov-num{font-size:2rem;font-weight:800;font-family:'Space Grotesk',sans-serif;line-height:1;margin-bottom:4px}
+    .ov-lbl{font-size:.78rem;color:var(--text-muted);font-weight:500}
+    .ov-accent-green .ov-num{color:#10b981}
+    .ov-accent-yellow .ov-num{color:#f59e0b}
+    .ov-accent-red .ov-num{color:#ef4444}
+    .ov-accent-blue .ov-num{color:#60a5fa}
+    .ov-accent-purple .ov-num{color:#a78bfa}
+    .ov-qa{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  </style>
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+    <div>
+      <h2 style="margin:0 0 4px">Overview</h2>
+      <p style="color:var(--text-muted);font-size:.88rem;margin:0">Live snapshot from Firebase — refreshes every time you open this page.</p>
     </div>
+    <button class="btn btn-outline" style="display:flex;align-items:center;gap:6px;font-size:.83rem" onclick="renderAdminOverview(document.getElementById('adm-overview'))">
+      <i class="ph-fill ph-arrow-clockwise"></i> Refresh
+    </button>
+  </div>
+
+  <div class="ov-section-label">Conversations</div>
+  <div class="ov-stats">
+    <div class="ov-card ov-accent-blue"><div class="ov-num">${conversations.size}</div><div class="ov-lbl">Total Conversations</div></div>
+    <div class="ov-card ov-accent-yellow"><div class="ov-num">${convOpen}</div><div class="ov-lbl">Open / Pending</div></div>
+    <div class="ov-card ov-accent-green"><div class="ov-num">${convResolved}</div><div class="ov-lbl">Resolved</div></div>
+    <div class="ov-card ov-accent-purple"><div class="ov-num">${convToday}</div><div class="ov-lbl">Started Today</div></div>
+  </div>
+
+  <div class="ov-section-label">Agents</div>
+  <div class="ov-stats">
+    <div class="ov-card ov-accent-green"><div class="ov-num">${agentActive}</div><div class="ov-lbl">Active Agents</div></div>
+    <div class="ov-card ov-accent-yellow"><div class="ov-num">${agentSuspended}</div><div class="ov-lbl">Suspended</div></div>
+    <div class="ov-card ov-accent-red"><div class="ov-num">${agentBanned}</div><div class="ov-lbl">Banned</div></div>
+  </div>
+
+  <div class="ov-section-label">Content &amp; Leads</div>
+  <div class="ov-stats">
+    <div class="ov-card"><div class="ov-num">${unread}</div><div class="ov-lbl">Unread Messages</div></div>
+    <div class="ov-card"><div class="ov-num">${pricing.size}</div><div class="ov-lbl">Pending Quotes</div></div>
+    <div class="ov-card"><div class="ov-num">${newsletter.size}</div><div class="ov-lbl">Subscribers</div></div>
+    <div class="ov-card"><div class="ov-num">${portfolio.size}</div><div class="ov-lbl">Portfolio Items</div></div>
+    <div class="ov-card"><div class="ov-num">${testimonials.size}</div><div class="ov-lbl">Testimonials</div></div>
+  </div>
+
+  <div class="ov-qa">
+    <button class="btn btn-outline" onclick="document.querySelector('[data-section=adm-customers]').click()"><i class="ph-fill ph-identification-card"></i> View Customers</button>
+    <button class="btn btn-outline" onclick="document.querySelector('[data-section=adm-messages]').click()"><i class="ph-fill ph-inbox"></i> Check Messages</button>
+    <button class="btn btn-outline" onclick="document.querySelector('[data-section=adm-agent-list]').click()"><i class="ph-fill ph-users-three"></i> Manage Agents</button>
+    <button class="btn btn-outline" onclick="document.querySelector('[data-section=adm-portfolio]').click()"><i class="ph-fill ph-images"></i> Portfolio</button>
   </div>`;
 }
 
