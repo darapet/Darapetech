@@ -1778,433 +1778,94 @@ small { font-size: 0.8rem; }
   .svc-video-container { padding: 0 16px; }
 }
 
-/* =========================================
-   GENERATED SECTION BACKGROUND IMAGES
-   Each section gets an AI-generated bg image
-   with a dark overlay so text stays legible.
-   ========================================= */
-
-/* WHY SECTION */
-.why-section {
-  position: relative;
-  background-image: url('../assets/images/bg-why.jpg') !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.why-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(4, 12, 35, 0.83);
-  z-index: 0;
-  pointer-events: none;
-}
-.why-section .container { position: relative; z-index: 1; }
-
-/* PROCESS SECTION */
-.process-section {
-  position: relative;
-  background-image: url('../assets/images/bg-process.jpg') !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.process-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(3, 10, 30, 0.85);
-  z-index: 0;
-  pointer-events: none;
-}
-.process-section .container { position: relative; z-index: 1; }
-
-/* STATS SECTION */
-.stats-section {
-  position: relative;
-  background-image: url('../assets/images/bg-stats.jpg') !important;
-  background-size: cover;
-  background-position: center 40%;
-  background-attachment: fixed;
-}
-.stats-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(4, 10, 28, 0.80);
-  z-index: 0;
-  pointer-events: none;
-}
-.stats-section .container { position: relative; z-index: 1; }
-/* Make stat blocks transparent so bg shows through */
-.stats-section .stat-block {
-  background: rgba(255,255,255,0.04);
-  border-color: rgba(255,255,255,0.08);
-}
-.stats-section .big-count,
-.stats-section .stat-unit { color: #fff; }
-.stats-section p { color: rgba(255,255,255,0.7); }
-
-/* TESTIMONIALS SECTION */
-.testimonials-section {
-  position: relative;
-  background-image: url('../assets/images/bg-testimonials.jpg') !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.testimonials-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 12, 35, 0.84);
-  z-index: 0;
-  pointer-events: none;
-}
-.testimonials-section .container { position: relative; z-index: 1; }
-
-/* PRICING SECTION – subtle texture */
-.pricing-section {
-  position: relative;
-  background-image: url('../assets/images/bg-why.jpg') !important;
-  background-size: cover;
-  background-position: center 70%;
-  background-attachment: fixed;
-}
-.pricing-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 14, 38, 0.90);
-  z-index: 0;
-  pointer-events: none;
-}
-.pricing-section .container { position: relative; z-index: 1; }
-
-/* TEAM PREVIEW SECTION */
-.team-preview-section {
-  position: relative;
-  background-image: url('../assets/images/bg-team.jpg') !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.team-preview-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(4, 11, 32, 0.86);
-  z-index: 0;
-  pointer-events: none;
-}
-.team-preview-section .container { position: relative; z-index: 1; }
-
-/* CTA BANNER */
-.cta-banner {
-  position: relative;
-  background-image: url('../assets/images/bg-cta.jpg') !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(3, 8, 28, 0.78);
-  z-index: 0;
-  pointer-events: none;
-}
-.cta-banner .cta-bg-effect { display: none; } /* hide old gradient effect */
-.cta-banner .container { position: relative; z-index: 1; }
-
-/* Disable fixed bg on mobile (perf) */
-@media (max-width: 768px) {
-  .why-section,
-  .process-section,
-  .stats-section,
-  .testimonials-section,
-  .pricing-section,
-  .team-preview-section,
-  .cta-banner {
-    background-attachment: scroll !important;
-  }
-}
 
 /* =========================================================
-   HOMEPAGE — SINGLE FULL-PAGE BACKGROUND (bg-team.jpg)
-   Scoped to body.has-page-bg so ONLY index.html is affected.
-   Everything becomes transparent / frosted-glass so the ONE
-   background image shows through the entire page.
+   HOMEPAGE — SINGLE VISIBLE BACKGROUND (bg-team.jpg)
+   body.has-page-bg is set only on index.html.
+   The image shows fully — NO dark overlay.
+   Each section's content sits on a white card so text
+   stays perfectly readable with zero colour changes.
    ========================================================= */
 
+/* ── Full-page background on the body ── */
 body.has-page-bg {
-  background: transparent;
-  background-image: url('../assets/images/bg-team.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: #fff;
-  /* ── Remap CSS variables for dark bg ── */
-  --text-primary:   #ffffff;
-  --text-secondary: rgba(255,255,255,0.82);
-  --text-muted:     rgba(255,255,255,0.55);
-  --bg-card:        rgba(255,255,255,0.07);
-  --bg-card-hover:  rgba(255,255,255,0.13);
-  --border:         rgba(255,255,255,0.12);
-  --border-hover:   rgba(255,255,255,0.30);
-  --shadow:         0 4px 30px rgba(0,0,0,0.35);
-  --shadow-glow:    0 0 40px rgba(37,99,235,0.30);
+  background: url('../assets/images/bg-team.jpg') center center / cover fixed !important;
 }
 
-/* Global dark overlay — sits between image and content */
-body.has-page-bg::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(3, 8, 22, 0.72);
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* ── Kill per-section images (replaced by single page bg) ── */
-body.has-page-bg .why-section,
-body.has-page-bg .process-section,
-body.has-page-bg .stats-section,
-body.has-page-bg .testimonials-section,
-body.has-page-bg .pricing-section,
-body.has-page-bg .team-preview-section,
-body.has-page-bg .cta-banner {
-  background-image: none !important;
-  background: transparent !important;
-}
-body.has-page-bg .why-section::before,
-body.has-page-bg .process-section::before,
-body.has-page-bg .stats-section::before,
-body.has-page-bg .testimonials-section::before,
-body.has-page-bg .pricing-section::before,
-body.has-page-bg .team-preview-section::before,
-body.has-page-bg .cta-banner::before {
-  display: none !important;
-}
-
-/* ── Announcement strip ── */
-body.has-page-bg .announcement-strip {
-  background: rgba(3, 8, 22, 0.88) !important;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-body.has-page-bg .announcement-strip * { color: rgba(255,255,255,0.75); }
-body.has-page-bg .strip-badge {
-  background: rgba(37,99,235,0.25);
-  color: #93c5fd;
-  border-color: rgba(37,99,235,0.35);
-}
-
-/* ── Main nav header ── */
-body.has-page-bg .main-header {
-  background: rgba(3, 8, 22, 0.82) !important;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-body.has-page-bg .main-header.scrolled {
-  background: rgba(3, 8, 22, 0.92) !important;
-}
-body.has-page-bg .nav-links a { color: rgba(255,255,255,0.78); }
-body.has-page-bg .nav-links a:hover,
-body.has-page-bg .nav-links a.active {
-  color: #fff;
-  background: rgba(255,255,255,0.08) !important;
-}
-body.has-page-bg .hamburger span { background: #fff; }
-body.has-page-bg .mobile-drawer  { background: rgba(3,8,22,0.97) !important; }
-
-/* ── All page sections → transparent ── */
+/* ── Strip any solid/gradient backgrounds from sections ── */
 body.has-page-bg .section,
 body.has-page-bg .hero,
 body.has-page-bg .partners-strip,
-body.has-page-bg .services-section,
-body.has-page-bg .why-section,
-body.has-page-bg .process-section,
-body.has-page-bg .stats-section,
-body.has-page-bg .portfolio-section,
-body.has-page-bg .testimonials-section,
-body.has-page-bg .pricing-section,
-body.has-page-bg .team-preview-section,
 body.has-page-bg .cta-banner {
   background: transparent !important;
 }
 
-/* ── Partners strip ── */
+/* ── Each section's content sits on a white card ── */
+body.has-page-bg .section .container {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 22px;
+  padding: 52px 48px;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ── Partners strip → white pill card ── */
 body.has-page-bg .partners-strip {
-  border-color: rgba(255,255,255,0.08);
+  padding: 0 !important;
+  margin: 0 !important;
 }
-body.has-page-bg .marquee-label { color: rgba(255,255,255,0.45); }
+body.has-page-bg .partners-strip .container,
+body.has-page-bg .partners-strip > div:not(.marquee-track):not(.marquee-inner) {
+  background: rgba(255,255,255,0.93);
+}
+body.has-page-bg .partners-strip .marquee-wrap,
+body.has-page-bg .partners-strip > * {
+  background: rgba(255,255,255,0.93);
+}
 
-/* ── Hero ── */
+/* Simpler: give the whole strip a white card background */
+body.has-page-bg .partners-strip {
+  background: rgba(255,255,255,0.93) !important;
+}
+
+/* ── CTA banner container ── */
+body.has-page-bg .cta-banner .container {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 22px;
+  padding: 52px 48px;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+body.has-page-bg .cta-banner .cta-bg-effect { display: none; }
+
+/* ── Hero: transparent — bg image IS the hero ── */
+body.has-page-bg .hero {
+  background: transparent !important;
+}
 body.has-page-bg .hero-gradient {
-  background: radial-gradient(ellipse 70% 60% at 50% 40%,
-    rgba(37,99,235,0.12) 0%, rgba(37,99,235,0.06) 40%, transparent 70%);
-}
-body.has-page-bg .hero-badge {
-  background: rgba(37,99,235,0.18);
-  border-color: rgba(37,99,235,0.35);
-  color: #93c5fd;
-}
-body.has-page-bg .hero-stats {
-  background: rgba(255,255,255,0.07) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-color: rgba(255,255,255,0.13);
-}
-body.has-page-bg .stat span,
-body.has-page-bg .stat .count { color: #fff; }
-body.has-page-bg .stat-divider { background: rgba(255,255,255,0.15); }
-
-/* ── Glass cards (universal frosted glass) ── */
-body.has-page-bg .glass-card {
-  background: rgba(255,255,255,0.06) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.12) !important;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-}
-body.has-page-bg .glass-card:hover {
-  background: rgba(255,255,255,0.10) !important;
-  border-color: rgba(255,255,255,0.22) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.30);
+  display: none;
 }
 
-/* ── Section headings & tags ── */
-body.has-page-bg .section-tag {
-  background: rgba(37,99,235,0.18);
-  border-color: rgba(37,99,235,0.30);
-  color: #93c5fd;
+/* ── Announcement strip & nav: keep white ── */
+body.has-page-bg .announcement-strip {
+  background: rgba(255,255,255,0.96) !important;
 }
-body.has-page-bg h1,
-body.has-page-bg h2,
-body.has-page-bg h3,
-body.has-page-bg h4 { color: #fff; }
-
-/* ── Service cards ── */
-body.has-page-bg .service-card {
-  background: rgba(255,255,255,0.06) !important;
+body.has-page-bg .main-header {
+  background: rgba(255,255,255,0.96) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-color: rgba(255,255,255,0.12);
-}
-body.has-page-bg .service-card:hover { background: rgba(255,255,255,0.10) !important; }
-body.has-page-bg .service-icon {
-  background: rgba(37,99,235,0.18);
-  border-color: rgba(37,99,235,0.30);
-}
-body.has-page-bg .card-link { color: #93c5fd; }
-
-/* ── Why / process / step icons ── */
-body.has-page-bg .why-icon {
-  background: rgba(37,99,235,0.18);
-  border-color: rgba(37,99,235,0.30);
-}
-body.has-page-bg .step-icon {
-  background: rgba(37,99,235,0.14);
-  border-color: rgba(37,99,235,0.35);
-}
-body.has-page-bg .step-number { color: #60a5fa; }
-
-/* ── Stats blocks ── */
-body.has-page-bg .stats-grid { background: rgba(255,255,255,0.05); }
-body.has-page-bg .stat-block {
-  background: rgba(255,255,255,0.05) !important;
-  border-color: rgba(255,255,255,0.06);
-}
-body.has-page-bg .big-count,
-body.has-page-bg .stat-unit { color: #fff; }
-body.has-page-bg .stat-block p { color: rgba(255,255,255,0.65); }
-
-/* ── Portfolio cards ── */
-body.has-page-bg .portfolio-card { border-color: rgba(255,255,255,0.12); }
-body.has-page-bg .portfolio-img { background: rgba(37,99,235,0.10); }
-body.has-page-bg .portfolio-tag {
-  background: rgba(37,99,235,0.22);
-  color: #93c5fd;
-}
-body.has-page-bg .portfolio-overlay { background: rgba(3,8,22,0.60); }
-
-/* ── Testimonial cards ── */
-body.has-page-bg .testimonial-card {
-  background: rgba(255,255,255,0.06) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-color: rgba(255,255,255,0.12);
-}
-body.has-page-bg .quote-mark { color: rgba(37,99,235,0.45); }
-body.has-page-bg .slider-btn {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(255,255,255,0.20);
-  color: #fff;
-}
-body.has-page-bg .slider-btn:hover {
-  background: rgba(37,99,235,0.25);
-  border-color: #3b82f6;
-}
-body.has-page-bg .dot { background: rgba(255,255,255,0.25); }
-body.has-page-bg .dot.active { background: #3b82f6; }
-
-/* ── Pricing cards ── */
-body.has-page-bg .pricing-card {
-  background: rgba(255,255,255,0.06) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-color: rgba(255,255,255,0.12);
-}
-body.has-page-bg .pricing-card.featured {
-  background: rgba(37,99,235,0.18) !important;
-  border-color: rgba(37,99,235,0.45);
-}
-body.has-page-bg .pricing-feature { color: rgba(255,255,255,0.75); }
-body.has-page-bg .pricing-feature i { color: #4ade80; }
-
-/* ── Team photo cards ── */
-body.has-page-bg .team-card {
-  background: rgba(255,255,255,0.06) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-color: rgba(255,255,255,0.12);
-}
-body.has-page-bg .team-photo { background: rgba(37,99,235,0.12); }
-body.has-page-bg .team-role-badge {
-  background: rgba(37,99,235,0.20);
-  color: #93c5fd;
-  border-color: rgba(37,99,235,0.30);
-}
-body.has-page-bg .team-skills span {
-  background: rgba(255,255,255,0.10);
-  color: rgba(255,255,255,0.75);
 }
 
-/* ── CTA banner ── */
-body.has-page-bg .cta-banner { border-color: rgba(255,255,255,0.08); }
-
-/* ── Buttons on page bg ── */
-body.has-page-bg .btn-outline {
-  border-color: rgba(255,255,255,0.30);
-  color: #fff;
-}
-body.has-page-bg .btn-outline:hover {
-  background: rgba(255,255,255,0.10);
-  border-color: rgba(255,255,255,0.55);
-}
-
-/* ── Section CTA links ── */
-body.has-page-bg .section-cta a { color: #93c5fd; }
-
-/* ── Scroll hint ── */
-body.has-page-bg .hero-scroll-hint { color: rgba(255,255,255,0.40); }
-
-/* ── Mobile: disable fixed bg (perf) ── */
+/* ── Mobile: switch to scroll (perf) ── */
 @media (max-width: 768px) {
   body.has-page-bg {
-    background-attachment: scroll;
+    background-attachment: scroll !important;
+  }
+  body.has-page-bg .section .container,
+  body.has-page-bg .cta-banner .container {
+    padding: 36px 20px;
+    border-radius: 16px;
   }
 }
