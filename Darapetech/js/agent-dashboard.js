@@ -62,6 +62,10 @@
   });
 
   function initDashboard() {
+    // Clear search box on load to prevent browser autocomplete from hiding conversations
+    const searchEl = document.getElementById('convSearch');
+    if (searchEl) searchEl.value = '';
+
     // Set sidebar info
     setSidebarAgent();
     setupNav();

@@ -486,7 +486,8 @@ function mountAdminDashboard() {
         <a href="#" data-section="adm-stats"><i class="ph-fill ph-chart-bar"></i> Live Stats</a>
         <a href="#" data-section="adm-pricing"><i class="ph-fill ph-money"></i> Pricing Inquiries</a>
         <a href="#" data-section="adm-chat"><i class="ph-fill ph-chat-circle-dots"></i> Live Chat</a>
-        <a href="#" data-section="adm-agents"><i class="ph-fill ph-headset"></i> Agents</a>
+        <a href="#" data-section="adm-agent-list"><i class="ph-fill ph-users-three"></i> Agent List</a>
+        <a href="#" data-section="adm-create-agent"><i class="ph-fill ph-user-plus"></i> Create Agent</a>
         <a href="#" data-section="adm-socials"><i class="ph-fill ph-share-network"></i> Social Links</a>
         <a href="#" data-section="adm-settings"><i class="ph-fill ph-gear"></i> Settings</a>
       </nav>
@@ -505,7 +506,8 @@ function mountAdminDashboard() {
       <div id="adm-stats"       class="admin-section"></div>
       <div id="adm-pricing"     class="admin-section"></div>
       <div id="adm-chat"        class="admin-section"></div>
-      <div id="adm-agents"      class="admin-section"></div>
+      <div id="adm-agent-list"   class="admin-section"></div>
+      <div id="adm-create-agent" class="admin-section"></div>
       <div id="adm-socials"     class="admin-section"></div>
       <div id="adm-settings"    class="admin-section"></div>
     </main>
@@ -554,7 +556,8 @@ async function loadAdminSection(sec) {
     case 'adm-stats':       await renderAdminStats(el);       break;
     case 'adm-pricing':     await renderAdminPricing(el);     el.dataset.loaded='1'; break;
     case 'adm-chat':        await renderAdminChat(el);        break; // always live
-    case 'adm-agents':      await renderAdminAgents(el);      break; // always fresh
+    case 'adm-agent-list':   await renderAdminAgentList(el);   break;
+    case 'adm-create-agent': await renderAdminCreateAgent(el); break;
     case 'adm-socials':     renderAdminSocials(el);           el.dataset.loaded='1'; break;
     case 'adm-settings':    await renderAdminSettings(el);    break;
   }
@@ -605,22 +608,138 @@ async function uploadToCloudinary(file) {
   return data.secure_url;
 }
 
-async function renderAdminAgents(el) {
+/* ---- AGENT LIST ---- */
+async function renderAdminAgentList(el) {
   el.innerHTML = `
   <style>
-    .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:40px}
-    .adm-agent-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative}
-    .adm-agent-photo{width:56px;height:56px;border-radius:12px;object-fit:cover;border:2px solid var(--border-hover);background:rgba(59,130,246,0.15)}
-    .adm-agent-photo-ph{width:56px;height:56px;border-radius:12px;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;font-weight:700}
-    .adm-agent-id{display:inline-block;background:rgba(59,130,246,0.12);color:var(--accent-2);border:1px solid var(--border-hover);border-radius:100px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:.05em;margin-bottom:4px}
-    .adm-agent-actions{display:flex;gap:6px;margin-top:12px}
+    .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .adm-agent-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;transition:border-color .15s}
+    .adm-agent-card:hover{border-color:var(--border-hover)}
+    .adm-agent-photo{width:54px;height:54px;border-radius:12px;object-fit:cover;border:2px solid var(--border-hover);flex-shrink:0}
+    .adm-agent-photo-ph{width:54px;height:54px;border-radius:12px;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;font-weight:700;flex-shrink:0}
+    .adm-agent-id{display:inline-block;background:rgba(59,130,246,0.12);color:var(--accent-2);border:1px solid rgba(59,130,246,0.2);border-radius:100px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:.05em}
     .adm-tag{background:rgba(148,163,184,0.12);color:var(--text-secondary);border-radius:100px;padding:2px 8px;font-size:.7rem}
-    .agent-status{width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;margin-right:4px}
-    .agent-status.inactive{background:#475569}
-    .section-title{font-size:1.3rem;font-weight:700;color:var(--text-primary);margin-bottom:6px;font-family:'Space Grotesk',sans-serif}
-    .section-sub{color:var(--text-muted);font-size:.9rem;margin-bottom:28px;max-width:640px}
+    .agent-status-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+    .status-active{background:rgba(16,185,129,0.15);color:#10b981}
+    .status-suspended{background:rgba(245,158,11,0.15);color:#f59e0b}
+    .status-banned{background:rgba(239,68,68,0.15);color:#ef4444}
+    .adm-agent-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+    .adm-action-btn{font-size:.75rem;padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:transparent;cursor:pointer;font-family:inherit;color:var(--text-secondary);transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+    .adm-action-btn.suspend{color:#f59e0b;border-color:rgba(245,158,11,0.35)}
+    .adm-action-btn.suspend:hover{background:rgba(245,158,11,0.1)}
+    .adm-action-btn.ban{color:#ef4444;border-color:rgba(239,68,68,0.35)}
+    .adm-action-btn.ban:hover{background:rgba(239,68,68,0.1)}
+    .adm-action-btn.restore{color:#10b981;border-color:rgba(16,185,129,0.35)}
+    .adm-action-btn.restore:hover{background:rgba(16,185,129,0.1)}
+    .adm-action-btn.del{color:#ef4444;border-color:rgba(239,68,68,0.35)}
+    .adm-action-btn.del:hover{background:rgba(239,68,68,0.1)}
+  </style>
 
-    /* ---- Create Agent panel — wide, two-column, professional ---- */
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px">
+    <div>
+      <h2 style="margin:0 0 4px">Agent List</h2>
+      <p style="color:var(--text-muted);font-size:.88rem;margin:0">Manage your specialists — suspend, ban or restore their access.</p>
+    </div>
+    <button class="btn btn-primary" id="goCreateAgentBtn" style="display:flex;align-items:center;gap:8px">
+      <i class="ph-fill ph-user-plus"></i> Add New Agent
+    </button>
+  </div>
+
+  <div id="admAgentsGrid" class="agent-grid">
+    <div style="grid-column:1/-1;padding:32px;text-align:center;color:var(--text-muted)">
+      <div style="width:26px;height:26px;border:3px solid #bfdbfe;border-top-color:#1d4ed8;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px"></div>
+      Loading agents…
+    </div>
+  </div>`;
+
+  document.getElementById('goCreateAgentBtn').addEventListener('click', () => {
+    document.querySelector('[data-section=adm-create-agent]').click();
+  });
+
+  async function loadAgentsList() {
+    const grid = document.getElementById('admAgentsGrid');
+    if (!grid) return;
+    try {
+      const snap = await db.collection('agents').orderBy('createdAt','desc').get();
+      if (snap.empty) {
+        grid.innerHTML = '<div style="grid-column:1/-1;padding:32px;text-align:center;color:var(--text-muted);font-size:.88rem">No agents yet. <a href="#" id="goCreateLink" style="color:var(--accent-1)">Create your first agent →</a></div>';
+        document.getElementById('goCreateLink')?.addEventListener('click', e => { e.preventDefault(); document.querySelector('[data-section=adm-create-agent]').click(); });
+        return;
+      }
+      grid.innerHTML = snap.docs.map(doc => {
+        const a = doc.data();
+        // New 'status' field takes priority; fall back to legacy 'active' boolean
+        const status = a.status || (a.active === false ? 'suspended' : 'active');
+        const statusLabel = { active:'Active', suspended:'Suspended', banned:'Banned' }[status] || status;
+        const photoEl = a.photoUrl
+          ? `<img src="${escapeHtml(a.photoUrl)}" class="adm-agent-photo" />`
+          : `<div class="adm-agent-photo-ph">${escapeHtml((a.name||'A').slice(0,2).toUpperCase())}</div>`;
+        const skills = (a.skills||[]).slice(0,4);
+        const extra  = (a.skills||[]).length - skills.length;
+        const dId   = doc.id;
+        const dName = (a.name||'').replace(/'/g,"\\x27");
+
+        let actions = '';
+        if (status === 'active') {
+          actions = `<button class="adm-action-btn suspend" onclick="setAgentStatus('${dId}','suspended')"><i class="ph-fill ph-pause-circle"></i> Suspend</button>
+                     <button class="adm-action-btn ban" onclick="setAgentStatus('${dId}','banned')"><i class="ph-fill ph-prohibit"></i> Ban</button>`;
+        } else if (status === 'suspended') {
+          actions = `<button class="adm-action-btn restore" onclick="setAgentStatus('${dId}','active')"><i class="ph-fill ph-play-circle"></i> Restore</button>
+                     <button class="adm-action-btn ban" onclick="setAgentStatus('${dId}','banned')"><i class="ph-fill ph-prohibit"></i> Escalate to Ban</button>`;
+        } else {
+          actions = `<button class="adm-action-btn restore" onclick="setAgentStatus('${dId}','active')"><i class="ph-fill ph-play-circle"></i> Restore</button>`;
+        }
+        actions += `<button class="adm-action-btn del" onclick="deleteAgent('${dId}','${dName}')"><i class="ph-fill ph-trash"></i> Delete</button>`;
+
+        return `<div class="adm-agent-card">
+          <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px">
+            ${photoEl}
+            <div style="flex:1;min-width:0">
+              <div style="font-weight:700;font-size:.92rem;color:var(--text-primary);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escapeHtml(a.name||'Unknown')}</div>
+              <span class="adm-agent-id">${escapeHtml(a.agentId||'—')}</span>
+              <div style="font-size:.75rem;color:var(--text-muted);margin-top:3px">${escapeHtml(a.service||'')}</div>
+            </div>
+            <span class="agent-status-badge status-${status}">${statusLabel}</span>
+          </div>
+          <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px">${escapeHtml(a.email||'')}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
+            ${skills.map(s=>`<span class="adm-tag">${escapeHtml(s)}</span>`).join('')}
+            ${extra>0?`<span class="adm-tag">+${extra} more</span>`:''}
+          </div>
+          <div style="font-size:.72rem;color:var(--text-muted);margin-bottom:10px">
+            First login: ${a.firstLogin?'<span style="color:#f59e0b">Pending</span>':'<span style="color:#10b981">Complete</span>'}
+          </div>
+          <div class="adm-agent-actions">${actions}</div>
+        </div>`;
+      }).join('');
+    } catch(e) {
+      if (grid) grid.innerHTML = `<div style="grid-column:1/-1;padding:20px;text-align:center;color:#ef4444;font-size:.85rem">Error loading agents: ${escapeHtml(e.message)}</div>`;
+    }
+  }
+  loadAgentsList();
+
+  // Set agent status: 'active' | 'suspended' | 'banned'
+  window.setAgentStatus = async (docId, newStatus) => {
+    try {
+      await db.collection('agents').doc(docId).update({ status: newStatus, active: newStatus === 'active' });
+      loadAgentsList();
+    } catch(e) { alert('Failed to update status: ' + e.message); }
+  };
+
+  // Delete agent permanently
+  window.deleteAgent = async (docId, name) => {
+    if (!confirm(`Permanently delete agent "${name}"? This cannot be undone.`)) return;
+    try {
+      await db.collection('agents').doc(docId).delete();
+      loadAgentsList();
+    } catch(e) { alert('Failed to delete: ' + e.message); }
+  };
+}
+
+/* ---- CREATE AGENT ---- */
+async function renderAdminCreateAgent(el) {
+  el.innerHTML = `
+  <style>
     .create-agent-panel{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start;max-width:1040px}
     @media(max-width:900px){.create-agent-panel{grid-template-columns:1fr}}
     .create-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:36px;backdrop-filter:blur(16px)}
@@ -636,8 +755,6 @@ async function renderAdminAgents(el) {
     .form-group-sm input,.form-group-sm select{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.94rem;font-family:inherit;outline:none;color:var(--text-primary);background:rgba(255,255,255,0.03);transition:var(--transition)}
     .form-group-sm input::placeholder{color:var(--text-muted)}
     .form-group-sm input:focus,.form-group-sm select:focus{border-color:var(--accent-1);box-shadow:0 0 0 3px rgba(59,130,246,0.15)}
-    .form-hint{font-size:.78rem;color:var(--text-muted);margin-top:16px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
-    .form-hint i{color:var(--accent-2);margin-top:2px;flex-shrink:0}
     .skills-select{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;font-family:inherit;outline:none;height:180px;background:rgba(255,255,255,0.03);color:var(--text-primary)}
     .skills-select:focus{border-color:var(--accent-1)}
     .skills-select option{background:#0c1829;padding:6px}
@@ -647,46 +764,33 @@ async function renderAdminAgents(el) {
     .create-agent-submit{width:100%;justify-content:center;padding:15px;font-size:1rem;margin-top:32px}
     .created-badge{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.35);border-radius:var(--radius-sm);padding:18px 20px;margin-top:20px;display:none}
     .created-badge code{display:block;font-size:1.15rem;font-weight:700;color:#34d399;letter-spacing:.1em;margin:8px 0;font-family:monospace}
-
-    /* ---- Right rail: tips / preview ---- */
     .agent-side-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:26px}
-    .agent-side-card + .agent-side-card{margin-top:20px}
+    .agent-side-card+.agent-side-card{margin-top:20px}
     .agent-side-card h4{font-size:.92rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
     .agent-side-card h4 i{color:var(--accent-1)}
     .agent-side-card ol,.agent-side-card ul{padding-left:18px;margin:0}
     .agent-side-card li{font-size:.85rem;color:var(--text-secondary);margin-bottom:10px;line-height:1.55}
-    .agent-side-card li:last-child{margin-bottom:0}
   </style>
 
-  <h2 style="margin-bottom:6px">Agents</h2>
-  <p style="color:var(--text-muted);margin-bottom:24px">Create and manage your specialist agents.</p>
-
-  <div id="admAgentsGrid" class="agent-grid">
-    <div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--text-muted);font-size:.88rem">Loading agents…</div>
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap">
+    <button class="btn btn-ghost" id="backToAgentListBtn" style="display:flex;align-items:center;gap:6px;padding:8px 14px;flex-shrink:0">
+      <i class="ph-fill ph-arrow-left"></i> Agent List
+    </button>
+    <div>
+      <h2 style="margin:0 0 2px">Create New Agent</h2>
+      <p style="color:var(--text-muted);font-size:.88rem;margin:0">A Firebase login is created for the agent. Share their email and temp password separately — they'll be prompted to change it on first sign-in.</p>
+    </div>
   </div>
-
-  <div class="section-title">Create New Agent</div>
-  <p class="section-sub">A new Firebase login is created for the agent, and they'll appear on the site's specialist directory once saved. Share their email and temporary password with them separately — they'll be asked to set a new password on first sign-in.</p>
 
   <div class="create-agent-panel">
     <div class="create-form">
       <div class="create-form-step">
         <div class="step-label"><span class="step-num">1</span><h4>Basic Information</h4></div>
         <div class="agent-form-grid">
-          <div class="form-group-sm">
-            <label>Full Name *</label>
-            <input type="text" id="newAgentName" placeholder="e.g. John Doe" />
-          </div>
-          <div class="form-group-sm">
-            <label>Email Address *</label>
-            <input type="email" id="newAgentEmail" placeholder="agent@example.com" />
-          </div>
-          <div class="form-group-sm">
-            <label>Temporary Password *</label>
-            <input type="password" id="newAgentPw" placeholder="Min 8 characters" />
-          </div>
-          <div class="form-group-sm">
-            <label>Service Area *</label>
+          <div class="form-group-sm"><label>Full Name *</label><input type="text" id="newAgentName" placeholder="e.g. John Doe" /></div>
+          <div class="form-group-sm"><label>Email Address *</label><input type="email" id="newAgentEmail" placeholder="agent@example.com" /></div>
+          <div class="form-group-sm"><label>Temporary Password *</label><input type="password" id="newAgentPw" placeholder="Min 8 characters" /></div>
+          <div class="form-group-sm"><label>Service Area *</label>
             <select id="newAgentService">
               <option value="">— select service —</option>
               ${Object.keys(AGENT_SERVICES_SKILLS).map(s=>`<option value="${s}">${s}</option>`).join('')}
@@ -721,7 +825,10 @@ async function renderAdminAgents(el) {
         <div style="font-weight:700;color:#34d399;margin-bottom:4px">✓ Agent created successfully!</div>
         <div style="font-size:.85rem;color:var(--text-secondary)">Agent ID — give this to the agent for reference:</div>
         <code id="createdAgentId"></code>
-        <div style="font-size:.8rem;color:var(--text-muted)">Share their email + temp password separately. They must change their password on first login.</div>
+        <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:12px">Share their email + temp password separately. They must change it on first login.</div>
+        <button class="btn btn-outline" id="viewAgentListBtn" style="font-size:.83rem;display:inline-flex;align-items:center;gap:6px">
+          <i class="ph-fill ph-users-three"></i> View Agent List
+        </button>
       </div>
     </div>
 
@@ -729,115 +836,54 @@ async function renderAdminAgents(el) {
       <div class="agent-side-card">
         <h4><i class="ph-fill ph-info"></i> Before you create an agent</h4>
         <ol>
-          <li>Make sure Email/Password sign-in is enabled in your Firebase console under Authentication → Sign-in method.</li>
-          <li>Make sure the Firestore rules from <strong>FIREBASE_RULES.md</strong> are pasted into your Firebase console — the agent won't save without them.</li>
-          <li>Set up Cloudinary under Settings if you want to upload a profile photo.</li>
+          <li>Enable Email/Password sign-in in Firebase Console → Authentication → Sign-in method.</li>
+          <li>Paste the rules from <strong>FIREBASE_RULES.md</strong> into your Firebase Console — the agent won't save without them.</li>
+          <li>Set up Cloudinary under Settings to enable profile photo uploads.</li>
         </ol>
       </div>
       <div class="agent-side-card">
         <h4><i class="ph-fill ph-headset"></i> What happens next</h4>
         <ul>
-          <li>The agent signs in at the Agent Portal with the email and temporary password.</li>
-          <li>They're required to set a new password on their first sign-in.</li>
-          <li>Once in, they can update their bio, skills and photo, and start replying to conversations.</li>
+          <li>The agent signs in at the Agent Portal with their email and temp password.</li>
+          <li>They're required to set a new password on first sign-in.</li>
+          <li>Once logged in they can update their bio, skills and photo, then start replying to conversations.</li>
         </ul>
       </div>
     </div>
   </div>`;
 
+  document.getElementById('backToAgentListBtn').addEventListener('click', () => {
+    document.querySelector('[data-section=adm-agent-list]').click();
+  });
   document.getElementById('newAgentPhoto').addEventListener('change', e => {
     document.getElementById('newAgentPhotoName').textContent = e.target.files[0]?.name || 'No file selected';
   });
-
-  // Populate skills when service changes
   document.getElementById('newAgentService').addEventListener('change', e => {
     const skills = AGENT_SERVICES_SKILLS[e.target.value] || [];
     const sel = document.getElementById('newAgentSkills');
     sel.innerHTML = skills.map(s=>`<option value="${s}">${s}</option>`).join('');
   });
 
-  // Load existing agents
-  async function loadAgentsList() {
-    const grid = document.getElementById('admAgentsGrid');
-    try {
-      const snap = await db.collection('agents').orderBy('createdAt','desc').get();
-      if (snap.empty) { grid.innerHTML = '<div style="grid-column:1/-1;padding:20px;text-align:center;color:var(--text-muted);font-size:.85rem">No agents yet. Create your first one below.</div>'; return; }
-      grid.innerHTML = snap.docs.map(doc => {
-        const a = doc.data();
-        const photoEl = a.photoUrl
-          ? `<img src="${a.photoUrl}" class="adm-agent-photo" />`
-          : `<div class="adm-agent-photo-ph">${(a.name||'A').slice(0,2).toUpperCase()}</div>`;
-        const skills = (a.skills||[]).slice(0,5);
-        const extra = (a.skills||[]).length - skills.length;
-        return `<div class="adm-agent-card">
-          <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px">
-            ${photoEl}
-            <div style="flex:1;min-width:0">
-              <div style="font-weight:700;font-size:.92rem;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${a.name||'Unknown'}</div>
-              <div class="adm-agent-id">${a.agentId||'—'}</div><br>
-              <span style="font-size:.75rem;color:var(--text-muted)">${a.service||''}</span>
-            </div>
-          </div>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:6px">${a.email||''}</div>
-          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px">
-            ${skills.map(s=>`<span class="adm-tag">${s}</span>`).join('')}
-            ${extra>0?`<span class="adm-tag">+${extra}</span>`:''}
-          </div>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:10px">
-            <span class="${a.active===false?'agent-status inactive':'agent-status'}"></span>${a.active===false?'Inactive':'Active'}
-            · First login: ${a.firstLogin?'Pending':'Complete'}
-          </div>
-          <div class="adm-agent-actions">
-            <button class="btn btn-outline" style="font-size:.75rem;padding:5px 10px" onclick="toggleAgentStatus('${doc.id}',${a.active===false})">${a.active===false?'Activate':'Deactivate'}</button>
-            <button class="btn" style="font-size:.75rem;padding:5px 10px;background:#fef2f2;color:#ef4444;border:1px solid #fecaca" onclick="deleteAgent('${doc.id}','${(a.name||'').replace(/'/g,'\\x27')}')">Delete</button>
-          </div>
-        </div>`;
-      }).join('');
-    } catch(e) {
-      grid.innerHTML = `<div style="grid-column:1/-1;padding:20px;text-align:center;color:#ef4444;font-size:.85rem">Error: ${e.message}</div>`;
-    }
-  }
-  loadAgentsList();
-
-  // Toggle active
-  window.toggleAgentStatus = async (docId, makeActive) => {
-    await db.collection('agents').doc(docId).update({ active: makeActive }).catch(e=>alert(e.message));
-    loadAgentsList();
-  };
-
-  // Delete agent
-  window.deleteAgent = async (docId, name) => {
-    if (!confirm(`Delete agent "${name}"? This cannot be undone.`)) return;
-    await db.collection('agents').doc(docId).delete().catch(e=>alert(e.message));
-    loadAgentsList();
-  };
-
-  // Create agent
   document.getElementById('createAgentBtn').addEventListener('click', async () => {
-    const name    = document.getElementById('newAgentName').value.trim();
-    const email   = document.getElementById('newAgentEmail').value.trim();
-    const pw      = document.getElementById('newAgentPw').value;
-    const service = document.getElementById('newAgentService').value;
+    const name     = document.getElementById('newAgentName').value.trim();
+    const email    = document.getElementById('newAgentEmail').value.trim();
+    const pw       = document.getElementById('newAgentPw').value;
+    const service  = document.getElementById('newAgentService').value;
     const skillSel = document.getElementById('newAgentSkills');
-    const skills  = Array.from(skillSel.selectedOptions).map(o=>o.value);
+    const skills   = Array.from(skillSel.selectedOptions).map(o=>o.value);
     const photoFile = document.getElementById('newAgentPhoto').files[0];
-    const errEl   = document.getElementById('admAgentErr');
-    const badge   = document.getElementById('agentCreatedBadge');
-    const btn     = document.getElementById('createAgentBtn');
+    const errEl    = document.getElementById('admAgentErr');
+    const badge    = document.getElementById('agentCreatedBadge');
+    const btn      = document.getElementById('createAgentBtn');
     errEl.style.display='none'; badge.style.display='none';
 
     if (!name||!email||!pw||!service) { errEl.textContent='Please fill in all required fields.'; errEl.style.display=''; return; }
     if (pw.length<8) { errEl.textContent='Password must be at least 8 characters.'; errEl.style.display=''; return; }
-
     btn.disabled=true; btn.innerHTML='<i class="ph-fill ph-spinner"></i> Creating…';
 
-    // We write the Firestore doc BEFORE creating the Auth login. If Auth creation then
-    // fails (e.g. email already used, or Email/Password sign-in disabled in Firebase),
-    // we roll back by deleting the placeholder doc — so a failed attempt never leaves
-    // things half-saved and blocks a clean retry.
+    // Write the Firestore doc BEFORE creating the Auth login so we can roll back on failure.
     let docRef = null;
     try {
-      // Step 1: Upload photo if provided (non-fatal — agent can still be created without one)
       let photoUrl = '';
       if (photoFile) {
         const progressEl = document.getElementById('admAgentPhotoProgress');
@@ -846,51 +892,41 @@ async function renderAdminAgents(el) {
         catch(e) { progressEl.textContent='Photo upload failed: '+e.message; }
       }
 
-      // Step 2: Generate agentId and write the Firestore profile first
       const agentId = await generateAgentId();
       docRef = db.collection('agents').doc();
       await docRef.set({
-        id: docRef.id,
         agentId, uid: null, name, email, service, skills, photoUrl,
-        bio: '',
-        active: true,
-        firstLogin: true,
-        createdAt: TS()
+        bio: '', status: 'active', active: true, firstLogin: true, createdAt: TS()
       });
 
-      // Step 3: Create the Firebase Auth login via a secondary app (so the admin stays
-      // signed in), then attach the resulting uid to the profile we just saved.
-      const creatorApp = getAgentCreatorApp();
+      // Create the Firebase Auth login via a secondary app so the admin stays signed in.
+      const creatorApp  = getAgentCreatorApp();
       const creatorAuth = creatorApp.auth();
       const cred = await creatorAuth.createUserWithEmailAndPassword(email, pw);
-      const uid = cred.user.uid;
+      const uid  = cred.user.uid;
       await creatorAuth.signOut();
       await docRef.update({ uid });
 
-      // Show success
       document.getElementById('createdAgentId').textContent = agentId;
       badge.style.display='';
-      document.getElementById('newAgentName').value='';
-      document.getElementById('newAgentEmail').value='';
-      document.getElementById('newAgentPw').value='';
+      ['newAgentName','newAgentEmail','newAgentPw'].forEach(id => document.getElementById(id).value='');
       document.getElementById('newAgentService').value='';
       document.getElementById('newAgentSkills').innerHTML='';
       document.getElementById('newAgentPhoto').value='';
       document.getElementById('newAgentPhotoName').textContent='No file selected';
-      loadAgentsList();
+      document.getElementById('viewAgentListBtn').addEventListener('click', () => {
+        document.querySelector('[data-section=adm-agent-list]').click();
+      });
     } catch(e) {
-      // Roll back the Firestore profile if the Auth login step never completed —
-      // otherwise a retry with the same email looks "stuck" with no way to fix it.
       if (docRef) { await docRef.delete().catch(()=>{}); }
-
-      if (e.code === 'auth/email-already-in-use') {
-        errEl.textContent = 'An account with this email already exists. Use a different email, or delete the existing agent first.';
-      } else if (e.code === 'auth/operation-not-allowed') {
-        errEl.textContent = 'Email/Password sign-in is disabled for this project. In the Firebase console, go to Authentication → Sign-in method and enable "Email/Password", then try again.';
-      } else if (e.code === 'permission-denied' || /permission/i.test(e.message||'')) {
-        errEl.textContent = 'Firestore rejected the save (permission denied). Make sure the rules in FIREBASE_RULES.md are pasted into your Firebase console and that you are signed in with the admin account.';
+      if (e.code==='auth/email-already-in-use') {
+        errEl.textContent='An account with this email already exists. Use a different email or delete the existing agent first.';
+      } else if (e.code==='auth/operation-not-allowed') {
+        errEl.textContent='Email/Password sign-in is disabled. In Firebase console → Authentication → Sign-in method, enable "Email/Password".';
+      } else if (e.code==='permission-denied'||/permission/i.test(e.message||'')) {
+        errEl.textContent='Firestore rejected the save (permission denied). Make sure the rules in FIREBASE_RULES.md are applied in your Firebase console.';
       } else {
-        errEl.textContent = e.message || 'Something went wrong creating the agent. Please try again.';
+        errEl.textContent = e.message||'Something went wrong. Please try again.';
       }
       errEl.style.display='';
     }

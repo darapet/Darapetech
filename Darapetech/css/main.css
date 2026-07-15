@@ -1326,7 +1326,7 @@ small { font-size: 0.8rem; }
   margin-bottom: 4px;
 }
 .admin-nav a:hover, .admin-nav a.active { background: rgba(37,99,235,0.08); color: var(--text-primary); border-left: 2px solid var(--accent-1); padding-left: 14px; }
-.admin-main { padding: 40px; }
+.admin-main { padding: 40px; min-width: 0; overflow-x: hidden; }
 .admin-section { display: none; }
 .admin-section.active { display: block; }
 .admin-section h2 { margin-bottom: 8px; }
