@@ -488,6 +488,7 @@ function mountAdminDashboard() {
         <a href="#" data-section="adm-chat"><i class="ph-fill ph-chat-circle-dots"></i> Live Chat</a>
         <a href="#" data-section="adm-customers"><i class="ph-fill ph-identification-card"></i> Customers</a>
         <a href="#" data-section="adm-agent-list"><i class="ph-fill ph-users-three"></i> Agent List</a>
+        <a href="#" data-section="adm-agent-waitlist"><i class="ph-fill ph-clock-countdown"></i> Agent Waitlist <span class="unread-badge" id="waitlistBadge" style="display:none">0</span></a>
         <a href="#" data-section="adm-create-agent"><i class="ph-fill ph-user-plus"></i> Create Agent</a>
         <a href="#" data-section="adm-socials"><i class="ph-fill ph-share-network"></i> Social Links</a>
         <a href="#" data-section="adm-settings"><i class="ph-fill ph-gear"></i> Settings</a>
@@ -508,8 +509,9 @@ function mountAdminDashboard() {
       <div id="adm-pricing"     class="admin-section"></div>
       <div id="adm-chat"        class="admin-section"></div>
       <div id="adm-customers"   class="admin-section"></div>
-      <div id="adm-agent-list"   class="admin-section"></div>
-      <div id="adm-create-agent" class="admin-section"></div>
+      <div id="adm-agent-list"     class="admin-section"></div>
+      <div id="adm-agent-waitlist" class="admin-section"></div>
+      <div id="adm-create-agent"  class="admin-section"></div>
       <div id="adm-socials"     class="admin-section"></div>
       <div id="adm-settings"    class="admin-section"></div>
     </main>
@@ -559,8 +561,9 @@ async function loadAdminSection(sec) {
     case 'adm-pricing':     await renderAdminPricing(el);     el.dataset.loaded='1'; break;
     case 'adm-chat':        await renderAdminChat(el);        break; // always live
     case 'adm-customers':   await renderAdminCustomers(el);   break;
-    case 'adm-agent-list':   await renderAdminAgentList(el);   break;
-    case 'adm-create-agent': await renderAdminCreateAgent(el); break;
+    case 'adm-agent-list':     await renderAdminAgentList(el);    break;
+    case 'adm-agent-waitlist': await renderAdminAgentWaitlist(el); break;
+    case 'adm-create-agent':  await renderAdminCreateAgent(el);   break;
     case 'adm-socials':     renderAdminSocials(el);           el.dataset.loaded='1'; break;
     case 'adm-settings':    await renderAdminSettings(el);    break;
   }

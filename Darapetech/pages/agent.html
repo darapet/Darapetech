@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Agent Registration — Darapet Technology</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;min-height:100vh;display:flex;overflow-x:hidden}
+
+    /* ── Background slideshow ── */
+    .auth-bg{position:fixed;inset:0;z-index:0}
+    .auth-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease;background-color:#020c1b}
+    .auth-slide.active{opacity:1}
+    .auth-slide::after{content:'';position:absolute;inset:0;background:rgba(2,12,27,0.75)}
+    .auth-slide-1{background-image:url('../assets/images/auth-bg-1.jpg'),linear-gradient(135deg,#020c1b,#0a2a6e)}
+    .auth-slide-2{background-image:url('../assets/images/auth-bg-2.jpg'),linear-gradient(135deg,#020c1b,#05174a)}
+    .auth-slide-3{background-image:url('../assets/images/auth-bg-3.jpg'),linear-gradient(135deg,#020c1b,#0d2253)}
+    .auth-slide-4{background-image:url('../assets/images/auth-bg-4.jpg'),linear-gradient(135deg,#020c1b,#071d45)}
+    .auth-slide-5{background-image:url('../assets/images/auth-bg-5.jpg'),linear-gradient(135deg,#020c1b,#0c1f50)}
+
+    /* ── Layout ── */
+    .auth-wrap{position:relative;z-index:1;display:flex;width:100%;min-height:100vh}
+    .auth-left{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:48px;color:#fff}
+    .auth-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .auth-brand img{height:40px}
+    .auth-brand-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:#fff}
+    .auth-tagline{margin-top:auto}
+    .auth-tagline h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:700;color:#fff;margin-bottom:12px;line-height:1.2}
+    .auth-tagline p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:420px;line-height:1.6}
+    .auth-dots{display:flex;gap:8px;margin-top:32px}
+    .auth-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all .3s}
+    .auth-dot.active{width:24px;border-radius:4px;background:#3b82f6}
+
+    /* ── Right card panel ── */
+    .auth-right{width:520px;flex-shrink:0;display:flex;align-items:flex-start;justify-content:center;padding:32px 24px;overflow-y:auto}
+    .auth-card{background:#fff;border-radius:20px;padding:40px;width:100%;max-width:460px;box-shadow:0 20px 60px rgba(0,0,0,0.4);margin:auto}
+
+    /* ── Step progress ── */
+    .step-bar{display:flex;align-items:center;gap:0;margin-bottom:28px}
+    .step-item{display:flex;flex-direction:column;align-items:center;flex:1}
+    .step-circle{width:30px;height:30px;border-radius:50%;background:#e2e8f0;color:#94a3b8;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .3s;position:relative;z-index:1}
+    .step-circle.done{background:#1d4ed8;color:#fff}
+    .step-circle.active{background:#1d4ed8;color:#fff;box-shadow:0 0 0 4px rgba(29,78,216,0.2)}
+    .step-label{font-size:.68rem;color:#94a3b8;margin-top:5px;font-weight:500;white-space:nowrap}
+    .step-label.active{color:#1d4ed8;font-weight:600}
+    .step-line{flex:1;height:2px;background:#e2e8f0;margin:0 -1px;position:relative;top:-14px;z-index:0}
+    .step-line.done{background:#1d4ed8}
+
+    /* ── Form styles ── */
+    .step-content{display:none}
+    .step-content.active{display:block}
+    .auth-card h1{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:#0f172a;margin-bottom:4px}
+    .auth-card .sub{font-size:.88rem;color:#64748b;margin-bottom:24px}
+    .field{margin-bottom:16px}
+    .field label{display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:6px}
+    .field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.9rem;font-family:inherit;color:#0f172a;outline:none;transition:border .2s;background:#fff}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.12)}
+    .field input::placeholder,.field textarea::placeholder{color:#9ca3af}
+    .field .hint{font-size:.74rem;color:#94a3b8;margin-top:4px}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .field-row .field{margin-bottom:0}
+    .display-name-badge{display:inline-flex;align-items:center;gap:6px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:8px;padding:6px 12px;font-size:.82rem;font-weight:600;margin-bottom:6px}
+    .display-name-badge i{font-size:.75rem}
+
+    /* ── Photo upload ── */
+    .photo-upload-wrap{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+    .photo-preview-circle{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #bfdbfe;background:#dbeafe;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .photo-preview-circle img{width:100%;height:100%;object-fit:cover}
+    .photo-preview-ph{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;font-weight:700;flex-shrink:0}
+    .upload-photo-btn{padding:9px 18px;background:#f8fafc;color:#374151;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.84rem;font-weight:500;cursor:pointer;font-family:inherit;transition:all .2s}
+    .upload-photo-btn:hover{border-color:#3b82f6;color:#1d4ed8;background:#eff6ff}
+
+    /* ── Buttons ── */
+    .btn-row{display:flex;gap:10px;margin-top:24px}
+    .btn-primary{flex:1;padding:13px;background:#1d4ed8;color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s}
+    .btn-primary:hover{background:#1e40af}
+    .btn-primary:disabled{opacity:.6;cursor:not-allowed}
+    .btn-secondary{padding:13px 20px;background:#f1f5f9;color:#374151;border:1.5px solid #e2e8f0;border-radius:10px;font-size:.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
+    .btn-secondary:hover{border-color:#3b82f6;color:#1d4ed8}
+    .auth-err{color:#ef4444;font-size:.83rem;margin-bottom:14px;padding:10px 14px;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;display:none}
+
+    /* ── Success / Waiting screen ── */
+    .success-screen{display:none;text-align:center;padding:20px 0}
+    .success-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#06b6d4);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 24px rgba(29,78,216,0.35)}
+    .success-icon i{font-size:2rem;color:#fff}
+    .success-screen h2{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#0f172a;margin-bottom:8px}
+    .success-screen p{color:#64748b;font-size:.9rem;line-height:1.6;margin-bottom:16px}
+    .waiting-badge{display:inline-flex;align-items:center;gap:8px;background:#fefce8;color:#92400e;border:1px solid #fde68a;border-radius:10px;padding:12px 20px;font-size:.84rem;font-weight:600;margin:8px 0 20px}
+    .app-id-box{background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:12px 16px;font-family:monospace;font-size:1rem;font-weight:700;color:#0369a1;letter-spacing:.06em}
+
+    /* ── Upload progress ── */
+    .upload-progress{display:none;font-size:.78rem;color:#1d4ed8;margin-top:6px;font-weight:500}
+
+    @media(max-width:900px){.auth-left{display:none}.auth-right{width:100%}.auth-card{box-shadow:none;margin:auto}}
+  </style>
+</head>
+<body>
+
+  <!-- Background slideshow -->
+  <div class="auth-bg">
+    <div class="auth-slide auth-slide-1 active"></div>
+    <div class="auth-slide auth-slide-2"></div>
+    <div class="auth-slide auth-slide-3"></div>
+    <div class="auth-slide auth-slide-4"></div>
+    <div class="auth-slide auth-slide-5"></div>
+  </div>
+
+  <div class="auth-wrap">
+    <!-- Left panel -->
+    <div class="auth-left">
+      <a href="../index.html" class="auth-brand">
+        <img src="../assets/images/logo.png" alt="Darapet Technology">
+        <span class="auth-brand-name">Darapet Technology</span>
+      </a>
+      <div class="auth-tagline">
+        <h2>Join the Darapet<br>Expert Team.</h2>
+        <p>Apply to become a specialist on the Darapet platform. Share your skills, serve clients, and grow your freelance career with a trusted agency behind you.</p>
+        <div class="auth-dots" id="authDots">
+          <div class="auth-dot active" data-slide="0"></div>
+          <div class="auth-dot" data-slide="1"></div>
+          <div class="auth-dot" data-slide="2"></div>
+          <div class="auth-dot" data-slide="3"></div>
+          <div class="auth-dot" data-slide="4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right card -->
+    <div class="auth-right">
+      <div class="auth-card" id="authCard">
+
+        <!-- Step progress bar -->
+        <div class="step-bar" id="stepBar">
+          <div class="step-item">
+            <div class="step-circle active" id="sc1">1</div>
+            <div class="step-label active" id="sl1">Personal</div>
+          </div>
+          <div class="step-line" id="line1"></div>
+          <div class="step-item">
+            <div class="step-circle" id="sc2">2</div>
+            <div class="step-label" id="sl2">Service</div>
+          </div>
+          <div class="step-line" id="line2"></div>
+          <div class="step-item">
+            <div class="step-circle" id="sc3">3</div>
+            <div class="step-label" id="sl3">Photo</div>
+          </div>
+        </div>
+
+        <div class="auth-err" id="agentRegErr"></div>
+
+        <!-- Step 1: Personal Info -->
+        <div class="step-content active" id="step1">
+          <h1>Personal Info</h1>
+          <p class="sub">Tell us about yourself — takes less than 2 minutes.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="regFirst">First Name *</label>
+              <input type="text" id="regFirst" placeholder="e.g. John" autocomplete="given-name" />
+            </div>
+            <div class="field">
+              <label for="regLast">Last Name *</label>
+              <input type="text" id="regLast" placeholder="e.g. Doe" autocomplete="family-name" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Display Name</label>
+            <div class="display-name-badge" id="displayNameBadge"><i class="fas fa-user-tag"></i> <span id="displayNamePreview">—</span></div>
+            <input type="text" id="regDisplayName" placeholder="Auto-generated — or type your own" />
+            <p class="hint">This is shown to clients on your profile. Auto-generated from your name, but you can customise it.</p>
+          </div>
+
+          <div class="field">
+            <label for="regEmail">Email Address *</label>
+            <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label for="regPhone">Phone Number *</label>
+            <input type="tel" id="regPhone" placeholder="+234 801 234 5678" autocomplete="tel" />
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-primary" id="nextStep1">Continue <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 2: Service & Niche -->
+        <div class="step-content" id="step2">
+          <h1>Your Service</h1>
+          <p class="sub">What service area do you specialise in?</p>
+
+          <div class="field">
+            <label for="regService">Main Service Area *</label>
+            <select id="regService">
+              <option value="">— Select your service —</option>
+              <option value="Web & App Development">Web &amp; App Development</option>
+              <option value="Video Editing">Video Editing</option>
+              <option value="Graphics & Design">Graphics &amp; Design</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="Email Marketing">Email Marketing</option>
+            </select>
+          </div>
+
+          <div class="field" id="nicheWrap" style="display:none">
+            <label for="regNiche">Specific Niche / Sub-Service *</label>
+            <select id="regNiche">
+              <option value="">— Select your niche —</option>
+            </select>
+            <p class="hint">Pick your primary specialisation within your service area.</p>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" id="backStep2"><i class="fas fa-arrow-left"></i> Back</button>
+            <button class="btn-primary" id="nextStep2">Continue <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 3: Profile Photo -->
+        <div class="step-content" id="step3">
+          <h1>Profile Photo</h1>
+          <p class="sub">Upload a clear, professional headshot (max 5MB). You can change this later.</p>
+
+          <div class="photo-upload-wrap">
+            <div class="photo-preview-ph" id="photoPh">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <label class="upload-photo-btn" for="regPhotoInput">
+                <i class="fas fa-cloud-upload-alt"></i> Choose Photo
+              </label>
+              <input type="file" id="regPhotoInput" accept="image/jpeg,image/png,image/webp" style="display:none" />
+              <div class="upload-progress" id="photoProgress">Uploading…</div>
+              <p style="font-size:.75rem;color:#94a3b8;margin-top:6px">JPG, PNG or WebP. Max 5MB.</p>
+            </div>
+          </div>
+
+          <div class="auth-err" id="photoErr" style="margin-top:8px"></div>
+
+          <div class="btn-row">
+            <button class="btn-secondary" id="backStep3"><i class="fas fa-arrow-left"></i> Back</button>
+            <button class="btn-primary" id="submitRegBtn">Submit Application <i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+
+        <!-- Success / Waiting screen -->
+        <div class="success-screen" id="successScreen">
+          <div class="success-icon"><i class="fas fa-clock"></i></div>
+          <h2>Application Submitted!</h2>
+          <p>Your application has been received by the Darapet team. We'll review your profile and get back to you.</p>
+          <div class="waiting-badge">
+            <i class="fas fa-hourglass-half"></i>
+            Awaiting admin approval
+          </div>
+          <p style="font-size:.82rem;color:#94a3b8;margin-bottom:8px">Your Application ID:</p>
+          <div class="app-id-box" id="applicationId">—</div>
+          <p style="font-size:.78rem;color:#94a3b8;margin-top:16px;line-height:1.6">
+            Once approved, you'll receive your login credentials via email. Save this ID for reference.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="../js/firebase-app.js"></script>
+  <script src="../js/agent-registration.js"></script>
+  <script>
+    // Background slideshow
+    let slide = 0;
+    const slides = document.querySelectorAll('.auth-slide');
+    const dots   = document.querySelectorAll('.auth-dot');
+    function goSlide(n) {
+      slides[slide].classList.remove('active'); dots[slide].classList.remove('active');
+      slide = n % slides.length;
+      slides[slide].classList.add('active'); dots[slide].classList.add('active');
+    }
+    let timer = setInterval(() => goSlide(slide + 1), 5000);
+    dots.forEach(d => d.addEventListener('click', () => {
+      clearInterval(timer); goSlide(+d.dataset.slide);
+      timer = setInterval(() => goSlide(slide + 1), 5000);
+    }));
+  </script>
+</body>
+</html>
