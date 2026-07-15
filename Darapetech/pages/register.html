@@ -148,15 +148,18 @@
       btn.disabled = true; btn.textContent = 'Creating account…';
       try {
         const name = `${first} ${last}`.trim();
-        const cred = await auth.createUserWithEmailAndPassword(email, pw);
-        await cred.user.updateProfile({ displayName: name });
-        await db.collection('users').doc(cred.user.uid).set({
+        const cred = await withTimeout(auth.createUserWithEmailAndPassword(email, pw), 15000);
+        try { await withTimeout(cred.user.updateProfile({ displayName: name }), 15000); } catch(e2) { console.warn('updateProfile failed', e2); }
+        await withTimeout(db.collection('users').doc(cred.user.uid).set({
           name, email,
           initials: (first[0]+(last[0]||'')).toUpperCase(),
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
+        }), 15000);
+        window.location = 'chat.html';
       } catch(e) {
-        errEl.textContent = e.code === 'auth/email-already-in-use'
+        errEl.textContent = e.message === 'timeout'
+          ? 'This is taking too long. Please check your connection and try again.'
+          : e.code === 'auth/email-already-in-use'
           ? 'This email is already registered. Try signing in.' : e.message;
         errEl.style.display = '';
         btn.disabled = false; btn.textContent = 'Create Account';

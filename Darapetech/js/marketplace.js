@@ -1148,19 +1148,22 @@ function mpShowAuthModal(subtitle) {
       btn.disabled = true;
       try {
         if (isLogin) {
-          const cred = await auth.signInWithEmailAndPassword(email, password);
+          const cred = await withTimeout(auth.signInWithEmailAndPassword(email, password), 15000);
           close(); resolve(cred.user);
         } else {
           const firstName = overlay.querySelector('#mpModalFirstName').value.trim();
           const lastName = overlay.querySelector('#mpModalLastName').value.trim();
           if (!firstName || !lastName) throw new Error('Please enter your first and last name');
-          const cred = await auth.createUserWithEmailAndPassword(email, password);
-          await cred.user.updateProfile({ displayName: `${firstName} ${lastName}` });
-          await db.collection('users').doc(cred.user.uid).set({ firstName, lastName, email, createdAt: TS() });
+          const cred = await withTimeout(auth.createUserWithEmailAndPassword(email, password), 15000);
+          try { await withTimeout(cred.user.updateProfile({ displayName: `${firstName} ${lastName}` }), 15000); } catch(e2) { console.warn('updateProfile failed', e2); }
+          await withTimeout(db.collection('users').doc(cred.user.uid).set({ firstName, lastName, email, createdAt: TS() }), 15000);
           close(); resolve(cred.user);
         }
       } catch (e) {
-        errEl.textContent = e.message; errEl.style.display = '';
+        errEl.textContent = e.message === 'timeout'
+          ? 'This is taking too long. Please check your connection and try again.'
+          : (e.code === 'auth/email-already-in-use' ? 'This email is already registered. Try signing in.' : e.message);
+        errEl.style.display = '';
         btn.disabled = false;
       }
     });

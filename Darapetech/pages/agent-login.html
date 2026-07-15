@@ -95,6 +95,8 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
   <script src="../js/firebase-app.js"></script>
   <script>
+    let lastAgentPw = null; // temp password just used to sign in, kept only for a same-session reauth retry
+
     // If already logged in as agent, redirect
     auth.onAuthStateChanged(async user => {
       if (!user) return;
@@ -123,10 +125,13 @@
       if (!email || !pw) { errEl.textContent='Please fill in all fields.'; errEl.style.display=''; return; }
       btn.disabled = true; btn.textContent = 'Signing in…';
       try {
-        await auth.signInWithEmailAndPassword(email, pw);
+        await withTimeout(auth.signInWithEmailAndPassword(email, pw), 15000);
+        lastAgentPw = pw;
       } catch(e) {
-        errEl.textContent = e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found'
-          ? 'Invalid email or password.' : e.message;
+        errEl.textContent = e.message === 'timeout'
+          ? 'This is taking too long. Please check your connection and try again.'
+          : (e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found'
+          ? 'Invalid email or password.' : e.message);
         errEl.style.display = '';
         btn.disabled = false; btn.textContent = 'Sign In';
       }
@@ -147,14 +152,31 @@
       btn.disabled = true; btn.textContent = 'Saving…';
       try {
         const user = auth.currentUser;
-        await user.updatePassword(newPw);
-        const snap = await db.collection('agents').where('uid','==',user.uid).limit(1).get();
+        if (!user) throw new Error('Your session expired. Please sign in again.');
+        try {
+          await withTimeout(user.updatePassword(newPw), 15000);
+        } catch (e) {
+          if (e.code === 'auth/requires-recent-login' && lastAgentPw) {
+            // Session is stale for this sensitive action — re-authenticate with the
+            // temp password they just signed in with, then retry once.
+            const cred = firebase.auth.EmailAuthProvider.credential(user.email, lastAgentPw);
+            await withTimeout(user.reauthenticateWithCredential(cred), 15000);
+            await withTimeout(user.updatePassword(newPw), 15000);
+          } else if (e.code === 'auth/requires-recent-login') {
+            throw new Error('Your session is too old for this action. Please sign out and sign in again, then set your password.');
+          } else {
+            throw e;
+          }
+        }
+        const snap = await withTimeout(db.collection('agents').where('uid','==',user.uid).limit(1).get(), 15000);
         if (!snap.empty) {
-          await snap.docs[0].ref.update({ firstLogin: false });
+          await withTimeout(snap.docs[0].ref.update({ firstLogin: false }), 15000);
         }
         window.location = 'agent-dashboard.html';
       } catch(e) {
-        errEl.textContent = e.message; errEl.style.display = '';
+        errEl.textContent = e.message === 'timeout'
+          ? 'This is taking too long. Please check your connection and try again.' : e.message;
+        errEl.style.display = '';
         btn.disabled = false; btn.textContent = 'Save & Continue';
       }
     });
