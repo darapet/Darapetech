@@ -113,17 +113,30 @@
     const listEl = document.getElementById('convsList');
     listEl.innerHTML = '<div class="convs-empty">Loading…</div>';
 
+    // NOTE: intentionally no .orderBy() here — an equality filter (agentId)
+    // combined with an orderBy on a different field (lastMessageAt) requires
+    // a Firestore composite index. That index was never created, so this
+    // listener failed silently and conversations never showed up for the
+    // agent. Sorting client-side avoids needing that index (same fix as the
+    // messages listeners below and in chat.js).
     convsUnsub = db.collection('agent_conversations')
       .where('agentId','==',agentData.id || agentData.docId)
-      .orderBy('lastMessageAt','desc')
       .onSnapshot(snap => {
         allConvs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        allConvs.sort((a, b) => {
+          const ta = a.lastMessageAt?.toMillis ? a.lastMessageAt.toMillis() : 0;
+          const tb = b.lastMessageAt?.toMillis ? b.lastMessageAt.toMillis() : 0;
+          return tb - ta;
+        });
         renderConvList(allConvs);
         // Update unread badge
         const totalUnread = allConvs.reduce((sum, c) => sum + (c.unreadAgent||0), 0);
         const badge = document.getElementById('unreadCount');
         badge.textContent = totalUnread;
         badge.style.display = totalUnread > 0 ? 'inline' : 'none';
+      }, err => {
+        console.error('Conversations listen error:', err);
+        listEl.innerHTML = '<div class="convs-empty">Could not load conversations. Please refresh and try again.</div>';
       });
   }
 
