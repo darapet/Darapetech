@@ -1,6 +1,6 @@
 /* =========================================
-   DARAPET TECHNOLOGY — ANIMATED DEEP BLUE BACKGROUND
-   Premium site-wide background system
+   DARAPET TECHNOLOGY — PLAIN PREMIUM BACKGROUND
+   Site-wide background system (light, minimal)
    ========================================= */
 
 /* ---- BASE LAYER ---- */
@@ -9,188 +9,22 @@
   inset: 0;
   z-index: -10;
   overflow: hidden;
-  background: #020c1b;
+  background: #ffffff;
   pointer-events: none;
 }
 
-/* ---- ANIMATED MESH GRID ---- */
+/* Faint, static wash of brand blue in the corners — plain, not a pattern */
 #site-bg::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: gridDrift 40s linear infinite;
-}
-
-@keyframes gridDrift {
-  0%   { background-position: 0 0; }
-  100% { background-position: 60px 60px; }
-}
-
-/* ---- FLOATING GRADIENT ORBS ---- */
-.bg-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
-/* ORB 1 — large blue, top-left */
-.bg-orb--1 {
-  width: 900px;
-  height: 900px;
-  top: -350px;
-  left: -350px;
-  background: radial-gradient(circle at 40% 40%,
-    rgba(29,78,216,0.55) 0%,
-    rgba(37,99,235,0.25) 40%,
-    transparent 70%);
-  filter: blur(80px);
-  animation: orbFloat1 24s ease-in-out infinite;
-}
-
-/* ORB 2 — medium cyan-blue, top-right */
-.bg-orb--2 {
-  width: 700px;
-  height: 700px;
-  top: -100px;
-  right: -250px;
-  background: radial-gradient(circle at 60% 30%,
-    rgba(14,165,233,0.3) 0%,
-    rgba(59,130,246,0.15) 50%,
-    transparent 70%);
-  filter: blur(90px);
-  animation: orbFloat2 30s ease-in-out infinite;
-}
-
-/* ORB 3 — deep indigo, bottom-right */
-.bg-orb--3 {
-  width: 1000px;
-  height: 1000px;
-  bottom: -500px;
-  right: -400px;
-  background: radial-gradient(circle at 50% 60%,
-    rgba(79,70,229,0.4) 0%,
-    rgba(37,99,235,0.18) 50%,
-    transparent 70%);
-  filter: blur(100px);
-  animation: orbFloat3 35s ease-in-out infinite;
-}
-
-/* ORB 4 — small bright blue, center-left */
-.bg-orb--4 {
-  width: 500px;
-  height: 500px;
-  top: 40%;
-  left: -100px;
-  background: radial-gradient(circle at 40% 50%,
-    rgba(96,165,250,0.2) 0%,
-    rgba(59,130,246,0.08) 55%,
-    transparent 70%);
-  filter: blur(70px);
-  animation: orbFloat4 28s ease-in-out infinite;
-}
-
-/* ORB 5 — accent pulse, center-right */
-.bg-orb--5 {
-  width: 400px;
-  height: 400px;
-  top: 55%;
-  right: 5%;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(56,189,248,0.15) 0%,
-    rgba(37,99,235,0.08) 55%,
-    transparent 70%);
-  filter: blur(60px);
-  animation: orbFloat5 20s ease-in-out infinite;
-}
-
-/* ---- ORB KEYFRAMES ---- */
-@keyframes orbFloat1 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.9; }
-  25%  { transform: translate(80px, 60px) scale(1.08); opacity: 1; }
-  50%  { transform: translate(40px, 120px) scale(0.95); opacity: 0.85; }
-  75%  { transform: translate(-40px, 60px) scale(1.05); opacity: 1; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
-}
-
-@keyframes orbFloat2 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.7; }
-  33%  { transform: translate(-100px, 80px) scale(1.1); opacity: 0.9; }
-  66%  { transform: translate(-60px, 160px) scale(0.9); opacity: 0.7; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-}
-
-@keyframes orbFloat3 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.8; }
-  30%  { transform: translate(-80px, -100px) scale(1.06); opacity: 1; }
-  60%  { transform: translate(-160px, -60px) scale(0.94); opacity: 0.75; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-}
-
-@keyframes orbFloat4 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  40%  { transform: translate(60px, -80px) scale(1.12); opacity: 0.85; }
-  80%  { transform: translate(30px, 80px) scale(0.92); opacity: 0.6; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-}
-
-@keyframes orbFloat5 {
-  0%   { transform: translate(0, 0) scale(1); opacity: 0.5; }
-  50%  { transform: translate(-80px, -120px) scale(1.15); opacity: 0.8; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-}
-
-/* ---- AURORA SWEEP ---- */
-.bg-aurora {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    transparent 0%,
-    rgba(29,78,216,0.04) 20%,
-    rgba(59,130,246,0.07) 40%,
-    rgba(14,165,233,0.04) 60%,
-    transparent 80%
-  );
-  background-size: 300% 300%;
-  animation: auroraSweep 18s ease-in-out infinite;
-}
-
-@keyframes auroraSweep {
-  0%   { background-position: 0% 50%; opacity: 0.6; }
-  50%  { background-position: 100% 50%; opacity: 1; }
-  100% { background-position: 0% 50%; opacity: 0.6; }
-}
-
-/* ---- FLOATING PARTICLES (CSS dots) ---- */
-.bg-particles {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.bg-particle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(96,165,250,0.6);
-  animation: particleDrift var(--dur, 15s) ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
-  opacity: 0;
-}
-
-@keyframes particleDrift {
-  0%   { transform: translateY(0) translateX(0); opacity: 0; }
-  10%  { opacity: var(--op, 0.4); }
-  90%  { opacity: var(--op, 0.4); }
-  100% { transform: translateY(-120px) translateX(var(--drift, 20px)); opacity: 0; }
+  background:
+    radial-gradient(ellipse 60% 45% at 12% 0%, rgba(37,99,235,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 100% 100%, rgba(37,99,235,0.05) 0%, transparent 60%);
 }
 
 /* ---- SECTION BACKGROUND OVERRIDES ---- */
-/* Sections get a very subtle tinted layer so content areas feel distinct */
+/* Sections stay transparent so the plain white page shows through */
 .section,
 .partners-strip,
 .cta-banner,
@@ -200,7 +34,7 @@
   position: relative;
 }
 
-/* Alternate sections get a very faint overlay */
+/* Alternate sections get a very faint tinted layer so content areas feel distinct */
 .why-section::before,
 .testimonials-section::before,
 .stats-section::before,
@@ -208,7 +42,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(29,78,216,0.03);
+  background: rgba(37,99,235,0.025);
   pointer-events: none;
   z-index: 0;
 }
@@ -222,86 +56,83 @@
 }
 
 /* ---- ENSURE CONTENT VISIBILITY ---- */
-/* Cards get a solid-ish glass backing for legibility */
+/* Cards get a clean white glass backing for legibility */
 .glass-card {
-  background: rgba(2, 20, 55, 0.65) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(59,130,246,0.15) !important;
+  border: 1px solid rgba(37,99,235,0.12) !important;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06) !important;
 }
 
 .glass-card:hover {
-  background: rgba(5, 30, 75, 0.75) !important;
-  border-color: rgba(59,130,246,0.35) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
+  border-color: rgba(37,99,235,0.3) !important;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.1) !important;
 }
 
-/* Nav gets a strong backdrop for readability */
+/* Nav gets a clean white backdrop for readability */
 .main-header.scrolled {
-  background: rgba(2,12,27,0.94) !important;
+  background: rgba(255,255,255,0.92) !important;
   backdrop-filter: blur(24px) !important;
   -webkit-backdrop-filter: blur(24px) !important;
+  box-shadow: 0 4px 30px rgba(15, 23, 42, 0.06) !important;
 }
 
 /* Announcement strip */
 .announcement-strip {
-  background: linear-gradient(90deg, #020c1b 0%, #041534 50%, #020c1b 100%) !important;
+  background: linear-gradient(90deg, #f4f7ff 0%, #eaf1ff 50%, #f4f7ff 100%) !important;
 }
 
 /* Footer */
 .footer {
-  background: rgba(1,6,15,0.98) !important;
-  border-top: 1px solid rgba(59,130,246,0.12) !important;
+  background: #f7f9fc !important;
+  border-top: 1px solid rgba(37,99,235,0.1) !important;
 }
 
 /* Stats blocks */
 .stat-block {
-  background: rgba(2,18,45,0.85) !important;
+  background: #f4f7ff !important;
 }
 
 /* Page hero bg */
 .page-hero-bg {
   background: radial-gradient(ellipse 70% 60% at 50% 40%,
-    rgba(37,99,235,0.13) 0%,
-    rgba(37,99,235,0.06) 40%,
+    rgba(37,99,235,0.08) 0%,
+    rgba(37,99,235,0.04) 40%,
     transparent 70%) !important;
 }
 
 /* Mega menu */
 .mega-menu {
-  background: rgba(2,15,35,0.97) !important;
-  backdrop-filter: blur(20px) !important;
-  border-color: rgba(59,130,246,0.18) !important;
+  background: #ffffff !important;
+  border-color: rgba(37,99,235,0.14) !important;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12) !important;
 }
 
 /* Mobile drawer */
 .mobile-drawer {
-  background: rgba(1,10,25,0.98) !important;
+  background: #ffffff !important;
 }
 
 /* Admin sidebar */
 .admin-sidebar {
-  background: rgba(1,8,20,0.98) !important;
+  background: #f7f9fc !important;
 }
 
 /* Chat / inbox panels */
 .chat-sidebar,
 .inbox-sidebar {
-  background: rgba(1,8,22,0.98) !important;
+  background: #f7f9fc !important;
 }
 
-/* ---- SECTION DIVIDERS — subtle blue glow lines ---- */
+/* ---- SECTION DIVIDERS — subtle blue lines ---- */
 .partners-strip {
-  border-top: 1px solid rgba(59,130,246,0.1) !important;
-  border-bottom: 1px solid rgba(59,130,246,0.1) !important;
-  background: rgba(5,20,50,0.3) !important;
+  border-top: 1px solid rgba(37,99,235,0.1) !important;
+  border-bottom: 1px solid rgba(37,99,235,0.1) !important;
+  background: rgba(37,99,235,0.02) !important;
 }
 
 .cta-banner {
-  background: rgba(10,25,60,0.5) !important;
-}
-
-/* ---- RESPONSIVE — reduce blur on mobile for perf ---- */
-@media (max-width: 768px) {
-  .bg-orb { filter: blur(60px) !important; }
-  #site-bg::before { background-size: 40px 40px; }
+  background: rgba(37,99,235,0.04) !important;
 }

@@ -1,1 +1,1 @@
-- [Darapetech Chat System](darapetech-chat.md) — full agent chat system built and pushed to GitHub; Firestore collections, auth flow, and secondary Firebase app pattern documented.
+- [Bulk sed theme conversions](bulk-sed-theme-flip.md) — when flipping a dark→light theme via a blanket find/replace across many files, exclude files you just hand-wrote in the same session or the sed can silently revert your own fixes.

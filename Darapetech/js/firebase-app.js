@@ -752,12 +752,12 @@ async function renderAdminCreateAgent(el) {
     @media(max-width:560px){.agent-form-grid{grid-template-columns:1fr}}
     .form-group-sm{margin-bottom:0}
     .form-group-sm label{display:block;font-size:.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:7px}
-    .form-group-sm input,.form-group-sm select{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.94rem;font-family:inherit;outline:none;color:var(--text-primary);background:rgba(255,255,255,0.03);transition:var(--transition)}
+    .form-group-sm input,.form-group-sm select{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.94rem;font-family:inherit;outline:none;color:var(--text-primary);background:rgba(15,23,42,0.03);transition:var(--transition)}
     .form-group-sm input::placeholder{color:var(--text-muted)}
     .form-group-sm input:focus,.form-group-sm select:focus{border-color:var(--accent-1);box-shadow:0 0 0 3px rgba(59,130,246,0.15)}
-    .skills-select{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;font-family:inherit;outline:none;height:180px;background:rgba(255,255,255,0.03);color:var(--text-primary)}
+    .skills-select{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;font-family:inherit;outline:none;height:180px;background:rgba(15,23,42,0.03);color:var(--text-primary)}
     .skills-select:focus{border-color:var(--accent-1)}
-    .skills-select option{background:#0c1829;padding:6px}
+    .skills-select option{background:#ffffff;padding:6px}
     .photo-upload-row{display:flex;align-items:center;gap:16px}
     .photo-upload-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:var(--radius-sm);border:1.5px dashed var(--border-hover);color:var(--accent-2);font-size:.88rem;font-weight:600;cursor:pointer;transition:var(--transition)}
     .photo-upload-btn:hover{background:rgba(59,130,246,0.08);border-color:var(--accent-1)}
