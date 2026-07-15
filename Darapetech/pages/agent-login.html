@@ -122,7 +122,7 @@
       const errEl = document.getElementById('loginErr');
       const btn   = document.getElementById('loginBtn');
       errEl.style.display = 'none';
-      if (!email || !pw) { errEl.textContent='Please fill in all fields.'; errEl.style.display=''; return; }
+      if (!email || !pw) { errEl.textContent='Please fill in all fields.'; errEl.style.display='block'; return; }
       btn.disabled = true; btn.textContent = 'Signing in…';
       try {
         await withTimeout(auth.signInWithEmailAndPassword(email, pw), 15000);
@@ -132,7 +132,7 @@
           ? 'This is taking too long. Please check your connection and try again.'
           : (e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found'
           ? 'Invalid email or password.' : e.message);
-        errEl.style.display = '';
+        errEl.style.display = 'block';
         btn.disabled = false; btn.textContent = 'Sign In';
       }
     });
@@ -147,8 +147,8 @@
       const errEl    = document.getElementById('changePwErr');
       const btn      = document.getElementById('changePwBtn');
       errEl.style.display = 'none';
-      if (newPw.length < 8) { errEl.textContent='Password must be at least 8 characters.'; errEl.style.display=''; return; }
-      if (newPw !== confirm) { errEl.textContent='Passwords do not match.'; errEl.style.display=''; return; }
+      if (newPw.length < 8) { errEl.textContent='Password must be at least 8 characters.'; errEl.style.display='block'; return; }
+      if (newPw !== confirm) { errEl.textContent='Passwords do not match.'; errEl.style.display='block'; return; }
       btn.disabled = true; btn.textContent = 'Saving…';
       try {
         const user = auth.currentUser;
@@ -176,7 +176,7 @@
       } catch(e) {
         errEl.textContent = e.message === 'timeout'
           ? 'This is taking too long. Please check your connection and try again.' : e.message;
-        errEl.style.display = '';
+        errEl.style.display = 'block';
         btn.disabled = false; btn.textContent = 'Save & Continue';
       }
     });

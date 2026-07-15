@@ -143,8 +143,8 @@
       const errEl = document.getElementById('regErr');
       const btn   = document.getElementById('regBtn');
       errEl.style.display = 'none';
-      if (!first || !email || !pw) { errEl.textContent='Please fill in all required fields.'; errEl.style.display=''; return; }
-      if (pw.length < 6) { errEl.textContent='Password must be at least 6 characters.'; errEl.style.display=''; return; }
+      if (!first || !email || !pw) { errEl.textContent='Please fill in all required fields.'; errEl.style.display='block'; return; }
+      if (pw.length < 6) { errEl.textContent='Password must be at least 6 characters.'; errEl.style.display='block'; return; }
       btn.disabled = true; btn.textContent = 'Creating account…';
       try {
         const name = `${first} ${last}`.trim();
@@ -161,7 +161,7 @@
           ? 'This is taking too long. Please check your connection and try again.'
           : e.code === 'auth/email-already-in-use'
           ? 'This email is already registered. Try signing in.' : e.message;
-        errEl.style.display = '';
+        errEl.style.display = 'block';
         btn.disabled = false; btn.textContent = 'Create Account';
       }
     });

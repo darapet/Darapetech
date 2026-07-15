@@ -427,14 +427,17 @@
     const name = document.getElementById('settingsName').value.trim();
     const bio = document.getElementById('settingsBio').value.trim();
     const service = document.getElementById('settingsService').value;
-    if (!name) { errEl.textContent='Name is required.'; errEl.style.display=''; return; }
+    if (!name) { errEl.textContent='Name is required.'; errEl.style.display='block'; return; }
     btn.disabled = true; btn.textContent = 'Saving…';
     try {
-      await db.collection('agents').doc(agentData.docId).update({ name, bio, service });
+      await withTimeout(db.collection('agents').doc(agentData.docId).update({ name, bio, service }), 15000);
       agentData.name = name; agentData.bio = bio; agentData.service = service;
       setSidebarAgent(); populateSkillSelect();
-      succ.style.display = ''; setTimeout(()=>succ.style.display='none',3000);
-    } catch(e) { errEl.textContent = e.message; errEl.style.display=''; }
+      succ.style.display = 'block'; setTimeout(()=>succ.style.display='none',3000);
+    } catch(e) {
+      errEl.textContent = e.message === 'timeout' ? 'This is taking too long. Please check your connection and try again.' : e.message;
+      errEl.style.display='block';
+    }
     btn.disabled = false; btn.textContent = 'Save Changes';
   }
 
@@ -443,10 +446,10 @@
     const succ = document.getElementById('skillsSucc');
     btn.disabled = true; btn.textContent = 'Saving…';
     try {
-      await db.collection('agents').doc(agentData.docId).update({ skills: agentSkills });
+      await withTimeout(db.collection('agents').doc(agentData.docId).update({ skills: agentSkills }), 15000);
       agentData.skills = agentSkills;
-      succ.style.display=''; setTimeout(()=>succ.style.display='none',3000);
-    } catch(e) { alert('Error: '+e.message); }
+      succ.style.display='block'; setTimeout(()=>succ.style.display='none',3000);
+    } catch(e) { alert('Error: '+(e.message === 'timeout' ? 'This is taking too long. Please try again.' : e.message)); }
     btn.disabled = false; btn.textContent = 'Save Skills';
   }
 
@@ -457,21 +460,23 @@
     const succ = document.getElementById('pwSucc');
     const errEl = document.getElementById('pwErr');
     succ.style.display='none'; errEl.style.display='none';
-    if (newPw.length < 8) { errEl.textContent='Password must be at least 8 characters.'; errEl.style.display=''; return; }
-    if (newPw !== confirm) { errEl.textContent='Passwords do not match.'; errEl.style.display=''; return; }
+    if (newPw.length < 8) { errEl.textContent='Password must be at least 8 characters.'; errEl.style.display='block'; return; }
+    if (newPw !== confirm) { errEl.textContent='Passwords do not match.'; errEl.style.display='block'; return; }
     btn.disabled = true; btn.textContent = 'Updating…';
     try {
-      await currentUser.updatePassword(newPw);
+      await withTimeout(currentUser.updatePassword(newPw), 15000);
       document.getElementById('newPw').value = '';
       document.getElementById('confirmPw').value = '';
-      succ.style.display=''; setTimeout(()=>succ.style.display='none',4000);
+      succ.style.display='block'; setTimeout(()=>succ.style.display='none',4000);
     } catch(e) {
       if (e.code === 'auth/requires-recent-login') {
         errEl.textContent = 'Please sign out and sign in again before changing your password.';
+      } else if (e.message === 'timeout') {
+        errEl.textContent = 'This is taking too long. Please check your connection and try again.';
       } else {
         errEl.textContent = e.message;
       }
-      errEl.style.display='';
+      errEl.style.display='block';
     }
     btn.disabled = false; btn.textContent = 'Update Password';
   }

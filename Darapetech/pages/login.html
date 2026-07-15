@@ -162,14 +162,16 @@
       const errEl = document.getElementById('loginErr');
       const btn = document.getElementById('loginBtn');
       errEl.style.display = 'none';
-      if (!email || !pw) { errEl.textContent = 'Please fill in all fields.'; errEl.style.display = ''; return; }
+      if (!email || !pw) { errEl.textContent = 'Please fill in all fields.'; errEl.style.display = 'block'; return; }
       btn.disabled = true; btn.textContent = 'Signing in…';
       try {
-        await auth.signInWithEmailAndPassword(email, pw);
+        await withTimeout(auth.signInWithEmailAndPassword(email, pw), 15000);
       } catch(e) {
-        errEl.textContent = e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found'
-          ? 'Invalid email or password.' : e.message;
-        errEl.style.display = '';
+        errEl.textContent = e.message === 'timeout'
+          ? 'This is taking too long. Please check your connection and try again.'
+          : (e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found'
+          ? 'Invalid email or password.' : e.message);
+        errEl.style.display = 'block';
         btn.disabled = false; btn.textContent = 'Sign In';
       }
     });
@@ -182,14 +184,15 @@
       e.preventDefault();
       const email = document.getElementById('loginEmail').value.trim();
       const errEl = document.getElementById('loginErr');
-      if (!email) { errEl.textContent = 'Enter your email above first.'; errEl.style.display = ''; return; }
+      if (!email) { errEl.textContent = 'Enter your email above first.'; errEl.style.display = 'block'; return; }
       try {
-        await auth.sendPasswordResetEmail(email);
+        await withTimeout(auth.sendPasswordResetEmail(email), 15000);
         errEl.style.background = '#f0fdf4'; errEl.style.borderColor = '#86efac'; errEl.style.color = '#16a34a';
         errEl.textContent = 'Reset link sent! Check your inbox.';
-        errEl.style.display = '';
+        errEl.style.display = 'block';
       } catch(e) {
-        errEl.textContent = e.message; errEl.style.display = '';
+        errEl.textContent = e.message === 'timeout' ? 'This is taking too long. Please try again.' : e.message;
+        errEl.style.display = 'block';
       }
     });
   </script>
