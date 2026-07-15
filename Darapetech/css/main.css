@@ -1434,30 +1434,8 @@ small { font-size: 0.8rem; }
   .team-grid--4 { grid-template-columns: repeat(2, 1fr); }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; }
-  .admin-layout { grid-template-columns: 1fr; position: relative; }
-  .admin-mobile-toggle { display: flex !important; }
-  .admin-sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 260px;
-    max-width: 82vw;
-    z-index: 60;
-    transform: translateX(-100%);
-    transition: transform .25s ease;
-    box-shadow: 12px 0 32px rgba(0,0,0,0.35);
-  }
-  .admin-sidebar.open { transform: translateX(0); }
-  .admin-sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 55;
-  }
-  .admin-sidebar-overlay.open { display: block; }
-  .admin-main { padding: 24px 20px 40px; }
+  /* Admin layout is handled by its own breakpoint below — not collapsed here */
+  .admin-main { padding: 32px 28px 48px; }
 }
 @media (max-width: 768px) {
   :root { --nav-height: 60px; }
@@ -1486,6 +1464,61 @@ small { font-size: 0.8rem; }
   .hero-actions .btn { justify-content: center; }
   .cta-actions { flex-direction: column; align-items: stretch; }
   .cta-actions .btn { justify-content: center; }
+}
+
+/* =========================================
+   ADMIN PANEL — RESPONSIVE
+   Sidebar stays LEFT, content stays RIGHT on all screens ≥ 769 px.
+   Only collapses to a hamburger drawer on true mobile (≤ 768 px).
+   ========================================= */
+@media (min-width: 769px) {
+  /* Force two-column layout regardless of any wider breakpoint rules */
+  .admin-layout {
+    display: grid !important;
+    grid-template-columns: 220px 1fr !important;
+    position: static !important;
+    align-items: start;
+  }
+  /* Sidebar: sticky column on the left */
+  .admin-sidebar {
+    position: sticky !important;
+    top: calc(var(--strip-height, 36px) + var(--nav-height, 70px)) !important;
+    height: calc(100vh - var(--strip-height, 36px) - var(--nav-height, 70px)) !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+  }
+  .admin-mobile-toggle { display: none !important; }
+  .admin-sidebar-overlay { display: none !important; }
+  .admin-main { padding: 40px !important; }
+}
+
+/* Mobile admin (≤ 768 px): slide-in drawer */
+@media (max-width: 768px) {
+  .admin-layout { grid-template-columns: 1fr; position: relative; }
+  .admin-mobile-toggle { display: flex !important; }
+  .admin-sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 260px; max-width: 82vw;
+    z-index: 60;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    box-shadow: 12px 0 32px rgba(0,0,0,.35);
+    overflow-y: auto;
+  }
+  .admin-sidebar.open { transform: translateX(0); }
+  .admin-sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 55;
+  }
+  .admin-sidebar-overlay.open { display: block; }
+  .admin-main { padding: 20px 16px 40px; }
 }
 
 /* =========================================
