@@ -65,9 +65,23 @@
     // Set sidebar info
     setSidebarAgent();
     setupNav();
+    setupMobileSidebar();
     loadConversations();
     setupSettings();
     document.getElementById('signOutBtn').addEventListener('click', () => { auth.signOut(); window.location = 'agent-login.html'; });
+  }
+
+  // ---- MOBILE SIDEBAR TOGGLE ----
+  function setupMobileSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const toggle = document.getElementById('mobileMenuToggle');
+    if (!sidebar || !overlay || !toggle) return;
+    const close = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+    toggle.addEventListener('click', () => { sidebar.classList.add('open'); overlay.classList.add('open'); });
+    overlay.addEventListener('click', close);
+    // Collapse the drawer after picking a nav item or a conversation on mobile
+    document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', close));
   }
 
   function setSidebarAgent() {

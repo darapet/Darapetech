@@ -473,8 +473,9 @@ function showAdminLogin() {
 function mountAdminDashboard() {
   const app = document.getElementById('adminApp');
   app.innerHTML = `
-  <div class="admin-layout" style="padding-top:0;min-height:100vh;display:flex">
-    <aside class="admin-sidebar">
+  <div class="admin-layout" style="padding-top:0;min-height:100vh">
+    <div class="admin-sidebar-overlay" id="admSidebarOverlay"></div>
+    <aside class="admin-sidebar" id="admSidebar">
       <h3>Dashboard</h3>
       <nav class="admin-nav">
         <a href="#" class="active" data-section="adm-overview"><i class="ph-fill ph-gauge"></i> Overview</a>
@@ -495,6 +496,7 @@ function mountAdminDashboard() {
       </div>
     </aside>
     <main class="admin-main">
+      <button class="admin-mobile-toggle" id="admMobileToggle"><i class="ph-fill ph-list"></i> Menu</button>
       <div id="adm-overview"    class="admin-section active"><h2>Loading…</h2></div>
       <div id="adm-messages"    class="admin-section"></div>
       <div id="adm-newsletter"  class="admin-section"></div>
@@ -513,6 +515,14 @@ function mountAdminDashboard() {
     e.preventDefault(); sessionStorage.removeItem('dt_admin'); auth.signOut(); location.reload();
   });
 
+  const sidebar = document.getElementById('admSidebar');
+  const overlay = document.getElementById('admSidebarOverlay');
+  const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+  document.getElementById('admMobileToggle').addEventListener('click', () => {
+    sidebar.classList.add('open'); overlay.classList.add('open');
+  });
+  overlay.addEventListener('click', closeSidebar);
+
   document.querySelectorAll('.admin-nav a[data-section]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -522,6 +532,7 @@ function mountAdminDashboard() {
       document.getElementById(sec).classList.add('active');
       link.classList.add('active');
       loadAdminSection(sec);
+      closeSidebar(); // collapse the mobile drawer after navigating
     });
   });
 

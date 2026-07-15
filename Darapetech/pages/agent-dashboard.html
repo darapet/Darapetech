@@ -138,14 +138,25 @@
     .spinner{width:26px;height:26px;border:3px solid #bfdbfe;border-top-color:#1d4ed8;border-radius:50%;animation:spin .8s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
 
+    /* Mobile sidebar toggle */
+    .mobile-menu-toggle{display:none;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:#f1f5f9;border:none;color:#374151;cursor:pointer;font-size:1rem;flex-shrink:0;position:absolute;top:12px;left:12px;z-index:20;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+    .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45}
+    .sidebar-overlay.open{display:block}
+
     /* Responsive */
     @media(max-width:900px){.convs-panel{display:none}.sidebar{width:220px}}
-    @media(max-width:640px){.sidebar{position:fixed;left:0;top:0;height:100vh;z-index:50;transform:translateX(-100%);transition:transform .3s}.sidebar.open{transform:translateX(0)}}
+    @media(max-width:640px){
+      .sidebar{position:fixed;left:0;top:0;height:100vh;z-index:50;transform:translateX(-100%);transition:transform .3s}
+      .sidebar.open{transform:translateX(0)}
+      .mobile-menu-toggle{display:flex}
+      .chat-header-bar{padding-left:12px}
+    }
   </style>
 </head>
 <body>
 
 <div class="dashboard">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
@@ -182,7 +193,8 @@
   </div>
 
   <!-- MAIN AREA -->
-  <div class="main-area">
+  <div class="main-area" style="position:relative">
+    <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
     <!-- CONVERSATIONS TAB -->
     <div id="tabChats" style="display:flex;flex:1;overflow:hidden">
       <div class="convs-panel">
