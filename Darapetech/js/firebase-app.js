@@ -597,27 +597,54 @@ async function uploadToCloudinary(file) {
 async function renderAdminAgents(el) {
   el.innerHTML = `
   <style>
-    .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px}
-    .adm-agent-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;position:relative}
-    .adm-agent-photo{width:56px;height:56px;border-radius:12px;object-fit:cover;border:2px solid #bfdbfe;background:#dbeafe}
-    .adm-agent-photo-ph{width:56px;height:56px;border-radius:12px;background:#1d4ed8;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;font-weight:700}
-    .adm-agent-id{display:inline-block;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:100px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:.05em;margin-bottom:4px}
+    .agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:40px}
+    .adm-agent-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative}
+    .adm-agent-photo{width:56px;height:56px;border-radius:12px;object-fit:cover;border:2px solid var(--border-hover);background:rgba(59,130,246,0.15)}
+    .adm-agent-photo-ph{width:56px;height:56px;border-radius:12px;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;font-weight:700}
+    .adm-agent-id{display:inline-block;background:rgba(59,130,246,0.12);color:var(--accent-2);border:1px solid var(--border-hover);border-radius:100px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:.05em;margin-bottom:4px}
     .adm-agent-actions{display:flex;gap:6px;margin-top:12px}
-    .adm-tag{background:#f1f5f9;color:#475569;border-radius:100px;padding:2px 8px;font-size:.7rem}
-    .create-form{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;max-width:520px}
-    .create-form h3{margin-bottom:4px;font-size:1rem}
-    .agent-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media(max-width:520px){.agent-form-grid{grid-template-columns:1fr}}
-    .form-group-sm{margin-bottom:0}
-    .form-group-sm label{display:block;font-size:.8rem;font-weight:600;color:var(--text-muted);margin-bottom:5px}
-    .form-group-sm input,.form-group-sm select{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.88rem;font-family:inherit;outline:none;color:var(--text)}
-    .form-group-sm input:focus,.form-group-sm select:focus{border-color:#3b82f6}
-    .skills-select{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.85rem;font-family:inherit;outline:none;height:160px}
-    .created-badge{background:#f0fdf4;border:1px solid #86efac;border-radius:12px;padding:16px;margin-top:16px;display:none}
-    .created-badge code{display:block;font-size:1.1rem;font-weight:700;color:#166534;letter-spacing:.1em;margin:8px 0;font-family:monospace}
+    .adm-tag{background:rgba(148,163,184,0.12);color:var(--text-secondary);border-radius:100px;padding:2px 8px;font-size:.7rem}
     .agent-status{width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;margin-right:4px}
-    .agent-status.inactive{background:#d1d5db}
-    .section-title{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:14px;font-family:'Space Grotesk',sans-serif}
+    .agent-status.inactive{background:#475569}
+    .section-title{font-size:1.3rem;font-weight:700;color:var(--text-primary);margin-bottom:6px;font-family:'Space Grotesk',sans-serif}
+    .section-sub{color:var(--text-muted);font-size:.9rem;margin-bottom:28px;max-width:640px}
+
+    /* ---- Create Agent panel — wide, two-column, professional ---- */
+    .create-agent-panel{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start;max-width:1040px}
+    @media(max-width:900px){.create-agent-panel{grid-template-columns:1fr}}
+    .create-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:36px;backdrop-filter:blur(16px)}
+    .create-form-step{margin-bottom:30px}
+    .create-form-step:last-of-type{margin-bottom:0}
+    .step-label{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .step-num{width:26px;height:26px;border-radius:50%;background:var(--accent-gradient);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .step-label h4{font-size:1rem;margin:0}
+    .agent-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:560px){.agent-form-grid{grid-template-columns:1fr}}
+    .form-group-sm{margin-bottom:0}
+    .form-group-sm label{display:block;font-size:.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:7px}
+    .form-group-sm input,.form-group-sm select{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.94rem;font-family:inherit;outline:none;color:var(--text-primary);background:rgba(255,255,255,0.03);transition:var(--transition)}
+    .form-group-sm input::placeholder{color:var(--text-muted)}
+    .form-group-sm input:focus,.form-group-sm select:focus{border-color:var(--accent-1);box-shadow:0 0 0 3px rgba(59,130,246,0.15)}
+    .form-hint{font-size:.78rem;color:var(--text-muted);margin-top:16px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+    .form-hint i{color:var(--accent-2);margin-top:2px;flex-shrink:0}
+    .skills-select{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;font-family:inherit;outline:none;height:180px;background:rgba(255,255,255,0.03);color:var(--text-primary)}
+    .skills-select:focus{border-color:var(--accent-1)}
+    .skills-select option{background:#0c1829;padding:6px}
+    .photo-upload-row{display:flex;align-items:center;gap:16px}
+    .photo-upload-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:var(--radius-sm);border:1.5px dashed var(--border-hover);color:var(--accent-2);font-size:.88rem;font-weight:600;cursor:pointer;transition:var(--transition)}
+    .photo-upload-btn:hover{background:rgba(59,130,246,0.08);border-color:var(--accent-1)}
+    .create-agent-submit{width:100%;justify-content:center;padding:15px;font-size:1rem;margin-top:32px}
+    .created-badge{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.35);border-radius:var(--radius-sm);padding:18px 20px;margin-top:20px;display:none}
+    .created-badge code{display:block;font-size:1.15rem;font-weight:700;color:#34d399;letter-spacing:.1em;margin:8px 0;font-family:monospace}
+
+    /* ---- Right rail: tips / preview ---- */
+    .agent-side-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:26px}
+    .agent-side-card + .agent-side-card{margin-top:20px}
+    .agent-side-card h4{font-size:.92rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+    .agent-side-card h4 i{color:var(--accent-1)}
+    .agent-side-card ol,.agent-side-card ul{padding-left:18px;margin:0}
+    .agent-side-card li{font-size:.85rem;color:var(--text-secondary);margin-bottom:10px;line-height:1.55}
+    .agent-side-card li:last-child{margin-bottom:0}
   </style>
 
   <h2 style="margin-bottom:6px">Agents</h2>
@@ -628,55 +655,88 @@ async function renderAdminAgents(el) {
   </div>
 
   <div class="section-title">Create New Agent</div>
-  <div class="create-form">
-    <p style="color:var(--text-muted);font-size:.83rem;margin-bottom:20px">A new Firebase Auth account is created for the agent. Give them their email + temp password.</p>
+  <p class="section-sub">A new Firebase login is created for the agent, and they'll appear on the site's specialist directory once saved. Share their email and temporary password with them separately — they'll be asked to set a new password on first sign-in.</p>
 
-    <div class="agent-form-grid" style="margin-bottom:14px">
-      <div class="form-group-sm">
-        <label>Full Name *</label>
-        <input type="text" id="newAgentName" placeholder="e.g. John Doe" />
+  <div class="create-agent-panel">
+    <div class="create-form">
+      <div class="create-form-step">
+        <div class="step-label"><span class="step-num">1</span><h4>Basic Information</h4></div>
+        <div class="agent-form-grid">
+          <div class="form-group-sm">
+            <label>Full Name *</label>
+            <input type="text" id="newAgentName" placeholder="e.g. John Doe" />
+          </div>
+          <div class="form-group-sm">
+            <label>Email Address *</label>
+            <input type="email" id="newAgentEmail" placeholder="agent@example.com" />
+          </div>
+          <div class="form-group-sm">
+            <label>Temporary Password *</label>
+            <input type="password" id="newAgentPw" placeholder="Min 8 characters" />
+          </div>
+          <div class="form-group-sm">
+            <label>Service Area *</label>
+            <select id="newAgentService">
+              <option value="">— select service —</option>
+              ${Object.keys(AGENT_SERVICES_SKILLS).map(s=>`<option value="${s}">${s}</option>`).join('')}
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="form-group-sm">
-        <label>Email Address *</label>
-        <input type="email" id="newAgentEmail" placeholder="agent@example.com" />
+
+      <div class="create-form-step">
+        <div class="step-label"><span class="step-num">2</span><h4>Skills &amp; Expertise</h4></div>
+        <label style="display:block;font-size:.8rem;color:var(--text-muted);margin-bottom:8px">Hold Ctrl/Cmd to select multiple — up to 20 skills</label>
+        <select id="newAgentSkills" class="skills-select" multiple></select>
       </div>
-      <div class="form-group-sm">
-        <label>Temporary Password *</label>
-        <input type="password" id="newAgentPw" placeholder="Min 8 characters" />
+
+      <div class="create-form-step">
+        <div class="step-label"><span class="step-num">3</span><h4>Profile Photo <span style="font-weight:400;color:var(--text-muted);font-size:.82rem">(optional)</span></h4></div>
+        <div class="photo-upload-row">
+          <label class="photo-upload-btn" for="newAgentPhoto"><i class="ph-fill ph-image"></i> Choose photo</label>
+          <input type="file" id="newAgentPhoto" accept="image/*" style="display:none" />
+          <span id="newAgentPhotoName" style="font-size:.85rem;color:var(--text-muted)">No file selected</span>
+        </div>
+        <div id="admAgentPhotoProgress" style="font-size:.8rem;color:var(--accent-2);margin-top:10px;display:none"></div>
       </div>
-      <div class="form-group-sm">
-        <label>Service Area *</label>
-        <select id="newAgentService">
-          <option value="">— select service —</option>
-          ${Object.keys(AGENT_SERVICES_SKILLS).map(s=>`<option value="${s}">${s}</option>`).join('')}
-        </select>
+
+      <div id="admAgentErr" style="color:#f87171;font-size:.85rem;padding:12px 16px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius-sm);margin-top:24px;display:none"></div>
+
+      <button class="btn btn-primary create-agent-submit" id="createAgentBtn">
+        <i class="ph-fill ph-plus"></i> Create Agent
+      </button>
+
+      <div class="created-badge" id="agentCreatedBadge">
+        <div style="font-weight:700;color:#34d399;margin-bottom:4px">✓ Agent created successfully!</div>
+        <div style="font-size:.85rem;color:var(--text-secondary)">Agent ID — give this to the agent for reference:</div>
+        <code id="createdAgentId"></code>
+        <div style="font-size:.8rem;color:var(--text-muted)">Share their email + temp password separately. They must change their password on first login.</div>
       </div>
     </div>
 
-    <div style="margin-bottom:14px">
-      <label style="display:block;font-size:.8rem;font-weight:600;color:var(--text-muted);margin-bottom:5px">Skills <span style="font-weight:400">(hold Ctrl/Cmd to multi-select, up to 20)</span></label>
-      <select id="newAgentSkills" class="skills-select" multiple></select>
-    </div>
-
-    <div style="margin-bottom:14px">
-      <label style="display:block;font-size:.8rem;font-weight:600;color:var(--text-muted);margin-bottom:5px">Profile Photo <span style="font-weight:400">(optional)</span></label>
-      <input type="file" id="newAgentPhoto" accept="image/*" style="font-size:.85rem" />
-      <div id="admAgentPhotoProgress" style="font-size:.78rem;color:#1d4ed8;margin-top:6px;display:none"></div>
-    </div>
-
-    <div id="admAgentErr" style="color:#ef4444;font-size:.82rem;padding:10px 14px;background:#fef2f2;border-radius:8px;margin-bottom:12px;display:none"></div>
-
-    <button class="btn btn-primary" id="createAgentBtn">
-      <i class="ph-fill ph-plus"></i> Create Agent
-    </button>
-
-    <div class="created-badge" id="agentCreatedBadge">
-      <div style="font-weight:700;color:#166534;margin-bottom:4px">✓ Agent created successfully!</div>
-      <div style="font-size:.83rem;color:#166534">Agent ID — give this to the agent for reference:</div>
-      <code id="createdAgentId"></code>
-      <div style="font-size:.78rem;color:#64748b">Share their email + temp password separately. They must change their password on first login.</div>
+    <div>
+      <div class="agent-side-card">
+        <h4><i class="ph-fill ph-info"></i> Before you create an agent</h4>
+        <ol>
+          <li>Make sure Email/Password sign-in is enabled in your Firebase console under Authentication → Sign-in method.</li>
+          <li>Make sure the Firestore rules from <strong>FIREBASE_RULES.md</strong> are pasted into your Firebase console — the agent won't save without them.</li>
+          <li>Set up Cloudinary under Settings if you want to upload a profile photo.</li>
+        </ol>
+      </div>
+      <div class="agent-side-card">
+        <h4><i class="ph-fill ph-headset"></i> What happens next</h4>
+        <ul>
+          <li>The agent signs in at the Agent Portal with the email and temporary password.</li>
+          <li>They're required to set a new password on their first sign-in.</li>
+          <li>Once in, they can update their bio, skills and photo, and start replying to conversations.</li>
+        </ul>
+      </div>
     </div>
   </div>`;
+
+  document.getElementById('newAgentPhoto').addEventListener('change', e => {
+    document.getElementById('newAgentPhotoName').textContent = e.target.files[0]?.name || 'No file selected';
+  });
 
   // Populate skills when service changes
   document.getElementById('newAgentService').addEventListener('change', e => {
@@ -760,8 +820,13 @@ async function renderAdminAgents(el) {
 
     btn.disabled=true; btn.innerHTML='<i class="ph-fill ph-spinner"></i> Creating…';
 
+    // We write the Firestore doc BEFORE creating the Auth login. If Auth creation then
+    // fails (e.g. email already used, or Email/Password sign-in disabled in Firebase),
+    // we roll back by deleting the placeholder doc — so a failed attempt never leaves
+    // things half-saved and blocks a clean retry.
+    let docRef = null;
     try {
-      // Step 1: Upload photo if provided
+      // Step 1: Upload photo if provided (non-fatal — agent can still be created without one)
       let photoUrl = '';
       if (photoFile) {
         const progressEl = document.getElementById('admAgentPhotoProgress');
@@ -770,27 +835,26 @@ async function renderAdminAgents(el) {
         catch(e) { progressEl.textContent='Photo upload failed: '+e.message; }
       }
 
-      // Step 2: Create Firebase Auth user via secondary app
-      const creatorApp = getAgentCreatorApp();
-      const creatorAuth = creatorApp.auth();
-      const cred = await creatorAuth.createUserWithEmailAndPassword(email, pw);
-      const uid = cred.user.uid;
-      // Sign out from secondary app immediately
-      await creatorAuth.signOut();
-
-      // Step 3: Generate agentId
+      // Step 2: Generate agentId and write the Firestore profile first
       const agentId = await generateAgentId();
-
-      // Step 4: Store agent in Firestore
-      const docRef = db.collection('agents').doc();
+      docRef = db.collection('agents').doc();
       await docRef.set({
         id: docRef.id,
-        agentId, uid, name, email, service, skills, photoUrl,
+        agentId, uid: null, name, email, service, skills, photoUrl,
         bio: '',
         active: true,
         firstLogin: true,
         createdAt: TS()
       });
+
+      // Step 3: Create the Firebase Auth login via a secondary app (so the admin stays
+      // signed in), then attach the resulting uid to the profile we just saved.
+      const creatorApp = getAgentCreatorApp();
+      const creatorAuth = creatorApp.auth();
+      const cred = await creatorAuth.createUserWithEmailAndPassword(email, pw);
+      const uid = cred.user.uid;
+      await creatorAuth.signOut();
+      await docRef.update({ uid });
 
       // Show success
       document.getElementById('createdAgentId').textContent = agentId;
@@ -801,11 +865,22 @@ async function renderAdminAgents(el) {
       document.getElementById('newAgentService').value='';
       document.getElementById('newAgentSkills').innerHTML='';
       document.getElementById('newAgentPhoto').value='';
+      document.getElementById('newAgentPhotoName').textContent='No file selected';
       loadAgentsList();
     } catch(e) {
-      errEl.textContent = e.code==='auth/email-already-in-use'
-        ? 'An account with this email already exists.'
-        : e.message;
+      // Roll back the Firestore profile if the Auth login step never completed —
+      // otherwise a retry with the same email looks "stuck" with no way to fix it.
+      if (docRef) { await docRef.delete().catch(()=>{}); }
+
+      if (e.code === 'auth/email-already-in-use') {
+        errEl.textContent = 'An account with this email already exists. Use a different email, or delete the existing agent first.';
+      } else if (e.code === 'auth/operation-not-allowed') {
+        errEl.textContent = 'Email/Password sign-in is disabled for this project. In the Firebase console, go to Authentication → Sign-in method and enable "Email/Password", then try again.';
+      } else if (e.code === 'permission-denied' || /permission/i.test(e.message||'')) {
+        errEl.textContent = 'Firestore rejected the save (permission denied). Make sure the rules in FIREBASE_RULES.md are pasted into your Firebase console and that you are signed in with the admin account.';
+      } else {
+        errEl.textContent = e.message || 'Something went wrong creating the agent. Please try again.';
+      }
       errEl.style.display='';
     }
     btn.disabled=false; btn.innerHTML='<i class="ph-fill ph-plus"></i> Create Agent';
