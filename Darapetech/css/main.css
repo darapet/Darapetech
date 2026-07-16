@@ -1781,91 +1781,74 @@ small { font-size: 0.8rem; }
 
 /* =========================================================
    HOMEPAGE — SINGLE VISIBLE BACKGROUND (bg-team.jpg)
-   body.has-page-bg is set only on index.html.
-   The image shows fully — NO dark overlay.
-   Each section's content sits on a white card so text
-   stays perfectly readable with zero colour changes.
+   Scoped to body.has-page-bg (set only on index.html).
+
+   ROOT CAUSE FIX: background.css injects a #site-bg div
+   (position:fixed; inset:0; background:#ffffff) that sits
+   on top of the body background — hiding any image set on
+   body. Fix: apply the image directly to #site-bg instead.
    ========================================================= */
 
-/* ── Full-page background on the body ── */
-body.has-page-bg {
-  background: url('../assets/images/bg-team.jpg') center center / cover fixed !important;
+/* ── The actual full-page background element ── */
+body.has-page-bg #site-bg {
+  background: url('../assets/images/bg-team.jpg') center center / cover !important;
+}
+/* Kill the faint blue-corner gradient overlay on #site-bg */
+body.has-page-bg #site-bg::before {
+  display: none !important;
+}
+/* Kill faint section tint overlays so image shows clean */
+body.has-page-bg .why-section::before,
+body.has-page-bg .testimonials-section::before,
+body.has-page-bg .stats-section::before,
+body.has-page-bg .team-preview-section::before {
+  display: none !important;
 }
 
-/* ── Strip any solid/gradient backgrounds from sections ── */
-body.has-page-bg .section,
-body.has-page-bg .hero,
-body.has-page-bg .partners-strip,
+/* ── Each section content block sits on a white card ── */
+body.has-page-bg .section .container {
+  background: rgba(255, 255, 255, 0.93) !important;
+  border-radius: 22px !important;
+  padding: 52px 48px !important;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* ── CTA banner ── */
 body.has-page-bg .cta-banner {
   background: transparent !important;
 }
-
-/* ── Each section's content sits on a white card ── */
-body.has-page-bg .section .container {
-  background: rgba(255, 255, 255, 0.93);
-  border-radius: 22px;
-  padding: 52px 48px;
-  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-/* ── Partners strip → white pill card ── */
-body.has-page-bg .partners-strip {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-body.has-page-bg .partners-strip .container,
-body.has-page-bg .partners-strip > div:not(.marquee-track):not(.marquee-inner) {
-  background: rgba(255,255,255,0.93);
-}
-body.has-page-bg .partners-strip .marquee-wrap,
-body.has-page-bg .partners-strip > * {
-  background: rgba(255,255,255,0.93);
-}
-
-/* Simpler: give the whole strip a white card background */
-body.has-page-bg .partners-strip {
-  background: rgba(255,255,255,0.93) !important;
-}
-
-/* ── CTA banner container ── */
 body.has-page-bg .cta-banner .container {
-  background: rgba(255, 255, 255, 0.93);
-  border-radius: 22px;
-  padding: 52px 48px;
-  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.93) !important;
+  border-radius: 22px !important;
+  padding: 52px 48px !important;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.18) !important;
 }
 body.has-page-bg .cta-banner .cta-bg-effect { display: none; }
 
-/* ── Hero: transparent — bg image IS the hero ── */
-body.has-page-bg .hero {
-  background: transparent !important;
-}
-body.has-page-bg .hero-gradient {
-  display: none;
+/* ── Partners strip ── */
+body.has-page-bg .partners-strip {
+  background: rgba(255, 255, 255, 0.93) !important;
 }
 
-/* ── Announcement strip & nav: keep white ── */
+/* ── Hero — fully transparent so bg image IS the hero ── */
+body.has-page-bg .hero { background: transparent !important; }
+body.has-page-bg .hero-gradient { display: none !important; }
+
+/* ── Announcement strip & nav stay white ── */
 body.has-page-bg .announcement-strip {
-  background: rgba(255,255,255,0.96) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
 }
 body.has-page-bg .main-header {
-  background: rgba(255,255,255,0.96) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* ── Mobile: switch to scroll (perf) ── */
+/* ── Mobile: simpler sizing ── */
 @media (max-width: 768px) {
-  body.has-page-bg {
-    background-attachment: scroll !important;
-  }
   body.has-page-bg .section .container,
   body.has-page-bg .cta-banner .container {
-    padding: 36px 20px;
-    border-radius: 16px;
+    padding: 36px 20px !important;
+    border-radius: 16px !important;
   }
 }
