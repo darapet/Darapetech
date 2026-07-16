@@ -101,7 +101,20 @@ async function renderAdminAgentWaitlist(el) {
         </div>`;
       }).join('');
     } catch(e) {
-      grid.innerHTML = `<div style="grid-column:1/-1;padding:20px;text-align:center;color:#ef4444;font-size:.85rem">Error: ${escapeHtml(e.message)}</div>`;
+      const isPermission = e.code === 'permission-denied' || (e.message||'').toLowerCase().includes('permission');
+      grid.innerHTML = `<div style="grid-column:1/-1;padding:32px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:12px">${isPermission ? '🔒' : '⚠️'}</div>
+        <div style="font-weight:700;font-size:.95rem;color:#ef4444;margin-bottom:8px">
+          ${isPermission ? 'Firestore Permission Denied' : 'Error Loading Waitlist'}
+        </div>
+        <div style="font-size:.83rem;color:#64748b;max-width:480px;margin:0 auto;line-height:1.6">
+          ${isPermission
+            ? `Your Firestore security rules are blocking admin reads.<br>
+               <strong>Fix:</strong> Go to <a href="https://console.firebase.google.com/project/darapettech/firestore/rules" target="_blank" style="color:#3b82f6">Firebase Console → Firestore → Rules</a>
+               and paste the contents of <code style="background:#f1f5f9;padding:1px 5px;border-radius:4px">firestore.rules</code> from your GitHub repo.`
+            : escapeHtml(e.message)}
+        </div>
+      </div>`;
     }
   };
   window.loadWaitlist();

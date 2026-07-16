@@ -25,7 +25,7 @@
 
     /* ── Layout ── */
     .auth-wrap{position:relative;z-index:1;display:flex;width:100%;min-height:100vh}
-    .auth-left{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:48px;color:#fff}
+    .auth-left{display:none}
     .auth-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
     .auth-brand img{height:40px}
     .auth-brand-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:#fff}
@@ -37,7 +37,7 @@
     .auth-dot.active{width:24px;border-radius:4px;background:#3b82f6}
 
     /* ── Right card panel ── */
-    .auth-right{width:520px;flex-shrink:0;display:flex;align-items:flex-start;justify-content:center;padding:32px 24px;overflow-y:auto}
+    .auth-right{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 24px;overflow-y:auto;min-height:100vh}
     .auth-card{background:#fff;border-radius:20px;padding:40px;width:100%;max-width:460px;box-shadow:0 20px 60px rgba(0,0,0,0.4);margin:auto}
 
     /* ── Step progress ── */
@@ -96,7 +96,7 @@
     /* ── Upload progress ── */
     .upload-progress{display:none;font-size:.78rem;color:#1d4ed8;margin-top:6px;font-weight:500}
 
-    @media(max-width:900px){.auth-left{display:none}.auth-right{width:100%}.auth-card{box-shadow:none;margin:auto}}
+    @media(max-width:600px){.auth-card{padding:28px 20px;border-radius:14px}}
   </style>
 </head>
 <body>

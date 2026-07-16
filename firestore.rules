@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper functions ──────────────────────────────────────
+    function isAdmin() {
+      return request.auth != null
+          && request.auth.token.email == 'daramolapeter98@gmail.com';
+    }
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // ── Agent Applications (waitlist) ─────────────────────────
+    // Anyone can submit an application (no auth needed).
+    // Only the admin can read, approve, or reject.
+    match /agent_applications/{docId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Approved Agents ───────────────────────────────────────
+    match /agents/{agentId} {
+      allow read:   if isSignedIn();
+      allow create: if isAdmin();
+      allow update: if isAdmin()
+                 || (isSignedIn() && resource.data.uid == request.auth.uid);
+      allow delete: if isAdmin();
+    }
+
+    // ── Site Users (chat / register) ──────────────────────────
+    match /users/{userId} {
+      allow read, write: if isSignedIn() && request.auth.uid == userId;
+      allow read:        if isAdmin();
+    }
+
+    // ── Company Portfolio ─────────────────────────────────────
+    match /portfolio/{docId} {
+      allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // ── Testimonials ──────────────────────────────────────────
+    match /testimonials/{docId} {
+      allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // ── Newsletter subscribers ────────────────────────────────
+    match /newsletter/{docId} {
+      allow create:              if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Settings (Cloudinary config, etc.) ───────────────────
+    match /settings/{docId} {
+      allow read:  if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // ── Chat messages ─────────────────────────────────────────
+    match /messages/{docId} {
+      allow read, write: if isSignedIn();
+    }
+
+    // ── Stats, pricing, socials — admin manages, public reads ─
+    match /stats/{docId}   { allow read: if true; allow write: if isAdmin(); }
+    match /pricing/{docId} { allow read: if true; allow write: if isAdmin(); }
+    match /socials/{docId} { allow read: if true; allow write: if isAdmin(); }
+
+    // ── Catch-all: admin has full access to everything else ───
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
