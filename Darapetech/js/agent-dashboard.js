@@ -209,9 +209,9 @@
   function loadConversations() {
     const list = el('convsList');
     if (convListener) convListener();
-    convListener = db.collection('conversations')
+    convListener = db.collection('agent_conversations')
       .where('agentId','==',agentDoc.id)
-      .orderBy('lastMessageTime','desc')
+      .orderBy('lastMessageAt','desc')
       .onSnapshot(snap => {
         if (snap.empty) { list.innerHTML = '<div class="convs-empty">No conversations yet.</div>'; return; }
         let count = 0;
@@ -219,13 +219,13 @@
           const c = doc.data();
           const unread = (c.unreadAgent || 0);
           count += unread > 0 ? 1 : 0;
-          const av = (c.customerName||'U').charAt(0).toUpperCase();
+          const av = (c.userName||'U').charAt(0).toUpperCase();
           const time = fmtTime(c.lastMessageTime);
           const active = doc.id === activeConvId ? 'active' : '';
-          return `<div class="conv-item ${active}" id="conv-item-${doc.id}" data-id="${doc.id}" data-name="${esc(c.customerName||'')}">
+          return `<div class="conv-item ${active}" id="conv-item-${doc.id}" data-id="${doc.id}" data-name="${esc(c.userName||'')}">
             <div class="conv-av">${esc(av)}</div>
             <div class="conv-info">
-              <div class="conv-name">${esc(c.customerName||'Unknown')}</div>
+              <div class="conv-name">${esc(c.userName||'Unknown')}</div>
               <div class="conv-preview">${esc(c.lastMessage||'')}</div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">
@@ -253,7 +253,7 @@
     const item = el('conv-item-'+convId);
     if (item) item.classList.add('active');
     // Mark messages as read
-    db.collection('conversations').doc(convId).update({ unreadAgent: 0 }).catch(()=>{});
+    db.collection('agent_conversations').doc(convId).update({ unreadAgent: 0 }).catch(()=>{});
     // Close mobile panel
     el('convsPanel').classList.remove('open');
     el('convsOverlay').classList.remove('open');
@@ -263,13 +263,13 @@
   }
 
   function renderChatHeader(c) {
-    const av = (c.customerName||'U').charAt(0).toUpperCase();
+    const av = (c.userName||'U').charAt(0).toUpperCase();
     el('chatArea').innerHTML = `
       <div class="chat-header-bar">
         <div class="chat-header-av">${esc(av)}</div>
         <div class="chat-header-info">
-          <div class="chat-header-name">${esc(c.customerName||'Customer')}</div>
-          <div class="chat-header-meta">${esc(c.customerEmail||'')} · ${esc(c.projectService||c.service||'')}</div>
+          <div class="chat-header-name">${esc(c.userName||'Customer')}</div>
+          <div class="chat-header-meta">${esc(c.userEmail||'')} · ${esc(c.agentService||'')}</div>
         </div>
       </div>
       <div class="messages-wrap" id="messagesWrap"></div>
@@ -278,20 +278,26 @@
 
   function loadMessages(convId) {
     if (msgListener) msgListener();
-    msgListener = db.collection('conversations').doc(convId).collection('messages')
-      .orderBy('timestamp','asc')
+    msgListener = db.collection('agent_messages')
+      .where('conversationId','==',convId)
       .onSnapshot(snap => {
         const wrap = el('messagesWrap');
         if (!wrap) return;
+        // sort client-side (no composite index needed)
+        const docs = snap.docs.slice().sort((a,b)=>{
+          const ta=a.data().createdAt?.toMillis?a.data().createdAt.toMillis():0;
+          const tb=b.data().createdAt?.toMillis?b.data().createdAt.toMillis():0;
+          return ta-tb;
+        });
         let html = '', lastDay = '';
-        snap.docs.forEach(doc => {
+        docs.forEach(doc => {
           const m = doc.data();
-          const dayLabel = fmtDay(m.timestamp);
+          const dayLabel = fmtDay(m.createdAt);
           if (dayLabel !== lastDay) {
             html += `<div class="day-sep">${esc(dayLabel)}</div>`;
             lastDay = dayLabel;
           }
-          const isAgent = (m.senderType==='agent');
+          const isAgent = m.senderType==='agent' || m.senderId===agentUser?.uid;
           html += buildBubble(m, isAgent);
         });
         wrap.innerHTML = html || '<div style="text-align:center;color:#94a3b8;font-size:.84rem;padding:20px">No messages yet. Start the conversation!</div>';
@@ -311,14 +317,14 @@
 
   function buildBubble(m, isAgent) {
     const side = isAgent ? 'mine' : 'theirs';
-    const time = fmtTime(m.timestamp);
+    const time = fmtTime(m.createdAt||m.timestamp);
     let content = '';
     if (m.type==='image' && m.fileUrl) {
       content = `<img src="${esc(m.fileUrl)}" class="msg-img" alt="image" />`;
     } else if (m.type==='file' && m.fileUrl) {
       content = `<a href="${esc(m.fileUrl)}" target="_blank" class="msg-file-a"><i class="fas fa-file"></i><span>${esc(m.fileName||'File')}</span></a>`;
     } else {
-      content = `<div>${linkifyText(m.text||'')}</div>`;
+      content = `<div>${linkifyText(m.content||m.text||'')}</div>`;
     }
     const avPh = `<div class="msg-av-a-ph">${initials(isAgent ? (agentData.displayName||agentData.name||'A') : 'C')}</div>`;
     const av = isAgent && agentData.photoUrl
@@ -404,20 +410,22 @@
       // Send attachments first
       for (const att of pendingAtt) {
         const url = await uploadChatFile(att.file);
-        await db.collection('conversations').doc(convId).collection('messages').add({
+        await db.collection('agent_messages').add({
+          conversationId: convId,
           type: att.type, fileUrl: url, fileName: att.file.name,
-          senderType: 'agent', senderId: agentUser.uid, timestamp: ts
+          senderType: 'agent', senderId: agentUser.uid, createdAt: ts
         });
       }
       // Send text
       if (text) {
-        await db.collection('conversations').doc(convId).collection('messages').add({
-          type:'text', text, senderType:'agent', senderId:agentUser.uid, timestamp:ts
+        await db.collection('agent_messages').add({
+          conversationId: convId,
+          type:'text', content: text, senderType:'agent', senderId:agentUser.uid, createdAt: ts
         });
       }
-      await db.collection('conversations').doc(convId).update({
+      await db.collection('agent_conversations').doc(convId).update({
         lastMessage: text || (pendingAtt[0]?.type==='image'?'📷 Photo':'📎 File'),
-        lastMessageTime: ts, unreadCustomer: firebase.firestore.FieldValue.increment(1)
+        lastMessageAt: ts, unreadUser: firebase.firestore.FieldValue.increment(1)
       });
       inp.value=''; inp.style.height='auto';
       attachments=[];

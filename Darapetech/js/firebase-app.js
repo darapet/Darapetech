@@ -995,7 +995,7 @@ async function renderAdminOverview(el) {
     db.collection('newsletter').where('active','==',true).get(),
     db.collection('pricing_inquiries').where('status','==','pending').get(),
     db.collection('agents').get(),
-    db.collection('conversations').get()
+    db.collection('agent_conversations').get()
   ]);
 
   const unread = contacts.size;
